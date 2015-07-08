@@ -1,0 +1,5 @@
+Makefile.in
+*.dvi
+*.aux
+*.log
+*.ps

@@ -1,0 +1,393 @@
+==============================
+21.11.14 Release CLHEP-2.2.0.4
+==============================
+==============================
+18.08.14 Release CLHEP-2.2.0.3
+==============================
+==============================
+12.08.14 Release CLHEP-2.2.0.2
+==============================
+
+2014-08-08 Lynn Garren <garren@fnal.gov> 
+
+  * Units/SystemOfUnits.h, Units/PhysicalConstants.h:
+    move definition of pi into SystemOfUnits so it is not defined twice
+    Note that PhysicalConstants.h includes SystemOfUnits.h.
+
+==============================
+23.06.14 Release CLHEP-2.2.0.1
+==============================
+==============================
+16.06.14 Release CLHEP-2.2.0.0
+==============================
+==============================
+14.05.14 Release CLHEP-2.2.0.0.b01
+==============================
+==============================
+14.11.14 Release CLHEP-2.1.4.3
+==============================
+==============================
+12.05.14 Release CLHEP-2.1.4.2
+==============================
+==============================
+14.11.13 Release CLHEP-2.1.4.1
+==============================
+==============================
+05.11.13 Release CLHEP-2.1.4.0
+==============================
+
+2013-10-31 Lynn Garren <garren@fnal.gov> 
+
+	* Units/SystemOfUnits.h: adding definitions for curies
+	* test/testUnits.cc: use the same M_PI logic as found elsewhere
+
+==============================
+14.11.12 Release CLHEP-2.1.3.1
+==============================
+==============================
+06.11.12 Release CLHEP-2.1.3.0
+==============================
+==============================
+16.08.12 Release CLHEP-2.1.2.5
+==============================
+==============================
+09.07.12 Release CLHEP-2.1.2.4
+==============================
+==============================
+31.05.12 Release CLHEP-2.1.2.3
+==============================
+==============================
+14.02.12 Release CLHEP-2.1.2.2
+==============================
+
+2012-02-14  L. Garren  <garren@fnal.gov>
+
+	* CMakeLists.txt: use clhep_package_config_no_lib
+
+==============================
+06.02.12 Release CLHEP-2.1.2.1
+==============================
+==============================
+16.12.11 Release CLHEP-2.1.2.0
+==============================
+==============================
+29.07.11 Release CLHEP-2.1.1.0
+==============================
+2011-07-20  Lynn Garren <garren@fnal.gov>
+
+	* testUnits: convert from shell script to executable
+
+==============================
+11.11.10 Release CLHEP-2.1.0.1
+==============================
+==============================
+23.07.10 Release CLHEP-2.1.0.0
+==============================
+==============================
+16.06.10 Release CLHEP-2.1.0.0.b01
+==============================
+==============================
+11.06.10 Release CLHEP-2.0.5.0.b01
+==============================
+==============================
+09.03.10 Release CLHEP-2.0.4.6
+==============================
+==============================
+08.12.09 Release CLHEP-2.0.4.5
+==============================
+==============================
+12.11.09 Release CLHEP-2.0.4.4
+==============================
+==============================
+03.11.09 Release CLHEP-2.0.4.4.b01
+==============================
+==============================
+04.07.09 Release CLHEP-2.0.4.3
+==============================
+==============================
+18.11.08 Release CLHEP-2.0.4.2
+==============================
+==============================
+04.11.08 Release CLHEP-2.0.4.1
+==============================
+2008-11-04  Lynn Garren <garren@fnal.gov>
+
+	* PhysicalConstants.h: update Avogadro, h_Planck, electron_mass_c2,
+	  proton_mass_c2, amu_c2, and k_Boltzmann to PDG 2008 values
+	* SystemOfUnits.h: update e_SI to PDG 2008 value
+	* Units.tex: update for modern LaTeX
+
+==============================
+07.08.08 Release CLHEP-2.0.4.0
+==============================
+==============================
+01.05.08 Release CLHEP-2.0.3.3
+==============================
+2008-04-29  Lynn Garren <garren@fnal.gov>
+
+	* PhysicalConstants.h: update h_Planck, electron_mass_c2,
+	proton_mass_c2, neutron_mass_c2, and amu_c2 to PDG 2006 values
+	* SystemOfUnits.h: update e_SI to PDG 2006 value
+
+==============================
+18.10.07 Release CLHEP-2.0.3.2
+==============================
+==============================
+15.11.06 Release CLHEP-2.0.3.1
+==============================
+==============================
+18.10.06 Release CLHEP-2.0.3.0
+==============================
+==============================
+20.06.06 Release CLHEP-2.0.2.3
+==============================
+==============================
+21.11.05 Release CLHEP-2.0.2.2
+==============================
+==============================
+22.06.05 Release CLHEP-2.0.2.1
+==============================
+Wed Jun 22 2005  Andreas Pfeiffer  <andreas.pfeiffer@cern.ch>
+
+	* configure.in: changed soname to install_name for darwin targets,
+	dylibs still don't build properly on 10.3/10.4, static libs ok.
+
+2005-06-19  Lynn Garren <garren@fnal.gov>
+
+	* configure.in, Makefile.am: 
+	Use lib when building Visual C++ libraries.
+	Disable shared library build for Solaris CC.
+
+Wed Jun 1 2005  Andreas Pfeiffer  <andreas.pfeiffer@cern.ch>
+
+	* Units/SystemOfUnits.h: added symbols for um and nm to fix backward 
+	compatibility issue with 1.8.x version
+	
+==============================
+22.04.05 Release CLHEP-2.0.2.0
+==============================
+2005-04-07  Lynn Garren <garren@fnal.gov>
+
+	* configure.in: set AR and ARFLAGS
+
+Tue Apr 05   2005 Andreas Pfeiffer <andreas.pfeiffer@cern.ch.
+
+	* On request from Geant-4 users added GlobalPhysicalConstants.h 
+	and GlobalSystemOfUnits.h to allow users to use Units from global 
+	namespace.
+
+2005-02-18  Lynn Garren  <garren@fnal.gov>
+
+	* configure.in, Makefile.am: Stop using libtool.  
+	The newer releases of libtool seem to have dropped support for 
+	Windows Visual C++.  
+
+2005-02-14  Lynn Garren  <garren@fnal.gov>
+
+	* configure.in: Visual C++ flags are now "-EHsc -nologo -GR -GX -MD"
+
+2005-02-03  Lynn Garren  <garren@fnal.gov>
+
+	* configure.in: install step creates libCLHEP.a, libCLHEP.so,
+	and/or libCLHEP.dylib by adding a symbolic link.
+
+2005-02-02  Andreas PFEIFFER  <andreas.pfeiffer@cern.ch>
+
+	* configure.in: modified compiler flags for windows:
+	added "-O -GR -GX -MD" as this is needed for the multi-thread
+	environments used.
+	
+==============================
+30.11.04 Release CLHEP-2.0.1.2
+==============================
+==============================
+27.10.04 Release CLHEP-2.0.1.1
+==============================
+
+Fri Sep 24          2004 Lynn Garren <garren@fnal.gov>
+
+	* use AM_CXXFLAGS
+	* require autoconf 2.59, automake 1.9.1, and libtool 1.9b
+
+Tue Aug 31         2004 Lynn Garren <garren@fnal.gov>
+	
+	* change Solaris CC compile flags from "-O -mt" to "-O"
+	* libtools 1.9b or later is required for Solaris CC
+
+==============================
+23.07.04 Release CLHEP-2.0.1.0
+==============================
+
+==============================
+11.05.04 Release CLHEP-2.0.0.2
+==============================
+
+==============================
+11.05.04 Release CLHEP-1.9.0.2
+==============================
+        
+==============================
+21.04.04 Release CLHEP-2.0.0.1
+==============================
+==============================
+24.10.03 Release CLHEP-2.0.0.0
+==============================
+
+==============================
+23.10.03 Release CLHEP-1.9.0.0
+==============================
+	
+==============================
+01.06.02 Release CLHEP-1.8.0.0
+==============================
+
+=========================================
+25.04.02 revised StdHep uses HepMC
+=========================================
+
+=========================================
+08.03.02 HepMC has become a part of CLHEP
+=========================================
+
+==========================================
+09.11.01 HepPDT has become a part of CLHEP
+==========================================
+	
+Mon Jun 18 13:58:16 2001 Evgueni Tcherniaev <Evgueni.Tcherniaev@cern.ch>
+
+	* Units/doc (Added):
+	* Units/doc/Units.tex (Added):
+
+	Added documentation for Units.
+	
+==============================
+15.06.01 Release CLHEP-1.7.0.0
+==============================
+	
+Mon Mar  5 17:09:31 2001 Evgueni Tcherniaev <Evgueni.Tcherniaev@cern.ch>
+
+	* Units/SystemOfUnits.h:
+
+	Added 'parsec'. It corresponds to the latest developments going
+	on in Geant4.
+	
+==========================================================================
+18.01.01 ZOOM PhysicsVectors Capabilities have become part of CLHEP/Vector
+==========================================================================
+
+======================================================================
+24.10.00 Generic Functions by Joe Boudreau have become a part of CLHEP
+======================================================================
+
+==============================
+20.10.00 Release CLHEP-1.6.0.0
+==============================
+
+==============================================================================
+12.10.00 Expression Evaluator by Evgueni Tcherniaev has become a part of CLHEP
+         Alist, String and Combination have been disabled
+==============================================================================
+
+==============================
+08.05.00 Release CLHEP-1.5.0.0
+==============================
+
+============================================================
+24.04.00 StdHepC++ by Lynn Garren has become a part of CLHEP
+============================================================
+
+==============================
+20.04.99 Release CLHEP-1.4.0.0
+==============================
+
+Fri Feb 12 11:37:21 1999 Evgueni Tcherniaev <Evgueni.Tcherniaev@cern.ch>
+
+	* configure.in: Added +DAportable option for CC
+
+	* test/testUnits.cc:
+
+	Added check that local variables do not	interfere with global ones
+ 
+=========================================================================
+16.12.98 Started: merging with BaBar version of CLHEP provided by G.Cosmo
+=========================================================================
+
+Mon Sep 14 15:24:00 1998 Evgueni Tcherniaev <Evgueni.Tcherniaev@cern.ch>
+
+	* Units/SystemOfUnits.h: 
+
+	Added angstrom, picobarn, microsecond, picosecond, petaelectronvolt
+	
+==========================
+28.07.98 Release CLHEP-1.3
+==========================
+
+
+Fri Jul  3 15:44:38 1998 Evgueni Tcherniaev <Evgueni.Tcherniaev@cern.ch>
+
+	* Units/PhysicalConstants.h,SystemOfUnits.h:
+
+	Modifications provided by Michel Maire taking into account comments
+	from the STAR group
+
+	* PersistenIO/:	
+	* ClassDescription.cc,ClassDescription.h,ClassDescription.icc: 
+	* DescriptionList.cc,DescriptionList.h,GenericLoader.cc: 
+	* GenericLoader.h,Makefile.in,PIBinStream.cc,PIBinStream.h: 
+	* PICharStream.cc,PICharStream.h,PICharStream.icc,PIOStream.cc: 
+	* PIOStream.h,PIStream.cc,PIStream.h,PIStream.icc,PIXdrStream.cc: 
+	* PIXdrStream.h,PIXdrStream.icc,POBinStream.cc,POBinStream.h: 
+	* POCharStream.cc,POCharStream.h,POCharStream.icc,POStream.cc: 
+	* POStream.h,POStream.icc,POXdrStream.cc,POXdrStream.h: 
+	* POXdrStream.icc,PersistentBase.cc,PersistentBase.h:
+	* RTTIBase.cc,RTTIBase.h,RTTIBase.icc,TypeInfo.cc,TypeInfo.h:
+	* TypeInfo.icc (Removed): 
+
+	* Combination/:
+	* DecayChannel.h,FloatWithError.h,HepBaseParticle.cc: 
+	* HepBaseParticle.h,HepBaseParticle.icc,InterfaceParticle.cc: 
+	* InterfaceParticle.h,InterfaceParticle.icc,ParticleData.h (Removed): 
+
+	* test/:
+	* A.cc,A.h,B.cc,B.h,C.cc,C.h,D.cc,D.h,matrixBug.cc,testPIBS.cc: 
+	* testPIBSd.cc,testPIBSdc.cc,testPIBSdcb.cc,testPICS.cc: 
+	* testPIXS.cc,testPOS.cc,testRTTI.cc (Removed):
+
+	PersistentIO removal
+	
+========================
+05.02.98 Release CLHEP-1.2
+==========================
+
+========================================================
+08.12.97 Release CLHEP-1.1: Geant4 has migrated to CLHEP
+========================================================
+
+	
+Fri Dec  5 09:28:25 1997 Evgueni Tcherniaev <Evgueni.Tcherniaev@cern.ch>
+
+	* Units/PhysicalConstants.h,SystemOfUnits.h: 
+
+	Removed all HepUnitOf...
+	Redefined pascal
+	Replaced pasc to pascal
+ 	Added km, km2, km3 and mg
+
+Thu Nov 27 14:59:23 1997 Evgueni Tcherniaev <Evgueni.Tcherniaev@cern.ch>
+
+	* test/testUnits.cc:
+
+	exit(0) changed to return 0
+
+	
+Sun Oct 12 11:47:36 1997 Evgueni Tcherniaev <Evgueni.Tcherniaev@cern.ch>
+
+	* Units/PhysicalConstants.h,SystemOfUnits.h: Changes in comments
+
+
+Wed Mar 12 07:53:31 1997  Nobu KATAYAMA  <katayama@hpca02.cern.ch>
+
+	- Added Units from the Geant4 team.
+
+	- Added HEP_ to HAVE_STL,HAVE_BOOL and BOOL_IS_NOT_INT 
+

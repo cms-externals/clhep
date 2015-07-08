@@ -1,0 +1,116 @@
+// -*- C++ -*-
+// $Id:
+#include "SymToArgAdaptor.hh"
+#include <assert.h>
+#include <iostream>
+#include <cfloat>
+
+namespace Genfun {
+
+
+//FUNCTION_OBJECT_IMP(SymToArgAdaptor) Do it by hand here:
+
+template <class F>
+inline
+FunctionComposition SymToArgAdaptor<F>::operator()(const AbsFunction & function) const
+{                                            
+  return AbsFunction::operator() (function); 
+}     
+                 
+template <class F>                      
+inline
+SymToArgAdaptor<F> *SymToArgAdaptor<F>::clone () const {       
+  return (SymToArgAdaptor<F> *) _clone();             
+}
+                                            
+template <class F>                      
+inline
+AbsFunction *SymToArgAdaptor<F>::_clone () const {    
+  return new SymToArgAdaptor<F>(*this);                       
+}
+template <class F>
+inline
+ParameterComposition SymToArgAdaptor<F>::operator()(const AbsParameter & p) const
+{                                            \
+  return AbsFunction::operator() (p);        \
+}      
+
+template<class F> 
+inline
+SymToArgAdaptor<F>::SymToArgAdaptor(F        &function,
+				    const AbsFunction & f_expression,
+				    SymToArgAdaptor<F>::ScopedMethodPtr parameterFetchMethod,
+	                            const AbsFunction * p_expression):
+
+  _function(function.clone()),
+  _f_expression(f_expression.clone()),
+  _parameterFetchMethod(parameterFetchMethod),
+  _p_expression(p_expression->clone())
+
+{
+  _parameterFetchMethod(*_function).setLowerLimit(-DBL_MAX);
+  _parameterFetchMethod(*_function).setUpperLimit(+DBL_MAX);
+  assert(f_expression.dimensionality()==p_expression->dimensionality());
+}
+
+template <class F>
+inline
+SymToArgAdaptor<F>::~SymToArgAdaptor() {
+  delete _function;
+  delete _f_expression;
+  delete _p_expression;
+}
+
+template <class F>
+inline
+SymToArgAdaptor<F>::SymToArgAdaptor(const SymToArgAdaptor & right):
+  _function(right._function->clone()),
+  _f_expression(right._f_expression->clone()),
+  _parameterFetchMethod(right._parameterFetchMethod),
+  _p_expression(right._p_expression->clone())
+{
+  _parameterFetchMethod(*_function).setLowerLimit(-DBL_MAX);
+  _parameterFetchMethod(*_function).setUpperLimit(+DBL_MAX);
+}
+
+
+template <class F>
+inline
+double SymToArgAdaptor<F>::operator ()(double x) const
+{
+  std::cerr
+    << "Warning.  SymToArgAdaptor called with scalar argument"
+    << std::endl;
+  assert(0);
+  return 0;
+}
+
+template <class F>
+inline
+unsigned int SymToArgAdaptor<F>::dimensionality() const {
+  return _f_expression->dimensionality();
+}
+
+template <class F> 
+inline
+double SymToArgAdaptor<F>::operator() (const Argument & a) const {
+  if (dimensionality()!= a.dimension()) {
+    std::cerr
+      << "Warning: SymToArgAdaptor function/argument dimension mismatch"
+      <<  std::endl;
+    assert(0);
+    return 0;
+  }
+
+  // First evaluate the sumbol.
+  double pVal= (*_p_expression)(a);
+  
+  // Then set the associated parameter:
+  (_parameterFetchMethod(*_function)).setValue(pVal);
+  
+  // Now evaluate the function:
+  return (*_function)((*_f_expression) (a));
+}
+} // end of namespace Genfun 
+
+

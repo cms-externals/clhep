@@ -1,0 +1,30 @@
+#-------------------------------------------------------------
+#  building CLHEP
+#-------------------------------------------------------------
+
+You may build CLHEP as a complete package, starting from this 
+top level directory, or you may build any package separately.
+
+Cmake is now the preferred build option.
+Building with autotools and configure is deprecated.
+Although it may be possible to build with autotools, 
+we strongly recommend building with cmake. 
+You MUST use cmake when building with clang and other exotic compilers.
+
+Please see either INSTALL.cmake or INSTALL.autotools for directions.
+
+#-------------------------------------------------------------
+# about linking
+#-------------------------------------------------------------
+
+CLHEP builds libraries for each package in addition to a single CLHEP library.
+This alllows you to link with only the necessary parts of CLHEP.
+We provide a set of <package>-config scripts which gives the list of 
+libraries to link, in the correct order.  
+The script can be embedded in a makefile.
+
+   clhep-config --libs       -  link list of ALL CLHEP libraries
+   <package>-config --libs   -  link list of ONLY those libraries 
+                                needed to use <package>
+
+#-------------------------------------------------------------

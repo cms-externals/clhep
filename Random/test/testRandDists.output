@@ -1,0 +1,1409 @@
+
+--------------------------------------------
+Test of RandGauss distribution 
+
+Please enter an integer seed:        1357924
+How many numbers should we generate: 500000
+Enter mu: 20
+Enter sigma: 4
+
+Instantiating distribution utilizing TripleRand engine...
+
+ Sample  fire(): 
+26.7408
+ Testing operator() ... 
+0
+50001
+100002
+150003
+200004
+250005
+300006
+350007
+400008
+450009
+Mean (should be close to 20): 20.004
+Second moment (should be close to 16): 15.95
+Third  moment (should be close to zero): -0.012332
+Fourth moment (should be close to 768): 762.39
+Fifth moment (should be close to zero): -11.238
+Sixth moment (should be close to 61440): 60359
+        These represent 0.71506, 1.5512, 0.055624, 
+                        1.581, 0.2892, 1.8504
+                         standard deviations from expectations
+Between 0 sigma and 0.5 sigma (should be about 95731):
+          96022 negative and 96081 positive 
+        These represent 1.046 and 1.258 sigma from expectations
+Between 0.5 sigma and 1 sigma (should be about 74941):
+          74975 negative and 74625 positive 
+        These represent 0.1347 and 1.252 sigma from expectations
+Between 1 sigma and 1.5 sigma (should be about 45924):
+          45803 negative and 45982 positive 
+        These represent 0.5925 and 0.28401 sigma from expectations
+Between 1.5 sigma and 2 sigma (should be about 22028.5):
+          21851 negative and 22064 positive 
+        These represent 1.2232 and 0.24464 sigma from expectations
+Between 2 sigma and 2.5 sigma (should be about 8270):
+          8218 negative and 8154 positive 
+        These represent 0.5766 and 1.2863 sigma from expectations
+Between 2.5 sigma and 3 sigma (should be about 2430):
+          2426 negative and 2514 positive 
+        These represent 0.081342 and 1.7082 sigma from expectations
+Between 3 sigma and 3.5 sigma (should be about 558.5):
+          525 negative and 541 positive 
+        These represent 1.4183 and 0.74092 sigma from expectations
+Between 3.5 sigma and 4 sigma (should be about 100.5):
+          102 negative and 92 positive 
+        These represent 0.14964 and 0.84797 sigma from expectations
+Between 4 sigma and 4.5 sigma (should be about 14.15):
+          15 negative and 10 positive 
+        These represent 0.22597 and 1.1033 sigma from expectations
+Between 4.5 sigma and 5 sigma (should be about 1.555):
+          0 negative and 0 positive 
+        These represent 1.247 and 1.247 sigma from expectations
+Between 5 sigma and 5.5 sigma (should be about 0.1935):
+          0 negative and 0 positive 
+        These represent 0.43989 and 0.43989 sigma from expectations
+
+ The worst deviation encountered (out of about 25) was 1.8504 sigma 
+
+
+--------------------------------------------
+Test of RandGaussQ distribution 
+
+Please enter an integer seed:        1366781
+How many numbers should we generate: 1000000
+Enter mu: 0
+Enter sigma: 1
+
+Instantiating distribution utilizing DualRand engine...
+
+ Sample  fire(): 
+-0.933146
+ Testing operator() ... 
+0
+100001
+200002
+300003
+400004
+500005
+600006
+700007
+800008
+900009
+Mean (should be close to 0): -0.00024951
+Second moment (should be close to 1): 0.99963
+Third  moment (should be close to zero): -0.0023588
+Fourth moment (should be close to 3): 3.0026
+Fifth moment (should be close to zero): -0.0198
+Sixth moment (should be close to 15): 15.047
+        These represent 0.24951, 0.25834, 0.96299, 
+                        0.26104, 0.73789, 0.46688
+                         standard deviations from expectations
+Between 0 sigma and 0.5 sigma (should be about 191462):
+          191300 negative and 191581 positive 
+        These represent 0.41174 and 0.30245 sigma from expectations
+Between 0.5 sigma and 1 sigma (should be about 149882):
+          150248 negative and 150025 positive 
+        These represent 1.0253 and 0.40061 sigma from expectations
+Between 1 sigma and 1.5 sigma (should be about 91848):
+          91705 negative and 91584 positive 
+        These represent 0.49513 and 0.91409 sigma from expectations
+Between 1.5 sigma and 2 sigma (should be about 44057):
+          43780 negative and 44290 positive 
+        These represent 1.3498 and 1.1354 sigma from expectations
+Between 2 sigma and 2.5 sigma (should be about 16540):
+          16691 negative and 16391 positive 
+        These represent 1.1839 and 1.1683 sigma from expectations
+Between 2.5 sigma and 3 sigma (should be about 4860):
+          4898 negative and 4777 positive 
+        These represent 0.54642 and 1.1935 sigma from expectations
+Between 3 sigma and 3.5 sigma (should be about 1117):
+          1110 negative and 1143 positive 
+        These represent 0.20956 and 0.77838 sigma from expectations
+Between 3.5 sigma and 4 sigma (should be about 201):
+          206 negative and 208 positive 
+        These represent 0.35271 and 0.49379 sigma from expectations
+Between 4 sigma and 4.5 sigma (should be about 28.3):
+          34 negative and 25 positive 
+        These represent 1.0715 and 0.62034 sigma from expectations
+Between 4.5 sigma and 5 sigma (should be about 3.11):
+          2 negative and 2 positive 
+        These represent 0.62942 and 0.62942 sigma from expectations
+Between 5 sigma and 5.5 sigma (should be about 0.387):
+          0 negative and 0 positive 
+        These represent 0.62209 and 0.62209 sigma from expectations
+
+ The worst deviation encountered (out of about 25) was 1.3498 sigma 
+
+
+--------------------------------------------
+Test of RandGaussT distribution 
+
+Please enter an integer seed:        2354789
+How many numbers should we generate: 1000000
+Enter mu: 10
+Enter sigma: 5
+
+Instantiating distribution utilizing TripleRand engine...
+
+ Sample  fire(): 
+19.9288
+ Testing operator() ... 
+0
+100001
+200002
+300003
+400004
+500005
+600006
+700007
+800008
+900009
+Mean (should be close to 10): 10.007
+Second moment (should be close to 25): 24.995
+Third  moment (should be close to zero): -0.33843
+Fourth moment (should be close to 1875): 1872.6
+Fifth moment (should be close to zero): -153.02
+Sixth moment (should be close to 2.3438e+05): 2.3322e+05
+        These represent 1.4634, 0.15033, 1.1053, 
+                        0.39904, 1.8248, 0.73091
+                         standard deviations from expectations
+Between 0 sigma and 0.5 sigma (should be about 191462):
+          191661 negative and 191168 positive 
+        These represent 0.50578 and 0.74723 sigma from expectations
+Between 0.5 sigma and 1 sigma (should be about 149882):
+          150041 negative and 150074 positive 
+        These represent 0.44543 and 0.53788 sigma from expectations
+Between 1 sigma and 1.5 sigma (should be about 91848):
+          91449 negative and 91915 positive 
+        These represent 1.3815 and 0.23199 sigma from expectations
+Between 1.5 sigma and 2 sigma (should be about 44057):
+          43899 negative and 44317 positive 
+        These represent 0.7699 and 1.2669 sigma from expectations
+Between 2 sigma and 2.5 sigma (should be about 16540):
+          16439 negative and 16617 positive 
+        These represent 0.79191 and 0.60373 sigma from expectations
+Between 2.5 sigma and 3 sigma (should be about 4860):
+          4895 negative and 4895 positive 
+        These represent 0.50328 and 0.50328 sigma from expectations
+Between 3 sigma and 3.5 sigma (should be about 1117):
+          1124 negative and 1042 positive 
+        These represent 0.20956 and 2.2453 sigma from expectations
+Between 3.5 sigma and 4 sigma (should be about 201):
+          229 negative and 180 positive 
+        These represent 1.9752 and 1.4814 sigma from expectations
+Between 4 sigma and 4.5 sigma (should be about 28.3):
+          19 negative and 26 positive 
+        These represent 1.7482 and 0.43236 sigma from expectations
+Between 4.5 sigma and 5 sigma (should be about 3.11):
+          3 negative and 6 positive 
+        These represent 0.062375 and 1.6388 sigma from expectations
+Between 5 sigma and 5.5 sigma (should be about 0.387):
+          1 negative and 0 positive 
+        These represent 0.98538 and 0.62209 sigma from expectations
+
+ The worst deviation encountered (out of about 25) was 2.2453 sigma 
+
+
+--------------------------------------------
+Test of RandGeneral distribution (using a Gaussian shape)
+
+Please enter an integer seed:        1234987
+How many numbers should we generate: 500000
+Enter sigma: 0.06
+Enter nBins for stepwise pdf test: 10000
+
+Instantiating distribution utilizing Ranlux64 engine...
+
+ Sample fire(): 
+0.4408
+ Testing operator() ... 
+0
+50001
+100002
+150003
+200004
+250005
+300006
+350007
+400008
+450009
+Mean (should be close to 0.5): 0.49988
+Second moment (should be close to 0.0036): 0.0035996
+Third  moment (should be close to zero): 5.2049e-07
+Fourth moment (should be close to 3.888e-05): 3.9082e-05
+Fifth moment (should be close to zero): 2.4841e-08
+Sixth moment (should be close to 6.9984e-07): 7.1025e-07
+        These represent 1.3553, 0.056148, 0.69561, 
+                        1.1263, 0.84186, 1.5638
+                         standard deviations from expectations
+Between 0 sigma and 0.5 sigma (should be about 95731):
+          95879 negative and 95631 positive 
+        These represent 0.53197 and 0.35944 sigma from expectations
+Between 0.5 sigma and 1 sigma (should be about 74941):
+          74863 negative and 75293 positive 
+        These represent 0.30903 and 1.3946 sigma from expectations
+Between 1 sigma and 1.5 sigma (should be about 45924):
+          46032 negative and 45416 positive 
+        These represent 0.52884 and 2.4875 sigma from expectations
+Between 1.5 sigma and 2 sigma (should be about 22028.5):
+          22020 negative and 21866 positive 
+        These represent 0.058575 and 1.1198 sigma from expectations
+Between 2 sigma and 2.5 sigma (should be about 8270):
+          8381 negative and 8344 positive 
+        These represent 1.2308 and 0.82054 sigma from expectations
+Between 2.5 sigma and 3 sigma (should be about 2430):
+          2423 negative and 2472 positive 
+        These represent 0.14235 and 0.85409 sigma from expectations
+Between 3 sigma and 3.5 sigma (should be about 558.5):
+          574 negative and 556 positive 
+        These represent 0.65624 and 0.10585 sigma from expectations
+Between 3.5 sigma and 4 sigma (should be about 100.5):
+          101 negative and 114 positive 
+        These represent 0.04988 and 1.3468 sigma from expectations
+Between 4 sigma and 4.5 sigma (should be about 14.15):
+          10 negative and 19 positive 
+        These represent 1.1033 and 1.2893 sigma from expectations
+Between 4.5 sigma and 5 sigma (should be about 1.555):
+          4 negative and 1 positive 
+        These represent 1.9607 and 0.44507 sigma from expectations
+Between 5 sigma and 5.5 sigma (should be about 0.1935):
+          1 negative and 0 positive 
+        These represent 1.8334 and 0.43989 sigma from expectations
+
+ The worst deviation encountered (out of about 25) was 2.4875 sigma 
+
+Enter nBins for linearized pdf test: 1000
+
+ Sample operator(): 
+0.463128
+ Testing operator() ... 
+0
+50001
+100002
+150003
+200004
+250005
+300006
+350007
+400008
+450009
+Mean (should be close to 0.5): 0.50006
+Second moment (should be close to 0.0036): 0.0036028
+Third  moment (should be close to zero): -4.7605e-07
+Fourth moment (should be close to 3.888e-05): 3.8957e-05
+Fifth moment (should be close to zero): -2.1491e-08
+Sixth moment (should be close to 6.9984e-07): 6.9999e-07
+        These represent 0.6852, 0.39504, 0.63622, 
+                        0.42945, 0.72832, 0.02247
+                         standard deviations from expectations
+Between 0 sigma and 0.5 sigma (should be about 95731):
+          95333 negative and 96081 positive 
+        These represent 1.4306 and 1.258 sigma from expectations
+Between 0.5 sigma and 1 sigma (should be about 74941):
+          74969 negative and 75075 positive 
+        These represent 0.11093 and 0.53089 sigma from expectations
+Between 1 sigma and 1.5 sigma (should be about 45924):
+          45820 negative and 45766 positive 
+        These represent 0.50925 and 0.77367 sigma from expectations
+Between 1.5 sigma and 2 sigma (should be about 22028.5):
+          21895 negative and 22076 positive 
+        These represent 0.91997 and 0.32733 sigma from expectations
+Between 2 sigma and 2.5 sigma (should be about 8270):
+          8310 negative and 8421 positive 
+        These represent 0.44354 and 1.6743 sigma from expectations
+Between 2.5 sigma and 3 sigma (should be about 2430):
+          2475 negative and 2443 positive 
+        These represent 0.9151 and 0.26436 sigma from expectations
+Between 3 sigma and 3.5 sigma (should be about 558.5):
+          560 negative and 545 positive 
+        These represent 0.063507 and 0.57156 sigma from expectations
+Between 3.5 sigma and 4 sigma (should be about 100.5):
+          108 negative and 91 positive 
+        These represent 0.74821 and 0.94773 sigma from expectations
+Between 4 sigma and 4.5 sigma (should be about 14.15):
+          11 negative and 17 positive 
+        These represent 0.83741 and 0.75766 sigma from expectations
+Between 4.5 sigma and 5 sigma (should be about 1.555):
+          2 negative and 2 positive 
+        These represent 0.35686 and 0.35686 sigma from expectations
+Between 5 sigma and 5.5 sigma (should be about 0.1935):
+          0 negative and 0 positive 
+        These represent 0.43989 and 0.43989 sigma from expectations
+
+ The worst deviation encountered (out of about 25) was 1.6743 sigma 
+
+
+--------------------------------------------
+Test of RandPoisson distribution 
+
+Please enter an integer seed:        1363971
+
+Instantiating distribution utilizing TripleRand engine...
+How many numbers should we generate for each mu: 500000
+Enter a value for mu: 0.12
+
+ Sample  fire(): 
+0
+ Testing operator() ... 
+0  443889  443460     0.414589
+1  52830  53215.2     2.78866
+2  3149  3192.91     0.603963
+3  132  131.642     0.000974309
+----
+0  496719  496675
+1  3281  3324.56
+Chi^2 is 3.80819 on 3 degrees of freedom.  p = 0.282935
+Clumps: Chi^2 is 0.574445 on 1 degrees of freedom.  p = 0.448498
+Mean  (should be 0.12) is 0.11906
+Sigma (should be 0.34641) is 0.345163
+These are 1.91877 and 1.58042 standard deviations from expected values
+
+Enter a value for mu: 9.5
+
+ Sample  fire(): 
+13
+ Testing operator() ... 
+0  37  37.4259     0.004847
+1  357  355.546     0.00594454
+2  1719  1688.84     0.538451
+3  5250  5348.01     1.79608
+4  12753  12701.5     0.208673
+5  23727  24132.9     6.82641
+6  38157  38210.4     0.0746223
+7  51789  51857     0.0890864
+8  62020  61580.2     3.14172
+9  65175  65001.3     0.464332
+10  61580  61751.2     0.474673
+11  53199  53330.6     0.324677
+12  42250  42220     0.0212483
+13  30992  30853.1     0.625215
+14  20950  20936     0.00930786
+15  13105  13259.5     1.80006
+16  7985  7872.82     1.59835
+17  4377  4399.52     0.115264
+18  2409  2321.97     3.2621
+19  1190  1160.98     0.725175
+20  519  551.467     1.91151
+21  268  249.473     1.37584
+22  115  107.727     0.491004
+23  77  72.5389     0.274359
+----
+0  2113  2081.82
+1  41730  42182.4
+2  151966  151648
+3  179954  180083
+4  94192  94009.2
+5  25467  25531.8
+6  4118  4034.42
+7  433  401.697
+8  27  28.0429
+Chi^2 is 26.159 on 23 degrees of freedom.  p = 0.29342
+Clumps: Chi^2 is 10.8103 on 8 degrees of freedom.  p = 0.212679
+Mean  (should be 9.5) is 9.50529
+Sigma (should be 3.08221) is 3.08259
+These are 1.21269 and 0.121219 standard deviations from expected values
+
+Enter a value for mu: 130.5
+
+ Sample  fire(): 
+118
+ Testing operator() ... 
+91  78  81.3848     0.140772
+92  31  36.7233     0.891984
+93  34  51.5311     5.96418
+94  74  71.5406     0.0845505
+95  97  98.2742     0.0165198
+96  136  133.591     0.0434251
+97  158  179.729     2.62693
+98  246  239.333     0.185744
+99  338  315.484     1.60698
+100  413  411.706     0.00406449
+101  494  531.957     2.70841
+102  712  680.592     1.44938
+103  872  862.304     0.109025
+104  1059  1082.03     0.48999
+105  1402  1344.8     2.43267
+106  1676  1655.63     0.250609
+107  2083  2019.25     2.01264
+108  2486  2439.93     0.869976
+109  2972  2921.2     0.883503
+110  3558  3465.6     2.46344
+111  4164  4074.42     1.9693
+112  4758  4747.43     0.0235237
+113  5427  5482.65     0.564941
+114  6217  6276.2     0.558329
+115  7040  7122.12     0.946825
+116  8041  8012.38     0.102209
+117  8871  8936.89     0.485775
+118  9898  9883.59     0.0210006
+119  10851  10838.7     0.0138899
+120  11823  11787.1     0.109225
+121  12683  12712.6     0.0687068
+122  13687  13598.3     0.579041
+123  14235  14427.4     2.56652
+124  15236  15183.7     0.180121
+125  15852  15851.8     2.8726e-06
+126  16333  16417.9     0.439259
+127  16744  16870.4     0.946806
+128  17273  17199.9     0.310814
+129  17236  17399.9     1.54355
+130  17519  17466.8     0.15597
+131  17390  17400.1     0.00590683
+132  17133  17202.4     0.280056
+133  16951  16879.1     0.306652
+134  16447  16438.2     0.0047273
+135  15923  15890.2     0.0675176
+136  15209  15247.6     0.0978445
+137  14572  14524.2     0.157328
+138  13776  13734.8     0.123352
+139  12925  12894.9     0.0700798
+140  11904  12019.9     1.11803
+141  11134  11124.8     0.00756807
+142  10328  10223.9     1.06056
+143  9276  9330.18     0.314566
+144  8490  8455.47     0.141001
+145  7632  7609.92     0.0640402
+146  6803  6802.02     0.000140821
+147  6044  6038.53     0.00495662
+148  5392  5324.51     0.855361
+149  4664  4663.42     7.30132e-05
+150  3993  4057.17     1.01501
+151  3535  3506.36     0.233863
+152  3055  3010.4     0.660817
+153  2563  2567.69     0.00857589
+154  2141  2175.87     0.558798
+155  1857  1831.94     0.342763
+156  1499  1532.49     0.731852
+157  1239  1273.82     0.951862
+158  1076  1052.11     0.542389
+159  844  863.526     0.441503
+160  723  704.313     0.495805
+161  538  570.887     1.89455
+162  515  459.881     6.60617
+163  374  368.187     0.0917677
+164  275  292.978     1.10322
+165  238  231.719     0.170243
+166  196  182.165     1.05077
+167  138  142.35     0.132949
+168  94  110.576     2.48476
+169  75  85.3854     1.26317
+170  56  65.5458     1.39022
+171  43  50.0218     0.98569
+172  35  37.9526     0.229704
+173  20  28.629     2.60084
+174  78  80.9759     0.109369
+----
+8  854  892.107
+9  14507  14264.9
+10  80648  80627.1
+11  174188  174529
+12  156302  156180
+13  61447  61365.7
+14  11081  11126
+15  924  971.828
+16  49  43.4924
+Chi^2 is 67.597 on 83 degrees of freedom.  p = 0.889909
+Clumps: Chi^2 is 9.84423 on 8 degrees of freedom.  p = 0.276129
+Mean  (should be 130.5) is 130.492
+Sigma (should be 11.4237) is 11.4284
+These are 0.466962 and 0.414307 standard deviations from expected values
+
+Enter a value for mu: 0
+
+--------------------------------------------
+Test of RandPoissonQ distribution 
+
+Please enter an integer seed:        1323456
+
+Instantiating distribution utilizing TripleRand engine...
+How many numbers should we generate for each mu: 500000
+Enter a value for mu: 1.4
+
+ Sample  fire(): 
+0
+ Testing operator() ... 
+0  123148  123298     0.183659
+1  172841  172618     0.288411
+2  121143  120833     0.79782
+3  55933  56388.5     3.67957
+4  19803  19736     0.227609
+5  5503  5526.07     0.0963413
+6  1291  1289.42     0.00194302
+7  279  257.883     1.72911
+8  59  53.274     0.615441
+----
+0  295989  295916
+1  177076  177221
+2  25306  25262.1
+3  1570  1547.3
+4  59  53.274
+Chi^2 is 7.61991 on 8 degrees of freedom.  p = 0.471451
+Clumps: Chi^2 is 1.16141 on 4 degrees of freedom.  p = 0.884411
+Mean  (should be 1.4) is 1.39966
+Sigma (should be 1.18322) is 1.18302
+These are 0.200798 and 0.143597 standard deviations from expected values
+
+Enter a value for mu: 36.5
+
+ Sample  fire(): 
+36
+ Testing operator() ... 
+16  64  57.508     0.732875
+17  70  71.636     0.0373644
+18  149  145.262     0.0961904
+19  268  279.056     0.438024
+20  500  509.277     0.168991
+21  914  885.172     0.938863
+22  1416  1468.58     1.88259
+23  2419  2330.57     3.35505
+24  3490  3544.41     0.835378
+25  5172  5174.85     0.00156413
+26  7222  7264.69     0.250819
+27  9763  9820.78     0.339941
+28  12854  12802.1     0.210504
+29  16056  16113     0.201444
+30  19763  19604.1     1.28769
+31  23412  23082.3     4.7103
+32  26121  26328.2     1.63079
+33  29273  29120.6     0.797616
+34  31090  31261.8     0.944306
+35  32608  32601.6     0.0012532
+36  32961  33054.4     0.263962
+37  32887  32607.7     2.39187
+38  31142  31320.6     1.01821
+39  29028  29312.9     2.76806
+40  26733  26748     0.00838496
+41  23878  23812.2     0.1817
+42  20659  20694     0.0590449
+43  17526  17565.8     0.0901742
+44  14563  14571.6     0.00510983
+45  11751  11819.2     0.393649
+46  9368  9378.29     0.0112822
+47  7344  7283.14     0.50861
+48  5596  5538.22     0.602838
+49  4161  4125.41     0.307071
+50  3080  3011.55     1.55591
+51  2160  2155.32     0.010147
+52  1521  1512.87     0.0436761
+53  1030  1041.88     0.13553
+54  726  704.236     0.672619
+55  432  467.356     2.67479
+56  291  304.616     0.608643
+57  212  195.061     1.47092
+58  126  122.754     0.0858297
+59  86  75.9411     1.33237
+60  46  46.1975     0.000844299
+61  69  65.3406     0.204947
+----
+2  134  129.144
+3  5666  5617.92
+4  54557  54719.8
+5  162267  161999
+6  176629  176856
+7  81211  81312
+8  17548  17385.3
+9  1873  1869.96
+10  115  111.538
+Chi^2 is 36.2677 on 45 degrees of freedom.  p = 0.820234
+Clumps: Chi^2 is 3.57511 on 8 degrees of freedom.  p = 0.893283
+Mean  (should be 36.5) is 36.5002
+Sigma (should be 6.04152) is 6.04718
+These are 0.0224719 and 0.929886 standard deviations from expected values
+
+Enter a value for mu: 100
+
+ Sample  fire(): 
+110
+ Testing operator() ... 
+65  63  61.5743     0.033012
+66  35  34.1702     0.0201507
+67  63  51.0003     2.82337
+68  72  75.0005     0.120036
+69  124  108.696     2.15465
+70  165  155.28     0.608381
+71  217  218.705     0.0132898
+72  318  303.757     0.667871
+73  413  416.105     0.0231717
+74  556  562.304     0.0706795
+75  760  749.739     0.140434
+76  978  986.499     0.0732157
+77  1228  1281.17     2.20638
+78  1699  1642.52     1.942
+79  2114  2079.14     0.584426
+80  2569  2598.93     0.344615
+81  3196  3208.55     0.0491034
+82  3923  3912.87     0.0262348
+83  4742  4714.3     0.162769
+84  5655  5612.26     0.325473
+85  6530  6602.66     0.799592
+86  7648  7677.51     0.113437
+87  8777  8824.73     0.258109
+88  10113  10028.1     0.718827
+89  11419  11267.5     2.03635
+90  12627  12519.5     0.923538
+91  13822  13757.7     0.300879
+92  14896  14954     0.224804
+93  15930  16079.5     1.39089
+94  16900  17105.9     2.47844
+95  18125  18006.2     0.78363
+96  19012  18756.5     3.48116
+97  19152  19336.6     1.76174
+98  19786  19731.2     0.152234
+99  20051  19930.5     0.728564
+100  19940  19930.5     0.00452976
+101  19778  19733.2     0.10186
+102  19475  19346.2     0.856944
+103  18824  18782.8     0.0905517
+104  17895  18060.3     1.51376
+105  17189  17200.3     0.00746167
+106  16165  16226.7     0.234799
+107  15274  15165.2     0.781086
+108  14022  14041.8     0.0279714
+109  12845  12882.4     0.108592
+110  11621  11711.3     0.69587
+111  10647  10550.7     0.879002
+112  9293  9420.27     1.71934
+113  8297  8336.52     0.187335
+114  7331  7312.74     0.0456173
+115  6397  6358.9     0.228274
+116  5433  5481.81     0.434618
+117  4625  4685.31     0.776278
+118  3899  3970.6     1.29114
+119  3217  3336.64     4.28979
+120  2767  2780.53     0.0658604
+121  2306  2297.96     0.0281251
+122  1911  1883.57     0.399329
+123  1530  1531.36     0.00121004
+124  1250  1234.97     0.182951
+125  973  987.975     0.22698
+126  821  784.107     1.73584
+127  667  617.407     3.98351
+128  457  482.349     1.33221
+129  358  373.914     0.67733
+130  300  287.626     0.532314
+131  211  219.562     0.333889
+132  156  166.335     0.642141
+133  119  125.064     0.294012
+134  93  93.3312     0.00117553
+135  82  69.1342     2.39429
+136  53  50.834     0.0922914
+137  28  37.1051     2.23428
+138  73  92.0547     3.94421
+----
+6  357  330.442
+7  8448  8395.22
+8  64572  64447.4
+9  170301  170178
+10  171407  171369
+11  70760  71164.8
+12  13040  12974.2
+13  1083  1095.22
+14  32  45.8233
+Chi^2 is 61.9182 on 73 degrees of freedom.  p = 0.819169
+Clumps: Chi^2 is 9.74769 on 8 degrees of freedom.  p = 0.283183
+Mean  (should be 100) is 99.9808
+Sigma (should be 10) is 9.99529
+These are 1.35722 and 0.469398 standard deviations from expected values
+
+Enter a value for mu: 104.5
+
+ Sample  fire(): 
+95
+ Testing operator() ... 
+69  78  70.7124     0.751062
+70  34  37.5779     0.340653
+71  61  55.3082     0.585737
+72  83  80.2738     0.0925871
+73  119  114.912     0.145398
+74  165  162.275     0.0457588
+75  225  226.103     0.0053827
+76  321  310.892     0.328647
+77  417  421.925     0.0574814
+78  557  565.271     0.121019
+79  718  747.732     1.18222
+80  969  976.725     0.0610925
+81  1250  1260.1     0.0808807
+82  1574  1605.85     0.631834
+83  2055  2021.83     0.544272
+84  2520  2515.25     0.00897218
+85  3202  3092.28     3.89327
+86  3650  3757.48     3.07419
+87  4484  4513.29     0.190094
+88  5352  5359.53     0.0105872
+89  6310  6292.93     0.0462788
+90  7306  7306.8     8.67647e-05
+91  8440  8390.77     0.288823
+92  9414  9530.82     1.43192
+93  10725  10709.4     0.0228277
+94  11939  11905.6     0.0935698
+95  13123  13096.2     0.0549025
+96  14204  14255.7     0.187813
+97  15356  15358     0.000258347
+98  16195  16376.6     2.01452
+99  17728  17286.4     11.2787
+100  18226  18064.3     1.44676
+101  18558  18690.3     0.936903
+102  19265  19148.4     0.709698
+103  19158  19427.3     3.73264
+104  19218  19520.7     4.69344
+105  19334  19427.7     0.452213
+106  19113  19152.8     0.0827476
+107  18543  18705.3     1.40848
+108  18081  18099.1     0.0181486
+109  17408  17351.9     0.181296
+110  16642  16484.3     1.50834
+111  15450  15519     0.306953
+112  14569  14479.8     0.549513
+113  13572  13390.6     2.45711
+114  12414  12274.7     1.58025
+115  11259  11154     0.988617
+116  10047  10048.2     0.000144949
+117  8955  8974.68     0.0431571
+118  7860  7947.92     0.972488
+119  6922  6979.47     0.473259
+120  6111  6077.96     0.179635
+121  5121  5249.15     3.12835
+122  4386  4496.19     2.70066
+123  3979  3819.94     6.62341
+124  3210  3219.22     0.0264133
+125  2774  2691.27     2.5432
+126  2249  2232.04     0.128802
+127  1812  1836.6     0.329593
+128  1541  1499.41     1.15335
+129  1280  1214.64     3.51681
+130  949  976.385     0.768095
+131  782  778.872     0.0125601
+132  629  616.607     0.249075
+133  465  484.477     0.783024
+134  394  377.82     0.692918
+135  280  292.461     0.530892
+136  230  224.722     0.123987
+137  173  171.412     0.0147179
+138  121  129.801     0.596723
+139  99  97.5841     0.020544
+140  68  72.8396     0.321547
+141  55  53.9839     0.0191242
+142  42  39.7276     0.129979
+143  21  29.0317     2.222
+144  61  72.5299     1.83289
+----
+6  78  70.7124
+7  2700  2722.27
+8  31366  31395.3
+9  124430  124216
+10  186904  187588
+11  117690  117253
+12  32463  32336.4
+13  4122  4150.14
+14  247  268.113
+Chi^2 is 78.7613 on 75 degrees of freedom.  p = 0.360784
+Clumps: Chi^2 is 7.80106 on 8 degrees of freedom.  p = 0.45314
+Mean  (should be 104.5) is 104.508
+Sigma (should be 10.2225) is 10.226
+These are 0.572048 and 0.335223 standard deviations from expected values
+
+Enter a value for mu: 235.8
+
+ Sample  fire(): 
+203
+ Testing operator() ... 
+183  98  102.415     0.190296
+184  22  31.0742     2.64983
+185  26  39.607     4.67471
+186  58  50.2115     1.20811
+187  55  63.3148     1.09194
+188  67  79.4129     1.94025
+189  89  99.0771     1.02494
+190  126  122.96     0.0751647
+191  152  151.801     0.000261533
+192  187  186.43     0.00174094
+193  204  227.773     2.4813
+194  285  276.85     0.239902
+195  332  334.776     0.0230179
+196  391  402.756     0.343142
+197  485  482.08     0.0176809
+198  563  574.114     0.215151
+199  684  680.282     0.020322
+200  804  802.052     0.00472983
+201  930  940.915     0.12662
+202  1105  1098.36     0.0401981
+203  1292  1275.82     0.205104
+204  1432  1474.7     1.23649
+205  1691  1696.27     0.0163538
+206  1975  1941.65     0.57285
+207  2289  2211.79     2.69515
+208  2487  2507.41     0.166073
+209  2764  2828.93     1.49029
+210  3157  3176.48     0.119515
+211  3616  3549.83     1.23327
+212  3928  3948.35     0.104918
+213  4387  4370.99     0.0586127
+214  4842  4816.26     0.137529
+215  5190  5282.21     1.60964
+216  5938  5766.41     5.10589
+217  6185  6265.99     1.04682
+218  6839  6777.62     0.555938
+219  7293  7297.54     0.00282848
+220  7732  7821.64     1.02731
+221  8332  8345.44     0.0216498
+222  8734  8864.21     1.91278
+223  9360  9373.01     0.0180587
+224  9865  9866.77     0.000316423
+225  10476  10340.4     1.77895
+226  10884  10788.8     0.840759
+227  11222  11207     0.0200708
+228  11630  11590.4     0.135301
+229  11960  11934.6     0.0541913
+230  12171  12235.5     0.340303
+231  12451  12489.8     0.120361
+232  12540  12694.3     1.87664
+233  13047  12846.9     3.11683
+234  13071  12945.7     1.21241
+235  12850  12989.8     1.50433
+236  13026  12978.8     0.171794
+237  12865  12913.1     0.178909
+238  12730  12793.7     0.317171
+239  12671  12622.4     0.187091
+240  12301  12401.5     0.814636
+241  12160  12133.9     0.0560214
+242  11858  11823.1     0.103265
+243  11584  11472.7     1.07886
+244  10856  11087.2     4.82062
+245  10634  10670.9     0.127263
+246  10271  10228.4     0.177414
+247  9831  9764.6     0.451481
+248  9349  9284.25     0.45161
+249  8677  8792.07     1.50605
+250  8459  8292.68     3.33571
+251  7770  7790.49     0.0539169
+252  7296  7289.68     0.00548394
+253  6809  6794.09     0.0327009
+254  6345  6307.27     0.225657
+255  5838  5832.37     0.0054289
+256  5328  5372.16     0.36304
+257  4898  4929.01     0.195109
+258  4468  4504.89     0.302038
+259  4197  4101.36     2.23022
+260  3727  3719.62     0.0146489
+261  3347  3360.48     0.0540953
+262  2940  3024.43     2.3572
+263  2598  2711.64     4.76256
+264  2499  2421.99     2.44871
+265  2140  2155.11     0.105981
+266  1933  1910.43     0.266532
+267  1632  1687.19     1.80552
+268  1468  1484.48     0.182908
+269  1324  1301.26     0.397264
+270  1158  1136.44     0.409147
+271  1015  988.826     0.692827
+272  837  857.225     0.47717
+273  744  740.416     0.0173472
+274  626  637.19     0.196521
+275  572  546.362     1.20309
+276  508  466.783     3.63949
+277  389  397.355     0.175688
+278  361  337.037     1.7037
+279  283  284.851     0.0120265
+280  226  239.885     0.803705
+281  200  201.299     0.00837779
+282  163  168.32     0.168141
+283  129  140.247     0.901909
+284  121  116.444     0.178232
+285  108  96.3424     1.4106
+286  83  79.4319     0.160278
+287  59  65.2615     0.600755
+288  61  53.4328     1.07166
+289  43  43.5968     0.00816857
+290  34  35.4487     0.0592029
+291  25  28.7244     0.482903
+292  133  113.119     3.49421
+----
+11  32  33.6744
+12  1337  1397.25
+13  19224  19251.9
+14  95398  95522.8
+15  183594  183371
+16  144200  144133
+17  48337  48516.4
+18  7332  7258.68
+19  546  515.357
+Chi^2 is 94.1689 on 109 degrees of freedom.  p = 0.843355
+Clumps: Chi^2 is 6.41348 on 8 degrees of freedom.  p = 0.60102
+Mean  (should be 235.8) is 235.808
+Sigma (should be 15.3558) is 15.3533
+These are 0.389108 and 0.163437 standard deviations from expected values
+
+Enter a value for mu: 0
+
+--------------------------------------------
+Test of RandPoissonT distribution 
+
+Please enter an integer seed:        1357531
+
+Instantiating distribution utilizing TripleRand engine...
+How many numbers should we generate for each mu: 500000
+Enter a value for mu: 1.4
+
+ Sample  fire(): 
+0
+ Testing operator() ... 
+0  123493  123298     0.306875
+1  172488  172618     0.0977156
+2  120582  120833     0.519367
+3  56258  56388.5     0.302043
+4  19999  19736     3.50533
+5  5509  5526.07     0.0527511
+6  1359  1289.42     3.75501
+7  263  257.883     0.101516
+8  49  53.274     0.34289
+----
+0  295981  295916
+1  176840  177221
+2  25508  25262.1
+3  1622  1547.3
+4  49  53.274
+Chi^2 is 8.98349 on 8 degrees of freedom.  p = 0.34369
+Clumps: Chi^2 is 7.17701 on 4 degrees of freedom.  p = 0.126824
+Mean  (should be 1.4) is 1.40072
+Sigma (should be 1.18322) is 1.18567
+These are 0.431478 and 1.78031 standard deviations from expected values
+
+Enter a value for mu: 99.1
+
+ Sample  fire(): 
+96
+ Testing operator() ... 
+64  57  54.5885     0.106528
+65  33  30.8208     0.154079
+66  47  46.2779     0.0112666
+67  72  68.4499     0.184125
+68  111  99.7556     1.26745
+69  136  143.272     0.369124
+70  180  202.833     2.57022
+71  265  283.109     1.15828
+72  377  389.667     0.411796
+73  535  528.987     0.068353
+74  671  708.413     1.97592
+75  892  936.05     2.073
+76  1197  1220.56     0.454785
+77  1577  1570.88     0.0238658
+78  1964  1995.82     0.507299
+79  2486  2503.62     0.123958
+80  3112  3101.36     0.0365374
+81  3771  3794.37     0.143986
+82  4605  4585.64     0.0817387
+83  5440  5475.14     0.225573
+84  6414  6459.37     0.31861
+85  7497  7530.86     0.152241
+86  8590  8678     0.892427
+87  10091  9884.94     4.29535
+88  11200  11131.8     0.417905
+89  12369  12395.1     0.0548118
+90  13389  13648.3     4.92802
+91  14896  14863.2     0.0723976
+92  15973  16010.2     0.0866564
+93  17108  17060.4     0.132908
+94  17951  17986     0.0681034
+95  18711  18762.2     0.139918
+96  19641  19368.1     3.8452
+97  19755  19787.4     0.053084
+98  20076  20009.5     0.220918
+99  20040  20029.7     0.00527093
+100  19835  19849.5     0.0105302
+101  19289  19476.1     1.79648
+102  18884  18922.3     0.0776066
+103  18115  18205.8     0.453303
+104  17283  17348.1     0.244063
+105  16407  16373.3     0.0694733
+106  15254  15307.5     0.186744
+107  14130  14177.3     0.15773
+108  13192  13009     2.57501
+109  12053  11827.4     4.30219
+110  10620  10655.4     0.117842
+111  9533  9513.1     0.0416453
+112  8387  8417.39     0.109727
+113  7438  7381.98     0.42516
+114  6460  6417.14     0.286261
+115  5514  5529.9     0.0457209
+116  4814  4724.25     1.70499
+117  4056  4001.48     0.742798
+118  3440  3360.57     1.87759
+119  2786  2798.59     0.05663
+120  2361  2311.17     1.07444
+121  1878  1892.87     0.11675
+122  1491  1537.57     1.41025
+123  1231  1238.8     0.0491476
+124  959  990.043     0.973374
+125  792  784.906     0.0641108
+126  617  617.335     0.000181805
+127  501  481.716     0.771996
+128  355  372.953     0.864245
+129  270  286.509     0.951284
+130  207  218.408     0.59588
+131  161  165.223     0.107949
+132  115  124.043     0.659198
+133  92  92.4257     0.00196095
+134  72  68.3537     0.194516
+135  52  50.1766     0.0662584
+136  40  36.5625     0.323176
+137  87  90.1474     0.109891
+----
+6  21  21.3177
+7  880  907.788
+8  12811  12955.3
+9  69977  69935.2
+10  157500  157495
+11  159237  159689
+12  78011  77475.6
+13  18994  18916
+14  2390  2426.97
+15  179  176.887
+Chi^2 is 51.2478 on 73 degrees of freedom.  p = 0.975104
+Clumps: Chi^2 is 8.38105 on 9 degrees of freedom.  p = 0.496248
+Mean  (should be 99.1) is 99.1201
+Sigma (should be 9.9549) is 9.94589
+These are 1.42474 and 0.902668 standard deviations from expected values
+
+Enter a value for mu: 100
+
+ Sample  fire(): 
+115
+ Testing operator() ... 
+65  47  61.5743     3.44965
+66  25  34.1702     2.461
+67  42  51.0003     1.58834
+68  79  75.0005     0.213283
+69  126  108.696     2.75462
+70  161  155.28     0.210672
+71  225  218.705     0.181198
+72  288  303.757     0.817348
+73  417  416.105     0.00192448
+74  565  562.304     0.0129239
+75  815  749.739     5.68065
+76  1000  986.499     0.184781
+77  1317  1281.17     1.00221
+78  1650  1642.52     0.0340464
+79  1980  2079.14     4.72746
+80  2662  2598.93     1.53071
+81  3167  3208.55     0.538113
+82  3841  3912.87     1.32001
+83  4695  4714.3     0.079005
+84  5637  5612.26     0.109052
+85  6633  6602.66     0.139418
+86  7725  7677.51     0.293738
+87  8903  8824.73     0.694285
+88  10029  10028.1     8.12547e-05
+89  11225  11267.5     0.160495
+90  12363  12519.5     1.95564
+91  13704  13757.7     0.209309
+92  14932  14954     0.032308
+93  16193  16079.5     0.80047
+94  17234  17105.9     0.959252
+95  18071  18006.2     0.233102
+96  18619  18756.5     1.00758
+97  19281  19336.6     0.159696
+98  20074  19731.2     5.95587
+99  20082  19930.5     1.15164
+100  20239  19930.5     4.77526
+101  19622  19733.2     0.626257
+102  19262  19346.2     0.366826
+103  18679  18782.8     0.573183
+104  18114  18060.3     0.1594
+105  17039  17200.3     1.51317
+106  16370  16226.7     1.26505
+107  15093  15165.2     0.343394
+108  13909  14041.8     1.2563
+109  12759  12882.4     1.18209
+110  11807  11711.3     0.782436
+111  10590  10550.7     0.146403
+112  9408  9420.27     0.0159715
+113  8272  8336.52     0.499327
+114  7223  7312.74     1.10116
+115  6371  6358.9     0.0230224
+116  5480  5481.81     0.000598168
+117  4711  4685.31     0.140878
+118  3962  3970.6     0.0186283
+119  3284  3336.64     0.830434
+120  2688  2780.53     3.07936
+121  2340  2297.96     0.769075
+122  1818  1883.57     2.28289
+123  1543  1531.36     0.0884575
+124  1277  1234.97     1.4305
+125  974  987.975     0.197678
+126  797  784.107     0.211994
+127  610  617.407     0.0888662
+128  475  482.349     0.11198
+129  355  373.914     0.956767
+130  280  287.626     0.202211
+131  241  219.562     2.09318
+132  162  166.335     0.112974
+133  98  125.064     5.85662
+134  94  93.3312     0.0047921
+135  67  69.1342     0.0658863
+136  55  50.834     0.341416
+137  28  37.1051     2.23428
+138  97  92.0547     0.265664
+----
+6  319  330.442
+7  8418  8395.22
+8  64517  64447.4
+9  170553  170178
+10  171086  171369
+11  71108  71164.8
+12  12877  12974.2
+13  1067  1095.22
+14  55  45.8233
+Chi^2 is 76.6642 on 73 degrees of freedom.  p = 0.361929
+Clumps: Chi^2 is 5.1682 on 8 degrees of freedom.  p = 0.739457
+Mean  (should be 100) is 99.9835
+Sigma (should be 10) is 9.98948
+These are 1.16489 and 1.04919 standard deviations from expected values
+
+Enter a value for mu: 130.5
+
+ Sample  fire(): 
+141
+ Testing operator() ... 
+91  82  81.3848     0.00465078
+92  30  36.7233     1.23091
+93  45  51.5311     0.827767
+94  74  71.5406     0.0845505
+95  99  98.2742     0.00536107
+96  119  133.591     1.59374
+97  172  179.729     0.332347
+98  246  239.333     0.185744
+99  303  315.484     0.493991
+100  392  411.706     0.943251
+101  538  531.957     0.0686415
+102  712  680.592     1.44938
+103  893  862.304     1.09271
+104  1083  1082.03     0.000877346
+105  1333  1344.8     0.103598
+106  1622  1655.63     0.683131
+107  1978  2019.25     0.842683
+108  2387  2439.93     1.14811
+109  3127  2921.2     14.4991
+110  3370  3465.6     2.6373
+111  4113  4074.42     0.36522
+112  4658  4747.43     1.68473
+113  5506  5482.65     0.0994103
+114  6295  6276.2     0.0563376
+115  7187  7122.12     0.591067
+116  8081  8012.38     0.587627
+117  9074  8936.89     2.10359
+118  9876  9883.59     0.00583329
+119  10810  10838.7     0.0761548
+120  11921  11787.1     1.52065
+121  12832  12712.6     1.1223
+122  13578  13598.3     0.0301994
+123  14412  14427.4     0.0164963
+124  15252  15183.7     0.307197
+125  16107  15851.8     4.10893
+126  16486  16417.9     0.282291
+127  16783  16870.4     0.452628
+128  17361  17199.9     1.50922
+129  17412  17399.9     0.00843864
+130  17306  17466.8     1.48043
+131  17437  17400.1     0.0780916
+132  17067  17202.4     1.06588
+133  16603  16879.1     4.51487
+134  16357  16438.2     0.400955
+135  15792  15890.2     0.607425
+136  15292  15247.6     0.129144
+137  14397  14524.2     1.11395
+138  13613  13734.8     1.08081
+139  13063  12894.9     2.19036
+140  12015  12019.9     0.00201804
+141  11153  11124.8     0.0713602
+142  10226  10223.9     0.000443665
+143  9304  9330.18     0.0734332
+144  8332  8455.47     1.80299
+145  7676  7609.92     0.573726
+146  6753  6802.02     0.35329
+147  6038  6038.53     4.63612e-05
+148  5334  5324.51     0.0169006
+149  4684  4663.42     0.0908521
+150  4199  4057.17     4.95791
+151  3403  3506.36     3.04707
+152  2982  3010.4     0.267891
+153  2570  2567.69     0.00207354
+154  2119  2175.87     1.48636
+155  1819  1831.94     0.0914251
+156  1526  1532.49     0.0274816
+157  1322  1273.82     1.82225
+158  1039  1052.11     0.1634
+159  859  863.526     0.0237179
+160  670  704.313     1.67168
+161  590  570.887     0.639873
+162  471  459.881     0.268814
+163  390  368.187     1.29226
+164  260  292.978     3.71211
+165  226  231.719     0.141159
+166  171  182.165     0.684284
+167  114  142.35     5.64622
+168  104  110.576     0.391043
+169  101  85.3854     2.85548
+170  62  65.5458     0.191819
+171  49  50.0218     0.0208733
+172  39  37.9526     0.0289055
+173  30  28.629     0.0656564
+174  94  80.9759     2.09477
+----
+8  867  892.107
+9  14368  14264.9
+10  80891  80627.1
+11  174966  174529
+12  155578  156180
+13  61275  61365.7
+14  11065  11126
+15  941  971.828
+16  49  43.4924
+Chi^2 is 90.3976 on 83 degrees of freedom.  p = 0.271148
+Clumps: Chi^2 is 7.87616 on 8 degrees of freedom.  p = 0.44566
+Mean  (should be 130.5) is 130.477
+Sigma (should be 11.4237) is 11.4211
+These are 1.45102 and 0.223599 standard deviations from expected values
+
+Enter a value for mu: 0
+
+--------------------------------------------
+Test of SkewNormal distribution 
+
+Please enter an integer seed:        1357924
+How many numbers should we generate: 500000
+Enter k: 0
+
+Instantiating distribution utilizing TripleRand engine...
+
+ Sample  fire(): 
+-0.840613
+ Testing operator() ... 
+0
+50001
+100002
+150003
+200004
+250005
+300006
+350007
+400008
+450009
+Mean (should be close to 0): 0.00061911
+Second moment (should be close to 1): 1.003
+Third  moment (should be close to 0): 0.0027104
+Fourth moment (should be close to 3): 3.0107
+Fifth moment (should be close to 0): 0.032555
+Sixth moment (should be close to 15): 15.04
+        These represent 0.43778, 1.4884, 0.49486, 
+                        0.77532, 0.74883, 0.28291
+                         standard deviations from expectations
+
+ The worst deviation encountered (out of about 25) was 1.4884 sigma 
+
+
+--------------------------------------------
+Test of SkewNormal distribution 
+
+Please enter an integer seed:        1357924
+How many numbers should we generate: 500000
+Enter k: -2
+
+Instantiating distribution utilizing TripleRand engine...
+
+ Sample  fire(): 
+-1.90152
+ Testing operator() ... 
+0
+50001
+100002
+150003
+200004
+250005
+300006
+350007
+400008
+450009
+Mean (should be close to -0.71365): -0.71456
+Second moment (should be close to 1): 1.0034
+Third  moment (should be close to -1.57): -1.5773
+Fourth moment (should be close to 3): 3.0154
+Fifth moment (should be close to -6.3658): -6.3971
+Sixth moment (should be close to 15): 15.062
+        These represent 0.64302, 1.7193, 1.4522, 
+                        1.1129, 0.73617, 0.43656
+                         standard deviations from expectations
+
+ The worst deviation encountered (out of about 25) was 1.7193 sigma 
+
+
+--------------------------------------------
+Test of SkewNormal distribution 
+
+Please enter an integer seed:        1357924
+How many numbers should we generate: 500000
+Enter k: 1
+
+Instantiating distribution utilizing TripleRand engine...
+
+ Sample  fire(): 
+0.611677
+ Testing operator() ... 
+0
+50001
+100002
+150003
+200004
+250005
+300006
+350007
+400008
+450009
+Mean (should be close to 0.56419): 0.56557
+Second moment (should be close to 1): 1.0042
+Third  moment (should be close to 1.4105): 1.421
+Fourth moment (should be close to 3): 3.0273
+Fifth moment (should be close to 6.065): 6.1391
+Sixth moment (should be close to 15): 15.212
+        These represent 0.97269, 2.1211, 2.0571, 
+                        1.9693, 1.7377, 1.4849
+                         standard deviations from expectations
+
+ The worst deviation encountered (out of about 25) was 2.1211 sigma 
+
+
+--------------------------------------------
+Test of SkewNormal distribution 
+
+Please enter an integer seed:        1357924
+How many numbers should we generate: 500000
+Enter k: 5
+
+Instantiating distribution utilizing TripleRand engine...
+
+ Sample  fire(): 
+1.50767
+ Testing operator() ... 
+0
+50001
+100002
+150003
+200004
+250005
+300006
+350007
+400008
+450009
+Mean (should be close to 0.78239): 0.78381
+Second moment (should be close to 1): 1.0044
+Third  moment (should be close to 1.5949): 1.6065
+Fourth moment (should be close to 3): 3.0302
+Fifth moment (should be close to 6.383): 6.4649
+Sixth moment (should be close to 15): 15.234
+        These represent 1.0055, 2.2043, 2.3215, 
+                        2.1766, 1.9257, 1.644
+                         standard deviations from expectations
+
+ The worst deviation encountered (out of about 25) was 2.3215 sigma 
+
