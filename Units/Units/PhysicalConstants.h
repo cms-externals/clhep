@@ -128,6 +128,8 @@ static constexpr double universe_mean_density = 1.e-25*g/cm3;
 
 #pragma GCC diagnostic pop
 
+#pragma GCC diagnostic pop
+
 }  // namespace CLHEP
 
 #ifdef ENABLE_BACKWARDS_COMPATIBILITY
