@@ -24,6 +24,20 @@
 
 namespace CLHEP {
 
+int HepDiagMatrix::num_row() const { return nrow;}
+int HepDiagMatrix::num_col() const  { return nrow;}
+int HepDiagMatrix::num_size() const  { return nrow;}
+
+double & HepDiagMatrix::operator()(int row, int col)
+{
+   return fast(col,row);
+}
+
+const double & HepDiagMatrix::operator()(int row, int col) const
+{
+   return fast(col,row);
+}
+
 // Simple operation for all elements
 
 #define SIMPLE_UOP(OPER)          \

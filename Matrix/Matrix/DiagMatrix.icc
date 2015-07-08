@@ -12,10 +12,6 @@ inline HepDiagMatrix::HepDiagMatrix()
    : m(0), nrow(0)
 {}
 
-inline int HepDiagMatrix::num_row() const { return nrow;}
-inline int HepDiagMatrix::num_col() const  { return nrow;}
-inline int HepDiagMatrix::num_size() const  { return nrow;}
-
 inline double & HepDiagMatrix::fast(int row,int col)
 {
 #ifdef MATRIX_BOUND_CHECK
@@ -45,16 +41,6 @@ inline const double & HepDiagMatrix::fast(int row,int col) const
 #endif
     return zero;
   }
-}
-
-inline double & HepDiagMatrix::operator()(int row, int col)
-{
-   return fast(col,row);
-}
-
-inline const double & HepDiagMatrix::operator()(int row, int col) const 
-{ 
-   return fast(col,row);
 }
 
 inline void HepDiagMatrix::assign(const HepDiagMatrix &hm2) {(*this)=hm2;}
