@@ -45,6 +45,9 @@
 
 namespace CLHEP {
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-variable"
+
 //
 // 
 //
@@ -123,6 +126,8 @@ static constexpr double kGasThreshold   = 10.*mg/cm3;
 //
 //
 static constexpr double universe_mean_density = 1.e-25*g/cm3;
+
+#pragma GCC diagnostic pop
 
 }  // namespace CLHEP
 
