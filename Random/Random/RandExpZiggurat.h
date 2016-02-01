@@ -1,30 +1,46 @@
-/*
-Code adapted from:
-http://www.jstatsoft.org/v05/i08/
+// $Id:$
+// -*- C++ -*-
+//
+// -----------------------------------------------------------------------
+//                             HEP Random
+//                       --- RandExpZiggurat ---
+//                          class header file
+// -----------------------------------------------------------------------
+// This file is part of Geant4 (simulation toolkit for HEP).
 
+// Class defining methods for shooting or firing Landau distributed 
+// random values.   
 
-Original disclaimer:
+// =======================================================================
+//
+// Code adapted from:
+// http://www.jstatsoft.org/v05/i08/
+//
+//
+// Original disclaimer:
 
-The ziggurat method for RNOR and REXP
-Combine the code below with the main program in which you want
-normal or exponential variates.   Then use of RNOR in any expression
-will provide a standard normal variate with mean zero, variance 1,
-while use of REXP in any expression will provide an exponential variate
-with density exp(-x),x>0.
-Before using RNOR or REXP in your main, insert a command such as
-zigset(86947731 );
-with your own choice of seed value>0, rather than 86947731.
-(If you do not invoke zigset(...) you will get all zeros for RNOR and REXP.)
-For details of the method, see Marsaglia and Tsang, "The ziggurat method
-for generating random variables", Journ. Statistical Software.
+// The ziggurat method for RNOR and REXP
+// Combine the code below with the main program in which you want
+// normal or exponential variates.   Then use of RNOR in any expression
+// will provide a standard normal variate with mean zero, variance 1,
+// while use of REXP in any expression will provide an exponential variate
+// with density exp(-x),x>0.
+// Before using RNOR or REXP in your main, insert a command such as
+// zigset(86947731 );
+// with your own choice of seed value>0, rather than 86947731.
+// (If you do not invoke zigset(...) you will get all zeros for RNOR and REXP.)
+// For details of the method, see Marsaglia and Tsang, "The ziggurat method
+// for generating random variables", Journ. Statistical Software.
 
-*/
+// =======================================================================
 
 #ifndef RandExpZiggurat_h
 #define RandExpZiggurat_h 1
 
 #include "CLHEP/Random/defs.h"
 #include "CLHEP/Random/Random.h"
+#include "CLHEP/Utility/memory.h"
+#include "CLHEP/Utility/thread_local.h"
 
 namespace CLHEP {
 
@@ -82,11 +98,11 @@ public:
   //  the static generator.
 
   inline float fire() {return fire(defaultMean);};
-  inline float fire( float mean ) {return ziggurat_REXP(localEngine)*mean;};
+  inline float fire( float mean ) {return ziggurat_REXP(localEngine.get())*mean;};
   
   /* ENGINE IS INTRINSIC FLOAT
   inline double fire() {return fire(defaultMean);};
-  inline double fire( double mean ) {return ziggurat_REXP(localEngine)*mean;};
+  inline double fire( double mean ) {return ziggurat_REXP(localEngine.get())*mean;};
   */
   
   void fireArray ( const int size, float* vect );
@@ -126,14 +142,15 @@ protected:
   //#define RNOR (hz=SHR3, iz=hz&127, (fabs(hz)<kn[iz])? hz*wn[iz] : nfix())
   //#define REXP (jz=SHR3, iz=jz&255, (    jz <ke[iz])? jz*we[iz] : efix())
 
-  static unsigned long kn[128], ke[256];
-  static float wn[128],fn[128], we[256],fe[256];
+  static CLHEP_THREAD_LOCAL unsigned long kn[128], ke[256];
+  static CLHEP_THREAD_LOCAL float wn[128],fn[128], we[256],fe[256];
 
-  static bool ziggurat_is_init;
+  static CLHEP_THREAD_LOCAL bool ziggurat_is_init;
 
   static inline unsigned long ziggurat_SHR3(HepRandomEngine* anEngine) {return (unsigned int)(*anEngine);};
   static inline float ziggurat_UNI(HepRandomEngine* anEngine) {return anEngine->flat();};
   static inline float ziggurat_REXP(HepRandomEngine* anEngine) {
+    if(!ziggurat_is_init) ziggurat_init();
     unsigned long jz=ziggurat_SHR3(anEngine);
     unsigned long iz=jz&255;
     return (jz<ke[iz]) ? jz*we[iz] : ziggurat_efix(jz,anEngine);
@@ -145,8 +162,7 @@ private:
   // Private copy constructor. Defining it here disallows use.
   RandExpZiggurat(const RandExpZiggurat& d);
 
-  HepRandomEngine* localEngine;
-  bool deleteEngine;
+  std::shared_ptr<HepRandomEngine> localEngine;
   double defaultMean;
 };
 
@@ -159,14 +175,12 @@ using namespace CLHEP;
 
 namespace CLHEP {
 
-inline RandExpZiggurat::RandExpZiggurat(HepRandomEngine & anEngine, double mean ) : localEngine(&anEngine), deleteEngine(false), defaultMean(mean) 
+inline RandExpZiggurat::RandExpZiggurat(HepRandomEngine & anEngine, double mean ) : localEngine(&anEngine, do_nothing_deleter()), defaultMean(mean) 
 {
-  if(!ziggurat_is_init) ziggurat_init();
 }
 
-inline RandExpZiggurat::RandExpZiggurat(HepRandomEngine * anEngine, double mean ) : localEngine(anEngine), deleteEngine(true), defaultMean(mean) 
+inline RandExpZiggurat::RandExpZiggurat(HepRandomEngine * anEngine, double mean ) : localEngine(anEngine), defaultMean(mean) 
 {
-  if(!ziggurat_is_init) ziggurat_init();
 }
 
 }  // namespace CLHEP

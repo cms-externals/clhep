@@ -18,11 +18,13 @@
 //                  initialisation of static generator: 5th Jan 1999
 // =======================================================================
 
+#include <assert.h>
 #include "CLHEP/Random/defs.h"
 #include "CLHEP/Random/JamesRandom.h"
 #include "CLHEP/Random/Random.h"
 #include "CLHEP/Random/StaticRandomStates.h"
 #include "CLHEP/Utility/memory.h"
+#include "CLHEP/Utility/thread_local.h"
 
 // -----------------------------
 // Static members initialisation
@@ -57,15 +59,14 @@ struct defaults {
   ~defaults()
   { }
 
-  shared_ptr<HepRandom      >  theGenerator;
-  shared_ptr<HepRandomEngine>  theEngine;
+  std::shared_ptr<HepRandom      >  theGenerator;
+  std::shared_ptr<HepRandomEngine>  theEngine;
 };  // defaults
 
-  inline
   defaults &  theDefaults()  {
-    static  HepRandom       theDefaultGenerator;
-    static  HepJamesRandom  theDefaultEngine;
-    static  defaults theDefaults(theDefaultGenerator, theDefaultEngine);
+    static  CLHEP_THREAD_LOCAL HepRandom       theDefaultGenerator;
+    static  CLHEP_THREAD_LOCAL HepJamesRandom  theDefaultEngine;
+    static  CLHEP_THREAD_LOCAL defaults theDefaults(theDefaultGenerator, theDefaultEngine);
     return theDefaults;
   }
 

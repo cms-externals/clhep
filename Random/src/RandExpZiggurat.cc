@@ -1,28 +1,37 @@
+// $Id:$
+// -*- C++ -*-
+//
+// -----------------------------------------------------------------------
+//                             HEP Random
+//                       --- RandExpZiggurat ---
+//                      class implementation file
+// -----------------------------------------------------------------------
+
+// =======================================================================
+
 #include "CLHEP/Random/defs.h"
 #include "CLHEP/Random/DoubConv.hh"
 
 #include "CLHEP/Random/RandExpZiggurat.h"
 
 #include <iostream>
-#include <cmath>	// for log()
+#include <cmath>	// for std::log()
 
 namespace CLHEP {
 
-bool RandExpZiggurat::ziggurat_is_init=RandExpZiggurat::ziggurat_init();
-unsigned long RandExpZiggurat::kn[128], RandExpZiggurat::ke[256];
-float RandExpZiggurat::wn[128],RandExpZiggurat::fn[128],RandExpZiggurat::we[256],RandExpZiggurat::fe[256];
+CLHEP_THREAD_LOCAL unsigned long RandExpZiggurat::kn[128], RandExpZiggurat::ke[256];
+CLHEP_THREAD_LOCAL float RandExpZiggurat::wn[128],RandExpZiggurat::fn[128],RandExpZiggurat::we[256],RandExpZiggurat::fe[256];
+CLHEP_THREAD_LOCAL bool RandExpZiggurat::ziggurat_is_init = false;
 
 std::string RandExpZiggurat::name() const {return "RandExpZiggurat";}
 
 HepRandomEngine & RandExpZiggurat::engine() {return *localEngine;}
 
 RandExpZiggurat::~RandExpZiggurat() {
-  if ( deleteEngine ) delete localEngine;
 }
 
 RandExpZiggurat::RandExpZiggurat(const RandExpZiggurat& right) : HepRandom(right),defaultMean(right.defaultMean)
 {
-  if(!ziggurat_is_init) ziggurat_init();
 }
 
 double RandExpZiggurat::operator()()
@@ -111,14 +120,16 @@ std::istream & RandExpZiggurat::get ( std::istream & is ) {
 
 float RandExpZiggurat::ziggurat_efix(unsigned long jz,HepRandomEngine* anEngine)
 { 
+  if(!ziggurat_is_init) ziggurat_init();
+
   unsigned long iz=jz&255;
   
   float x;
   for(;;)
   {  
-    if(iz==0) return (7.69711-log(ziggurat_UNI(anEngine)));          /* iz==0 */
+    if(iz==0) return (7.69711-std::log(ziggurat_UNI(anEngine)));          /* iz==0 */
     x=jz*we[iz]; 
-    if( fe[iz]+ziggurat_UNI(anEngine)*(fe[iz-1]-fe[iz]) < exp(-x) ) return (x);
+    if( fe[iz]+ziggurat_UNI(anEngine)*(fe[iz-1]-fe[iz]) < std::exp(-x) ) return (x);
 
     /* initiate, try to exit for(;;) loop */
     jz=ziggurat_SHR3(anEngine);
@@ -135,7 +146,7 @@ bool RandExpZiggurat::ziggurat_init()
   int i;
 
 /* Set up tables for RNOR */
-  q=vn/exp(-.5*dn*dn);
+  q=vn/std::exp(-.5*dn*dn);
   kn[0]=(unsigned long)((dn/q)*rzm1);
   kn[1]=0;
 
@@ -143,18 +154,18 @@ bool RandExpZiggurat::ziggurat_init()
   wn[127]=dn/rzm1;
 
   fn[0]=1.;
-  fn[127]=exp(-.5*dn*dn);
+  fn[127]=std::exp(-.5*dn*dn);
 
   for(i=126;i>=1;i--) {
-    dn=sqrt(-2.*log(vn/dn+exp(-.5*dn*dn)));
+    dn=std::sqrt(-2.*std::log(vn/dn+std::exp(-.5*dn*dn)));
     kn[i+1]=(unsigned long)((dn/tn)*rzm1);
     tn=dn;
-    fn[i]=exp(-.5*dn*dn);
+    fn[i]=std::exp(-.5*dn*dn);
     wn[i]=dn/rzm1;
   }
 
 /* Set up tables for REXP */
-  q = ve/exp(-de);
+  q = ve/std::exp(-de);
   ke[0]=(unsigned long)((de/q)*rzm2);
   ke[1]=0;
 
@@ -162,13 +173,13 @@ bool RandExpZiggurat::ziggurat_init()
   we[255]=de/rzm2;
 
   fe[0]=1.;
-  fe[255]=exp(-de);
+  fe[255]=std::exp(-de);
 
   for(i=254;i>=1;i--) {
-    de=-log(ve/de+exp(-de));
+    de=-std::log(ve/de+std::exp(-de));
     ke[i+1]= (unsigned long)((de/te)*rzm2);
     te=de;
-    fe[i]=exp(-de);
+    fe[i]=std::exp(-de);
     we[i]=de/rzm2;
   }
   ziggurat_is_init=true;

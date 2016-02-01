@@ -40,6 +40,7 @@
 // 31.01.06   kilogray, milligray, microgray    
 // 29.04.08   use PDG 2006 value of e_SI
 // 03.11.08   use PDG 2008 value of e_SI
+// 19.08.15   added liter and its sub units (mma)
 
 #ifndef HEP_SYSTEM_OF_UNITS_H
 #define HEP_SYSTEM_OF_UNITS_H
@@ -47,6 +48,14 @@
 #include "CLHEP/Units/defs.h"
 
 namespace CLHEP {
+
+  //
+  //
+  //
+  static const double     pi  = 3.14159265358979323846;
+  static const double  twopi  = 2*pi;
+  static const double halfpi  = pi/2;
+  static const double     pi2 = pi*pi;
 
   // 
   // Length [L]
@@ -92,6 +101,12 @@ namespace CLHEP {
   static const double cm2 = centimeter2;
   static const double cm3 = centimeter3;
 
+  static const double liter = 1.e+3*cm3;
+  static const double  L = liter;
+  static const double dL = 1.e-1*liter;
+  static const double cL = 1.e-2*liter;
+  static const double mL = 1.e-3*liter;       
+
   static const double m  = meter;                  
   static const double m2 = meter2;
   static const double m3 = meter3;
@@ -107,7 +122,7 @@ namespace CLHEP {
   //
   static const double radian      = 1.;                  
   static const double milliradian = 1.e-3*radian;
-  static const double degree = (3.14159265358979323846/180.0)*radian;
+  static const double degree = (pi/180.0)*radian;
 
   static const double   steradian = 1.;
   

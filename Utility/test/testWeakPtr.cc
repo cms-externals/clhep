@@ -19,6 +19,14 @@
 #include <map>
 #include <vector>
 
+#if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 6)
+  #pragma GCC diagnostic push
+  #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#elif __clang__
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
 
 using namespace CLHEP;
 using CLHEP::shared_ptr;
@@ -993,16 +1001,6 @@ namespace n_comparison
 {
 
 // don't generate warnings about unused variable inside assert
-#if defined __GNUC__ 
-  #if __GNUC__ > 3 && __GNUC_MINOR__ > 6
-    #pragma GCC diagnostic push
-    #pragma GCC diagnostic ignored "-Wunused-variable"
-  #endif
-#endif
-#ifdef __clang__
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wunused-variable"
-#endif
 void
   test()
 {
@@ -1028,8 +1026,8 @@ void
     assert(wp < wp2 || wp2 < wp);
     assert(!(wp < wp2 && wp2 < wp));
 
-    bool b1 = wp < wp2;
-    bool b2 = wp2 < wp;
+    bool b1  = wp < wp2;
+    bool b2  = wp2 < wp;
 
     {
       weak_ptr<X> wp3(wp);
@@ -1077,8 +1075,8 @@ void
     assert(wp < wp2 || wp2 < wp);
     assert(!(wp < wp2 && wp2 < wp));
 
-    bool b1 = wp < wp2;
-    bool b2 = wp2 < wp;
+    bool b1  = wp < wp2;
+    bool b2  = wp2 < wp;
 
     {
       weak_ptr<X> wp3(wp);
@@ -1146,8 +1144,8 @@ void
     assert(!(wp < wp2 || wp2 < wp));
     assert(!(wp < wp2 && wp2 < wp));
 
-    bool b1 = wp < wp2;
-    bool b2 = wp2 < wp;
+    bool b1  = wp < wp2;
+    bool b2  = wp2 < wp;
 
     {
       weak_ptr<X> wp3(wp);
@@ -1283,14 +1281,6 @@ void
     assert(!(pvy < pvz || pvz < pvy));
   }
 }
-#if defined __GNUC__ 
-  #if __GNUC__ > 3 && __GNUC_MINOR__ > 6
-    #pragma GCC diagnostic pop
-  #endif
-#endif
-#ifdef __clang__
-  #pragma clang diagnostic pop
-#endif
 
 } // namespace n_comparison
 
@@ -1401,3 +1391,9 @@ shared_ptr<incomplete>
   shared_ptr<incomplete> px(new incomplete);
   return px;
 }
+
+#if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 6)
+  #pragma GCC diagnostic pop
+#elif __clang__
+  #pragma clang diagnostic pop
+#endif

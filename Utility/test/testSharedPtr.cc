@@ -19,6 +19,13 @@
 #include <map>
 #include <vector>
 
+#if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 6)
+  #pragma GCC diagnostic push
+  #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#elif __clang__
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#endif
 
 using namespace CLHEP;
 using CLHEP::shared_ptr;
@@ -370,63 +377,27 @@ void
 int m = 0;
 
 // don't generate warnings about unused parameter inside assert
-#if defined __GNUC__ 
-  #if __GNUC__ > 3 && __GNUC_MINOR__ > 6
-    #pragma GCC diagnostic push
-    #pragma GCC diagnostic ignored "-Wunused-parameter"
-  #endif
-#endif
-#ifdef __clang__
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wunused-parameter"
-#endif
 void
   deleter(int * p)
 {
   assert(p == 0);
 }
-#if defined __GNUC__ 
-  #if __GNUC__ > 3 && __GNUC_MINOR__ > 6
-    #pragma GCC diagnostic pop
-  #endif
-#endif
-#ifdef __clang__
-  #pragma clang diagnostic pop
-#endif
 
 void
-  deleter2(int * p)
+  deleter2(int * p )
 {
   assert(p == &m);
   ++*p;
 }
 
 // don't generate warnings about unused parameter inside assert
-#if defined __GNUC__ 
-  #if __GNUC__ > 3 && __GNUC_MINOR__ > 6
-    #pragma GCC diagnostic push
-    #pragma GCC diagnostic ignored "-Wunused-parameter"
-  #endif
-#endif
-#ifdef __clang__
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wunused-parameter"
-#endif
 struct deleter3
 {
-  void operator()(incomplete * p)
+  void operator()(incomplete * p )
   {
     assert(p == 0);
   }
 };
-#if defined __GNUC__ 
-  #if __GNUC__ > 3 && __GNUC_MINOR__ > 6
-    #pragma GCC diagnostic pop
-  #endif
-#endif
-#ifdef __clang__
-  #pragma clang diagnostic pop
-#endif
 
 incomplete * p0 = 0;
 
@@ -996,16 +967,6 @@ void
   }
 
 // don't generate warnings about unused variable q
-#if defined __GNUC__ 
-  #if __GNUC__ > 3 && __GNUC_MINOR__ > 6
-    #pragma GCC diagnostic push
-    #pragma GCC diagnostic ignored "-Wunused-variable"
-  #endif
-#endif
-#ifdef __clang__
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wunused-variable"
-#endif
   {
     std::auto_ptr<int> p(new int(7));
     int * q = p.get();
@@ -1064,7 +1025,7 @@ void
 
   {
     std::auto_ptr<X> p(new X);
-    X * q = p.get();
+    X * q  = p.get();
     shared_ptr<X> px(p);
     assert(px? true: false);
     assert(!!px);
@@ -1080,7 +1041,7 @@ void
 
   {
     std::auto_ptr<X> p(new X);
-    X * q = p.get();
+    X * q  = p.get();
     shared_ptr<X const> px(p);
     assert(px? true: false);
     assert(!!px);
@@ -1096,7 +1057,7 @@ void
 
   {
     std::auto_ptr<X> p(new X);
-    X * q = p.get();
+    X * q  = p.get();
     shared_ptr<void> pv(p);
     assert(pv? true: false);
     assert(!!pv);
@@ -1112,7 +1073,7 @@ void
 
   {
     std::auto_ptr<X> p(new X);
-    X * q = p.get();
+    X * q  = p.get();
     shared_ptr<void const> pv(p);
     assert(pv? true: false);
     assert(!!pv);
@@ -1129,7 +1090,7 @@ void
 
   {
     std::auto_ptr<Y> p(new Y);
-    Y * q = p.get();
+    Y * q  = p.get();
     shared_ptr<X> px(p);
     assert(px? true: false);
     assert(!!px);
@@ -1147,7 +1108,7 @@ void
 
   {
     std::auto_ptr<Y> p(new Y);
-    Y * q = p.get();
+    Y * q  = p.get();
     shared_ptr<X const> px(p);
     assert(px? true: false);
     assert(!!px);
@@ -1159,14 +1120,6 @@ void
 
     assert(p.get() == 0);
   }
-#if defined __GNUC__ 
-  #if __GNUC__ > 3 && __GNUC_MINOR__ > 6
-    #pragma GCC diagnostic pop
-  #endif
-#endif
-#ifdef __clang__
-  #pragma clang diagnostic pop
-#endif
 
   assert(X::instances == 0);
   assert(Y::instances == 0);
@@ -3437,3 +3390,9 @@ shared_ptr<X> createX()
 }
 
 } // namespace n_spt_abstract
+
+#if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ > 6)
+  #pragma GCC diagnostic pop
+#elif __clang__
+  #pragma clang diagnostic pop
+#endif

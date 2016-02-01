@@ -1,4 +1,6 @@
 
+clhep_enable_asserts()
+
 set( Vector_tests testThreeVector 
                   testLorentzVector )
 set( Vector_simple_tests testRotation 

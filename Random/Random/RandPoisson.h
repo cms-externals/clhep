@@ -32,6 +32,7 @@
 #include "CLHEP/Random/defs.h"
 #include "CLHEP/Random/Random.h"
 #include "CLHEP/Utility/memory.h"
+#include "CLHEP/Utility/thread_local.h"
 
 namespace CLHEP {
 
@@ -115,12 +116,12 @@ protected:
   
 private:
 
-  shared_ptr<HepRandomEngine> localEngine;
+  std::shared_ptr<HepRandomEngine> localEngine;
   double status[3], oldm;
 
   // static data
-  static double status_st[3];
-  static double oldm_st;
+  static CLHEP_THREAD_LOCAL double status_st[3];
+  static CLHEP_THREAD_LOCAL double oldm_st;
   static const double meanMax_st;
 
 };

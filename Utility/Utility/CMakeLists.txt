@@ -1,8 +1,9 @@
 
-set( pkginclude_HEADERS keywords.h
+set( pkginclude_HEADERS atomic_int.h
+                        keywords.h
         		memory.h
         		noncopyable.h
-        		type_traits.h )
+			thread_local.h )
 
 # notice that defs.h is not referenced here
 INSTALL (FILES ${pkginclude_HEADERS}  
