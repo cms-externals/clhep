@@ -66,7 +66,7 @@ if (CLHEP_BUILD_STATIC_LIBS)
   list(APPEND CLHEP_libraries_all "CLHEPS")
 endif()
 
-export(TARGETS CLHEP ${CLHEP_libraries_all}
+export(TARGETS CLHEP
   NAMESPACE "CLHEP::"
   FILE ${PROJECT_BINARY_DIR}/CLHEPLibraryDepends.cmake
   )
