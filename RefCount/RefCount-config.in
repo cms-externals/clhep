@@ -89,7 +89,7 @@ while test $# -gt 0; do
        	;;
 
     --libs)
-       	echo @LIBS@ @RefCount_LIBS@ -lm
+       	echo -lCLHEP -lm
        	;;
 
     *)

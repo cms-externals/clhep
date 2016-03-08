@@ -89,7 +89,7 @@ while test $# -gt 0; do
        	;;
 
     --libs)
-       	echo @LIBS@ @Cast_LIBS@ -lm
+       	echo -lCLHEP -lm
        	;;
 
     *)
