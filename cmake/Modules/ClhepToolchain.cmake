@@ -57,7 +57,7 @@ foreach(_lib ${CLHEP_libraries})
   list(APPEND CLHEP_libraries_all "${_lib}S")
 endforeach()
 
-export(TARGETS CLHEP CLHEPS ${CLHEP_libraries_all}
+export(TARGETS CLHEP
   NAMESPACE "CLHEP::"
   FILE ${PROJECT_BINARY_DIR}/CLHEPLibraryDepends.cmake
   )

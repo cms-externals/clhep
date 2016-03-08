@@ -87,7 +87,7 @@ while test $# -gt 0; do
        	;;
 
     --libs)
-       	echo @LIBS@ @Matrix_LIBS@ -lm
+       	echo -lCLHEP -lm
        	;;
 
     *)
