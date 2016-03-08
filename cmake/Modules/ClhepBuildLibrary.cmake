@@ -43,15 +43,6 @@ macro(clhep_build_library package)
 
   target_link_libraries(${package}  ${package_library_list} )
   target_link_libraries(${package}S ${package_library_list_static} )
-
-  # Install the libraries
-  INSTALL (TARGETS ${package} ${package}S
-      EXPORT CLHEPLibraryDepends
-      RUNTIME DESTINATION bin
-      LIBRARY DESTINATION lib${LIB_SUFFIX}
-      ARCHIVE DESTINATION lib${LIB_SUFFIX}
-      INCLUDES DESTINATION include
-      ) 
 endmacro(clhep_build_library)
 
 macro(clhep_build_libclhep )
@@ -75,7 +66,7 @@ macro(clhep_build_libclhep )
       )
 
   # export creates library dependency files for CLHEPConfig.cmake
-  INSTALL(TARGETS CLHEP CLHEPS
+  INSTALL(TARGETS CLHEP
       EXPORT CLHEPLibraryDepends
       RUNTIME DESTINATION bin
       LIBRARY DESTINATION lib${LIB_SUFFIX}
