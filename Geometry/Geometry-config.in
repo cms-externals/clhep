@@ -99,7 +99,7 @@ while test $# -gt 0; do
        	;;
 
     --libs)
-       	echo @LIBS@ @Geometry_LIBS@ -lm
+       	echo -lCLHEP -lm
        	;;
 
     *)
