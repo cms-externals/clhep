@@ -122,6 +122,9 @@ clhep_build_libclhep( ${CLHEP_libraries} )
 # provide tools for other packages to include CLHEP easily
 clhep_toolchain()
 
+# install modulemap file needed for the generation of CLHEP C++ module (.pcm file)
+install(FILES modulemap/clhep.modulemap DESTINATION "include")
+
 # - Build docucumentation if required
 if(CLHEP_BUILD_DOCS)
   message(STATUS "Enabled build and install of documents")
