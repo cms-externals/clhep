@@ -5,8 +5,6 @@
 #pragma implementation
 #endif
 
-#include <string.h>
-
 #include "CLHEP/Matrix/defs.h"
 #include "CLHEP/Random/Random.h"
 #include "CLHEP/Vector/ThreeVector.h"
@@ -17,6 +15,9 @@
 #ifdef HEP_DEBUG_INLINE
 #include "CLHEP/Matrix/Vector.icc"
 #endif
+
+#include <iostream>
+#include <string.h>
 
 namespace CLHEP {
 

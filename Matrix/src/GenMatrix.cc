@@ -10,10 +10,6 @@
 #pragma implementation
 #endif
 
-#include <string.h>
-#include <cmath>
-#include <stdlib.h>
-
 #include "CLHEP/Matrix/GenMatrix.h"
 #include "CLHEP/Matrix/SymMatrix.h"
 #include "CLHEP/Matrix/Matrix.h"
@@ -21,6 +17,12 @@
 #ifdef HEP_DEBUG_INLINE
 #include "CLHEP/Matrix/GenMatrix.icc"
 #endif
+
+#include <cmath>
+#include <iostream>
+#include <string.h>
+#include <stdlib.h>
+
 
 namespace CLHEP {
 

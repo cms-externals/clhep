@@ -17,6 +17,7 @@
 #include "CLHEP/Vector/ZMxpv.h"
 
 #include <cmath>
+#include <iostream>
 
 namespace CLHEP  {
 

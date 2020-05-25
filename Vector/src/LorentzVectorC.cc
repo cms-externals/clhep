@@ -20,6 +20,7 @@
 #include "CLHEP/Vector/LorentzVector.h"
 
 #include <cmath>
+#include <iostream>
 
 namespace CLHEP  {
 

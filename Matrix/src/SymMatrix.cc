@@ -8,9 +8,6 @@
 #pragma implementation
 #endif
 
-#include <string.h>
-#include <float.h>        // for DBL_EPSILON
-
 #include "CLHEP/Matrix/defs.h"
 #include "CLHEP/Random/Random.h"
 #include "CLHEP/Matrix/SymMatrix.h"
@@ -21,6 +18,12 @@
 #ifdef HEP_DEBUG_INLINE
 #include "CLHEP/Matrix/SymMatrix.icc"
 #endif
+
+#include <iostream>
+#include <float.h>        // for DBL_EPSILON
+#include <string.h>
+
+
 
 namespace CLHEP {
 

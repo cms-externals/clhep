@@ -17,6 +17,9 @@
 #include "CLHEP/Vector/LorentzRotation.h"
 #include "CLHEP/Vector/ZMxpv.h"
 
+#include <cmath>
+#include <iostream>
+
 namespace CLHEP  {
 
 

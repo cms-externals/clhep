@@ -13,6 +13,9 @@
 #include "CLHEP/Vector/defs.h"
 #include "CLHEP/Vector/LorentzRotation.h"
 
+#include <cmath>
+#include <iostream>
+
 namespace CLHEP  {
 
 // ----------  Decomposition:

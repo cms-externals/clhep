@@ -8,9 +8,6 @@
 #pragma implementation
 #endif
 
-#include <string.h>
-#include <cmath>
-
 #include "CLHEP/Matrix/defs.h"
 #include "CLHEP/Random/Random.h"
 #include "CLHEP/Matrix/DiagMatrix.h"
@@ -21,6 +18,11 @@
 #ifdef HEP_DEBUG_INLINE
 #include "CLHEP/Matrix/DiagMatrix.icc"
 #endif
+
+#include <iostream>
+#include <cmath>
+#include <string.h>
+
 
 namespace CLHEP {
 
