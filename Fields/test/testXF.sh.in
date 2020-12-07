@@ -1,0 +1,9 @@
+#! /bin/sh
+# @configure_input@
+
+
+# right now, testXF.cc is an empty placeholder
+#./testXF@EXEEXT@ < @srcdir@/testXF.input \
+#  | diff -b -q - @srcdir@/testXF.output > /dev/null
+
+./testXF@EXEEXT@
