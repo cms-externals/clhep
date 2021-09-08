@@ -21,15 +21,6 @@
 
 namespace CLHEP {
 
-int HepSymMatrix::num_row() const { return nrow;}
-int HepSymMatrix::num_col() const  { return nrow;}
-int HepSymMatrix::num_size() const  { return size_;}
-
-double & HepSymMatrix::operator()(int row, int col)
-    {return (row>=col? fast(row,col) : fast(col,row));}
-const double & HepSymMatrix::operator()(int row, int col) const
-    {return (row>=col? fast(row,col) : fast(col,row));}
-
 // Simple operation for all elements
 
 #define SIMPLE_UOP(OPER)          \

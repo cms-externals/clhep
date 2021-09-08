@@ -1,5 +1,5 @@
 
-set( pkginclude_HEADERS DoubConv.hh
+set( pkginclude_HEADERS DoubConv.h
 			DRand48Engine.h
 			DualRand.h
 			EngineFactory.h
@@ -56,6 +56,7 @@ set( pkginclude_HEADERS DoubConv.hh
 			RanecuEngine.h
 			Ranlux64Engine.h
 			RanluxEngine.h
+			RanluxppEngine.h
 			RanshiEngine.h
 			SeedTable.h
 			Stat.h

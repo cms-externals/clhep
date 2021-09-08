@@ -21,9 +21,6 @@
 
 namespace CLHEP {
 
-HepGenMatrix::~HepGenMatrix()
-{}
-
 #ifdef HEP_THIS_FUNCTION_IS_NOT_NEEDED
 static void delete_array(double *hm)
 {

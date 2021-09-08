@@ -8,6 +8,7 @@
 #include "CLHEP/Random/RanecuEngine.h"
 #include "CLHEP/Random/Ranlux64Engine.h"
 #include "CLHEP/Random/RanluxEngine.h"
+#include "CLHEP/Random/RanluxppEngine.h"
 #include "CLHEP/Random/RanshiEngine.h"
 #include "CLHEP/Random/TripleRand.h"
 
@@ -65,23 +66,38 @@ void testRandGauss(std::vector<double> const& reference, bool& result) {
 
   result = true;
 
+  std::vector<double> v;
+  v.push_back(dist.fire());
+  v.push_back(dist.fire());
+  v.push_back(dist.fire());
+  v.push_back(dist.fire());
+  v.push_back(dist.fire());
+
   // Just a sanity check first. The fire method reproduces
   // itself.
-  if (reference[0] != dist.fire() ||
-      reference[1] != dist.fire() ||
-      reference[2] != dist.fire() ||
-      reference[3] != dist.fire() ||
-      reference[4] != dist.fire()) {
+  if (reference[0] != v[0] ||
+      reference[1] != v[1] ||
+      reference[2] != v[2] ||
+      reference[3] != v[3] ||
+      reference[4] != v[4]) {
     result = false;
   }
 
   // check the shoot method where we pass in an engine
   CLHEP::HepJamesRandom engine1(seedL1);
-  if (reference[0] != CLHEP::RandGauss::shoot(&engine1) ||
-      reference[1] != CLHEP::RandGauss::shoot(&engine1) ||
-      reference[2] != CLHEP::RandGauss::shoot(&engine1) ||
-      reference[3] != CLHEP::RandGauss::shoot(&engine1) ||
-      reference[4] != CLHEP::RandGauss::shoot(&engine1)) {
+
+  v.clear();
+  v.push_back(CLHEP::RandGauss::shoot(&engine1));
+  v.push_back(CLHEP::RandGauss::shoot(&engine1));
+  v.push_back(CLHEP::RandGauss::shoot(&engine1));
+  v.push_back(CLHEP::RandGauss::shoot(&engine1));
+  v.push_back(CLHEP::RandGauss::shoot(&engine1));
+
+  if (reference[0] != v[0] ||
+      reference[1] != v[1] ||
+      reference[2] != v[2] ||
+      reference[3] != v[3] ||
+      reference[4] != v[4]) {
     result = false;
   }
 
@@ -93,11 +109,19 @@ void testRandGauss(std::vector<double> const& reference, bool& result) {
   // setFlag causes it to not use the cached value
   // and generate a new pair of random numbers
   CLHEP::RandGauss::setFlag(false);
-  if (reference[0] != CLHEP::RandGauss::shoot() ||
-      reference[1] != CLHEP::RandGauss::shoot() ||
-      reference[2] != CLHEP::RandGauss::shoot() ||
-      reference[3] != CLHEP::RandGauss::shoot() ||
-      reference[4] != CLHEP::RandGauss::shoot()) {
+
+  v.clear();
+  v.push_back(CLHEP::RandGauss::shoot());
+  v.push_back(CLHEP::RandGauss::shoot());
+  v.push_back(CLHEP::RandGauss::shoot());
+  v.push_back(CLHEP::RandGauss::shoot());
+  v.push_back(CLHEP::RandGauss::shoot());
+
+  if (reference[0] != v[0] ||
+      reference[1] != v[1] ||
+      reference[2] != v[2] ||
+      reference[3] != v[3] ||
+      reference[4] != v[4]) {
     result = false;
   }
   CLHEP::HepRandom::setTheEngine(savedEngine);
@@ -262,9 +286,9 @@ int main() {
     CLHEP::Ranlux64Engine engine1;
     CLHEP::Ranlux64Engine engine2;
     CLHEP::Ranlux64Engine engine3;
-    if(std::fabs(engine1.flat() - 0.214757) > epsilon ||
-       std::fabs(engine2.flat() - 0.517081) > epsilon ||
-       std::fabs(engine3.flat() - 0.464734) > epsilon) {
+    if(std::fabs(engine1.flat() - 0.943338) > epsilon ||
+       std::fabs(engine2.flat() - 0.175414) > epsilon ||
+       std::fabs(engine3.flat() - 0.965602) > epsilon) {
       output << "Error, default seeds changed for Ranlux64Engine random engine.\n";
       return 1;
     }
@@ -277,6 +301,17 @@ int main() {
        std::fabs(engine2.flat() - 0.856504) > epsilon ||
        std::fabs(engine3.flat() - 0.68177) > epsilon) {
       output << "Error, default seeds changed for RanluxEngine random engine.\n";
+      return 1;
+    }
+  }
+  {
+    CLHEP::RanluxppEngine engine1;
+    CLHEP::RanluxppEngine engine2;
+    CLHEP::RanluxppEngine engine3;
+    if(std::fabs(engine1.flat() - 0.239639) > epsilon ||
+       std::fabs(engine2.flat() - 0.566275) > epsilon ||
+       std::fabs(engine3.flat() - 0.958136) > epsilon) {
+      output << "Error, default seeds changed for RanluxppEngine random engine.\n";
       return 1;
     }
   }

@@ -54,13 +54,11 @@ macro( clhep_autoconf_variables )
 
   # these variables are used by <package>-config.in
   # typical values from autoconf:
-  #   AM_CXXFLAGS = -O -ansi -pedantic -Wall -D_GNU_SOURCE
   #   CXXFLAGS = -g -O2
   #   CXX = g++
   #   CXXCPP = g++ -E
   #   CPPFLAGS = 
   #   CXXLD = $(CXX)
-  #   AM_LDFLAGS = 
   #   LDFLAGS = 
   #   LIBS = 
 
@@ -83,7 +81,6 @@ macro( clhep_autoconf_variables )
      set( CXXFLAGS  ${CMAKE_CXX_FLAGS_MINSIZEREL} )
   endif()
   ##message( STATUS "build type ${CMAKE_BUILD_TYPE} has ${CXXFLAGS}")
-  set( AM_CXXFLAGS  ${CMAKE_CXX_FLAGS} )
   set( LDFLAGS      ${CMAKE_MODULE_LINKER_FLAGS} )
   set( LIBS         "" )
   set( DIFF_Q       "diff -q -b" )
@@ -275,7 +272,10 @@ macro( _clhep_check_cxxstd )
   ##message(STATUS "_clhep_check_cxxstd debug: CLHEP_BUILD_CXXSTD HAVE_STDCXX: ${CLHEP_BUILD_CXXSTD} ${HAVE_STDCXX}")
   if( DEFINED HAVE_STDCXX )
     if( ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang" )
-	set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CLHEP_BUILD_CXXSTD}" )
+        set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CLHEP_BUILD_CXXSTD}" )
+        if (${CMAKE_CXX_FLAGS} MATCHES "-fmodules")
+          set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmodule-map-file=${CLHEP_BINARY_DIR}/clhep.modulemap")
+        endif()
     elseif( ${CMAKE_CXX_COMPILER_ID} STREQUAL "AppleClang" )
 	set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CLHEP_BUILD_CXXSTD}" )
     elseif( ${CMAKE_CXX_COMPILER_ID} STREQUAL "Intel" )

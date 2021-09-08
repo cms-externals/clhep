@@ -32,7 +32,7 @@ class HepGenMatrix;
 class HepGenMatrix {
  
 public:
-   virtual ~HepGenMatrix();
+   virtual ~HepGenMatrix() {}
 
 
 #ifdef DISABLE_ALLOC   // disable this non-compliant allocator

@@ -106,8 +106,8 @@ public:
    virtual ~HepSymMatrix();
    // Destructor.
 
-   int num_row() const;
-   int num_col() const;
+   inline int num_row() const;
+   inline int num_col() const;
    // Returns number of rows/columns.
 
    const double & operator()(int row, int col) const; 

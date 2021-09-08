@@ -1,4 +1,69 @@
 ==============================
+31.08.21 Release CLHEP-2.4.5.1
+==============================
+
+
+30 August 2021 - L. Garren
+
+* Random: fix clang compilation warnings
+
+==============================
+30.08.21 Release CLHEP-2.4.5.0
+==============================
+
+30 July 2021 Jonas Hahnfel
+
+* Random: Implement RanluxppEngine 
+** RANLUX++ is an extension of RANLUX and uses the equivalent LCG to
+   offer a much higher luxury level at better performance. It inherits
+   the excellent statistical properties and passes the full BigCrush.
+
+18 May 2021 - G.Cosmo
+
+* Random: Fixed more compilation warnings on gcc-11 for shadowing in RandPoissonT.h.
+
+==============================
+28.05.21 Release CLHEP-2.4.4.2
+==============================
+
+2021-05-18 Gabriele Cosmo <Gabriele.Cosmo@cern.ch>
+
+* Units: Updated values in SystemOfUnits.h and PhysicalConstants.h (M.Maire):
+     Added units: minute, hour, day, year and millielectronvolt.
+     Added constants: Bohr_magneton and nuclear_magneton.
+
+18 May 2021 - G.Cosmo
+
+  * Random: Fixed compilation warnings on gcc-11 for shadowing in Random headers.  
+
+3 May 2021 - Lynn Garren
+
+* update all *-config.in files to handle LIB_SUFFIX
+* use @CMAKE_CXX_FLAGS@ instead of @AM_CXXFLAGS@ in config files
+* remove cppflags and cxxflags from *-config.in to match clhep-config.in
+
+3 May 2021 - Andrii Verbytskyi
+
+* update clhep-config.in to handle LIB_SUFFIX
+* cleanup unused flags from autotools
+
+==============================
+19.01.21 Release CLHEP-2.4.4.1
+==============================
+
+12 January 2021 - Vassil Vassilev <v.g.vassilev@gmail.com>
+
+*  Rename modulemap name to avoid name clashes.
+
+08 January 2021 - G.Cosmo
+
+* Random: Renamed DoubConv.hh header coherently to DoubConv.h.
+
+18 November 2020 - Guilherme Amadio <amadio@cern.ch>
+
+* Random: Fix testThreaded on x86
+
+==============================
 09.11.20 Release CLHEP-2.4.4.0
 ==============================
 

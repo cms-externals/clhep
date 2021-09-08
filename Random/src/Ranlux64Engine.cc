@@ -1,4 +1,4 @@
-// $Id: Ranlux64Engine.cc,v 1.7 2010/10/21 21:32:02 garren Exp $
+//
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -57,7 +57,7 @@
 #include "CLHEP/Random/Random.h"
 #include "CLHEP/Random/Ranlux64Engine.h"
 #include "CLHEP/Random/engineIDulong.h"
-#include "CLHEP/Random/DoubConv.hh"
+#include "CLHEP/Random/DoubConv.h"
 #include "CLHEP/Utility/atomic_int.h"
 
 #include <atomic>
@@ -254,7 +254,7 @@ void Ranlux64Engine::update() {
 
   // Now when we return, there are 12 fresh usable numbers in s[11] ... s[0]
 
-  index = 11;
+  index = 12;
 
 } // update()
 
@@ -452,7 +452,8 @@ void Ranlux64Engine::setSeed(long seed, int lux) {
 
   carry = 0.0;
   if ( randoms[11] == 0. ) carry = twoToMinus_48();
-  index = 11;
+  // Perform an update before returning the first random number.
+  index = -1;
 
 } // setSeed()
 
@@ -525,7 +526,8 @@ void Ranlux64Engine::setSeeds(const long * seeds, int lux) {
 
   carry = 0.0;
   if ( randoms[11] == 0. ) carry = twoToMinus_48();
-  index = 11;
+  // Perform an update before returning the first random number.
+  index = -1;
 
 }
 
