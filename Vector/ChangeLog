@@ -1,7 +1,7 @@
 
 2022-03-10  Evgueni Tcherniaev <Evgueni.Tcherniaev@cern.ch>
 
-* Fixed compilation warnings in LorentzVector.h when c++20 is enabled.
+* Fixed compilation warnings in LorentzRotation.h when c++20 is enabled.
 
 ==============================
 31.08.21 Release CLHEP-2.4.5.1
