@@ -1,6 +1,5 @@
 // -*- C++ -*-
 // CLASSDOC OFF
-// $Id: LorentzRotation.h,v 1.3 2003/10/23 21:29:52 garren Exp $
 // ---------------------------------------------------------------------------
 // CLASSDOC ON
 //
@@ -23,7 +22,7 @@
 #ifndef HEP_LORENTZROTATION_H
 #define HEP_LORENTZROTATION_H
 
-#include "CLHEP/Vector/defs.h" 
+#include "CLHEP/Vector/defs.h"
 #include "CLHEP/Vector/RotationInterfaces.h"
 #include "CLHEP/Vector/Rotation.h" 
 #include "CLHEP/Vector/Boost.h" 
@@ -348,9 +347,9 @@ inline std::ostream & operator<<
   {return lt.print(os);}
 
 inline bool operator==(const HepRotation &r, const HepLorentzRotation & lt)
-  { return lt==r; }
+  { return lt==HepLorentzRotation(r); }
 inline bool operator!=(const HepRotation &r, const HepLorentzRotation & lt)
-  { return lt!=r; }
+  { return lt!=HepLorentzRotation(r); }
 inline bool operator<=(const HepRotation &r, const HepLorentzRotation & lt)
   { return lt<=r; }
 inline bool operator>=(const HepRotation &r, const HepLorentzRotation & lt)
@@ -361,9 +360,9 @@ inline bool operator>(const HepRotation &r, const HepLorentzRotation & lt)
   { return lt>r; }
 
 inline bool operator==(const HepBoost &b, const HepLorentzRotation & lt)
-  { return lt==b; }
+  { return lt==HepLorentzRotation(b); }
 inline bool operator!=(const HepBoost &b, const HepLorentzRotation & lt)
-  { return lt!=b; }
+  { return lt!=HepLorentzRotation(b); }
 inline bool operator<=(const HepBoost &b, const HepLorentzRotation & lt)
   { return lt<=b; }
 inline bool operator>=(const HepBoost &b, const HepLorentzRotation & lt)
