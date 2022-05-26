@@ -89,7 +89,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/CLHEPLibraryDepends.cmake")
 #----------------------------------------------------------------------
 # Handle shared vs static to fill the CLHEP_LIBRARIES variable
 # Default to shared if user didn't specify which. We always build
-# both types, so don't need to specify _FOUND vars. 
+# both types, so don't need to specify _FOUND vars.
 set(CLHEP_KNOWN_COMPONENTS "@CLHEP_libraries@")
 
 # Only allow single library variant to be used to populate CLHEP_LIBRARIES

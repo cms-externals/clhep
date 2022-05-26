@@ -118,7 +118,7 @@ configure_file(${PROJECT_SOURCE_DIR}/cmake/Templates/CLHEPConfigVersion.cmake.in
 
 configure_package_config_file(${PROJECT_SOURCE_DIR}/cmake/Templates/CLHEPConfig.cmake.in
   ${PROJECT_BINARY_DIR}/InstallTreeFiles/CLHEPConfig.cmake
-  INSTALL_DESTINATION lib${LIB_SUFFIX}/CLHEP-${VERSION} 
+  INSTALL_DESTINATION lib${LIB_SUFFIX}/CLHEP-${VERSION}
   PATH_VARS CLHEP_INCLUDE_DIR
   )
 
