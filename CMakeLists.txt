@@ -29,7 +29,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules/ClhepOutOfSourceBuild.cmake)
 clhep_ensure_out_of_source_build()
 
 # use cmake 3.2 or later
-cmake_minimum_required(VERSION 3.2...3.22)
+cmake_minimum_required(VERSION 3.2...3.23)
 if(${CMAKE_VERSION} VERSION_LESS 3.12)
   cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 endif()
