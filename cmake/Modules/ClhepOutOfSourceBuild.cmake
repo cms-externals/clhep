@@ -3,9 +3,10 @@
 #
 
 macro (clhep_ensure_out_of_source_build)
-  string(FIND "${CMAKE_BINARY_DIR}" "${CMAKE_SOURCE_DIR}" is_subdir_pos)
-
-  if ((CMAKE_BINARY_DIR STREQUAL CMAKE_SOURCE_DIR)
+  get_filename_component(buildDirPath "${CMAKE_BINARY_DIR}" REALPATH BASE_DIR)
+  get_filename_component(sourceDirPath "${CMAKE_SOURCE_DIR}" REALPATH BASE_DIR)
+  string(FIND "${buildDirPath}" "${sourceDirPath}/" is_subdir_pos)
+  if ((buildDirPath STREQUAL sourceDirPath)
       OR (is_subdir_pos EQUAL 0))
   message(FATAL_ERROR "
 ERROR: In source builds of this project are not allowed.
