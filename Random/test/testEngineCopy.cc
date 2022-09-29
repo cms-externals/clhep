@@ -26,6 +26,12 @@
 #define VERBOSER
 #define VERBOSER2
 
+#ifdef __clang__
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wunknown-warning-option"
+  #pragma clang diagnostic ignored "-Wunused-but-set-variable"
+#endif
+
 using namespace CLHEP;
 
 // Absolutely Safe Equals Without Registers Screwing Us Up
@@ -112,7 +118,7 @@ template <class E>
 E vectorRestore1(int n, std::vector<double> & v) {
   output << "Copy for " << E::engineName() << "\n";
   E e(97538466);				    
-  double r=0;					    
+  double r=0;
   for (int i=0; i<n; i++) r += e.flat();	    
   E f(e);    
   for (int j=0; j<25; j++) v.push_back(e.flat());   
@@ -225,4 +231,8 @@ int main() {
   if (stat > 0) return -(stat|1);
   return stat|1;
 }	
+
+#ifdef __clang__
+  #pragma clang diagnostic pop
+#endif
 
