@@ -30,7 +30,8 @@ int matrix_test1(const HepGenMatrix&m) {
   //
   static int dum = 0;
   dum += m.num_col();
-  return 0;
+//  return 0;
+  return dum;
 }
 
 //
@@ -830,3 +831,4 @@ int main() {
        << endl;
   return 0;
 }
+
