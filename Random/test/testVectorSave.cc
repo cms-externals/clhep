@@ -123,7 +123,7 @@ vectorRestore1<NonRandomEngine> (int n, std::vector<double> & v) {
   std::vector<double> nonRand = aSequence(500);
   NonRandomEngine e; 
   e.setRandomSequence(&nonRand[0], nonRand.size());
-  double r=0;
+  double __attribute__ ((unused)) r = 0;
   for (int i=0; i<n; i++) r += e.flat();
   std::vector<unsigned long> state = e.put();	    
   for (int j=0; j<25; j++) v.push_back(e.flat()); 

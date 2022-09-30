@@ -74,7 +74,7 @@ int check_sequence()
 
 	rng.setSeed(seed, /*lux*/ 1);
 
-	double sum(0);
+        double __attribute__ ((unused)) sum = 0;
 	for (long i=0; i<N; ++i) {
 	  double r = rng.flat();
 	  if( std::abs(r) > 1.0 ) ++bad;
@@ -94,3 +94,4 @@ int main()
     
     return bad;
 }
+

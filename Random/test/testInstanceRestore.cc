@@ -188,7 +188,7 @@ int checkRandGeneralDistribution(RandGeneral & d, int nth) {
   int stat = 0;
   output << "checkSaveDistribution with " << d.engine().name() 
   	    << ", " << d.name() << "\n";
-  double r=0; 
+  double __attribute__ ((unused)) r = 0;
   r = d();
   double keyValue1, keyValue2, keyValue3, keyValue4;
   for (int i=0; i<nth; i++) r += d();

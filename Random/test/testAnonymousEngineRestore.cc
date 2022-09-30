@@ -121,7 +121,7 @@ template <class E>
 void anonymousRestore1(int n, std::vector<double> & v) {
   output << "Anonymous restore for " << E::engineName() << "\n";
   E e(12349876);				    
-  double r=0;					    
+  double __attribute__ ((unused)) r = 0;
   for (int i=0; i<n; i++) r += e.flat();	    
   std::ofstream os("anonymous.save");		    
   os << e;					    
@@ -141,7 +141,7 @@ void anonymousRestore1<NonRandomEngine> (int n, std::vector<double> & v) {
   std::vector<double> nonRand = aSequence(500);
   NonRandomEngine e; 
   e.setRandomSequence(&nonRand[0], nonRand.size());
-  double r=0;
+  double __attribute__ ((unused)) r = 0;
   for (int i=0; i<n; i++) r += e.flat();
   std::ofstream os("anonymous.save");
   os << e;
