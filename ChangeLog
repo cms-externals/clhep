@@ -1,3 +1,8 @@
+
+2022-09-30  L. Garren
+
+* Random/test, Matrix/test: Fix compilation warnings from clang 14.
+
 ==============================
 09.06.22 Release CLHEP-2.4.5.3
 ==============================
