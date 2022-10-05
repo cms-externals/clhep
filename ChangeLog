@@ -1,4 +1,9 @@
 
+
+2022-20-05 Johannes Junggeburth
+
+* Random/src/RandGamma.cc: reproduce results in multi-threading environment
+
 2022-09-30  L. Garren
 
 * Random/test, Matrix/test: Fix compilation warnings from clang 14.

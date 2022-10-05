@@ -1,3 +1,27 @@
+
+05 October 2022 Johannes Junggeburth
+
+* reproduce results in multi-threading environment
+    In case it helps, we can describe the use-case in our Athena framework. In the
+job in question, we are running digitization converting the output from G4
+simulation into raw data objects. This process should be independent for each
+detector sub-system, so each detector sub-system has an independent random
+number stream. Because the digitization of each detector sub-system is
+independent, it should not matter which sub-system is digitized first (either
+on the same thread or on two separate threads). In multi-threaded Athena, this
+is determined dynamically by the scheduler during the job and depending on the
+state of the node being used can vary from run to run.
+For most sub-systems, this works nicely, but two detector sub-systems showed
+instability in the output digitization when running in multi-threaded mode.
+The digitization code for these both sub-systems uses CLHEP::RandGamma (unlike
+the rest). We were able to trace the instability in digitization output back
+to an instability in the CLHEP::RandGamma output.
+I would strongly suspect that the fact that static CLHEP_THREAD_LOCAL
+variables in the CLHEP::RandGamma::genGamma(...) function effectively preserve
+the state from previous calls means that there is a chance on lines 123 and
+144 of the output depending on the state of another CLHEP::HepRandomEngine
+than the one given as an argument.
+
 ==============================
 09.06.22 Release CLHEP-2.4.5.3
 ==============================
