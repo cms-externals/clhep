@@ -76,11 +76,9 @@ Hurd288Engine::Hurd288Engine()
   int cycle    = std::abs(int(numEngines/maxIndex));
   int curIndex = std::abs(int(numEngines%maxIndex));
   long mask = ((cycle & 0x007fffff) << 8);
-  long seedlist[2];
-  HepRandom::getTheTableSeeds( seedlist, curIndex );
-  seedlist[0] ^= mask;
-  seedlist[1] = 0;
-  setSeeds(seedlist, 0);
+  HepRandom::getTheTableSeeds(seeds_, curIndex );
+  seeds_[0] ^= mask;
+  setSeeds(seeds_, 0);
   words[0] ^= 0x1324abcd;        // To make unique vs long or two unsigned
   if (words[0]==0) words[0] = 1; // ints in the constructor
 
@@ -96,8 +94,8 @@ Hurd288Engine::Hurd288Engine( std::istream& is )
 Hurd288Engine::Hurd288Engine( long seed )
 : HepRandomEngine()
 {
-  long seedlist[2]={seed,0};
-  setSeeds(seedlist, 0);
+  seeds_[0] = seed;
+  setSeeds(seeds_, 0);
   words[0] ^= 0xa5482134;        // To make unique vs default two unsigned
   if (words[0]==0) words[0] = 1; // ints in the constructor
   for( int i=0; i < 100; ++i ) flat();       // warm up just a bit
@@ -110,11 +108,9 @@ Hurd288Engine::Hurd288Engine( int rowIndex, int colIndex )
   int   row = std::abs(int(rowIndex%maxIndex));
   int   col = colIndex & 0x1;
   long mask = (( cycle & 0x000007ff ) << 20 );
-  long seedlist[2];
-  HepRandom::getTheTableSeeds( seedlist, row );
-  seedlist[0] = (seedlist[col])^mask;
-  seedlist[1]= 0;
-  setSeeds(seedlist, 0);
+  HepRandom::getTheTableSeeds( seeds_, row );
+  seeds_[0] = seeds_[col]^mask;
+  setSeeds(seeds_, 0);
   for( int i=0; i < 100; ++i ) flat();       // warm up just a bit
 }
 
@@ -178,6 +174,9 @@ void Hurd288Engine::flatArray( const int size, double* vect ) {
 }
 
 void Hurd288Engine::setSeed( long seed, int ) {
+  seeds_[0] = seed;
+  seeds_[1] = 0;
+  theSeed = seeds_[0];
   words[0] = (unsigned int)seed;
   for (wordIndex = 1; wordIndex < 9; ++wordIndex) {
     words[wordIndex] = 69607 * words[wordIndex-1] + 54329;
@@ -185,8 +184,8 @@ void Hurd288Engine::setSeed( long seed, int ) {
 }
 
 void Hurd288Engine::setSeeds( const long* seeds, int ) {
-  setSeed( *seeds ? *seeds : 32767, 0 );
   theSeeds = seeds;
+  setSeed( *seeds ? *seeds : 32767, 0 );
 }
      
 void Hurd288Engine::saveStatus( const char filename[] ) const {
