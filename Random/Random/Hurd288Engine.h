@@ -93,6 +93,7 @@ private:
 
   void advance();
 
+  long seeds_[2];
   int wordIndex;
   unsigned int words[9];
 
