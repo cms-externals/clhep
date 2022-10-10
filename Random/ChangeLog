@@ -1,3 +1,13 @@
+
+2022-10-10 Chris Green
+
+* Resolve worrying GCC 12 warnings
+* GCC 12 warns of storing the address of a local variable in class data for the
+  Hurd160Engine and Hurd288Engine classes. Upon inspection, this appears to be a
+  real problem that may affect engine seed and state, especially in optimized configurations.
+  This merge request resolves those problems by adding private class data for
+  seed array storage in the expected format (0-terminated C-style array of long).
+
 ==============================
 05.10.22 Release CLHEP-2.4.5.4
 ==============================

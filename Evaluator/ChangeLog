@@ -1,3 +1,13 @@
+
+2022-10-10 Chris Green
+
+* Resolve worrying GCC 12 warnings
+* CLHEP supports >=C++11, and compilers and their standard libraries have
+  matured significantly since the code at issue was written originally >20y ago.
+  Consequently, the most efficient way to resolve these warnings is to excise
+  completely the homespun implementations of hash_map, deque, and string,
+  replacing their use with std::unordered_map, std::deque and std::string respectively.
+
 ==============================
 05.10.22 Release CLHEP-2.4.5.4
 ==============================
