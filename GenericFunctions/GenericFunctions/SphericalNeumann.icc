@@ -1,0 +1,55 @@
+// -*- C++ -*-
+// $Id: SphericalNeumann.icc,v 1.4 2010/06/16 18:22:01 garren Exp $
+#include "CLHEP/GenericFunctions/Sin.hh"
+#include "CLHEP/GenericFunctions/Cos.hh"
+#include "CLHEP/GenericFunctions/Variable.hh"
+#include "gsl/gsl_sf_bessel.h"
+#include <signal.h>
+
+namespace Genfun {
+
+FUNCTION_OBJECT_IMP(SphericalNeumann)
+
+//----------------------------------------------------------------------------------//
+// Implementation notes:  The Spherical Neumann function is implemented in terms of //
+// lower order spherical neumann functions.  This is possible thanks to a recursion //
+// relation.                                                                        //
+//----------------------------------------------------------------------------------//
+
+inline
+SphericalNeumann::SphericalNeumann(unsigned int l):
+  _l(l)
+{
+}
+
+inline
+SphericalNeumann::~SphericalNeumann() {
+}
+
+inline
+SphericalNeumann::SphericalNeumann(const SphericalNeumann & right):
+_l(right._l)
+{
+}
+
+inline
+double SphericalNeumann::operator() (double x) const {
+  //
+  // First try the GSL implementation:
+  //
+  gsl_sf_result result;
+  int status =gsl_sf_bessel_yl_e(_l, x,&result);
+  if (status!=0) {
+    std::cerr << "Warning, GSL function gsl_sf_bessel_yl_impl" 
+	      << " return code" << status << std::endl;
+    raise(SIGFPE);
+  }
+  return result.val;
+}
+
+inline
+unsigned int SphericalNeumann::l() const {
+  return _l;
+}
+
+} // end of namespace Genfun 
