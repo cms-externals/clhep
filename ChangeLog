@@ -1,4 +1,8 @@
 
+2022-12-01 Lynn garren
+
+* Evaluator/src/setSystemOfUnits.cc: update units to match Units/SystemOfUnits.h
+
 2022-11-28 Lynn garren
 
 * Random: add the cstdint header where uint32_t and uint64_t are used.
