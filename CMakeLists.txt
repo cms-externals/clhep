@@ -35,7 +35,7 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
 endif()
 
 # Project setup
-project(CLHEP VERSION 2.4.6.1)
+project(CLHEP VERSION 2.4.6.2)
 # - needed for (temporary) back compatibility
 set(VERSION ${PROJECT_VERSION})
 

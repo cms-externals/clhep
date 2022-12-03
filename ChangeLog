@@ -1,4 +1,13 @@
 ==============================
+02.12.22 Release CLHEP-2.4.6.2
+==============================
+
+
+2022-12-01 Lynn garren
+
+* Evaluator/test/testEvaluator.output: match change in e_SI
+
+==============================
 01.12.22 Release CLHEP-2.4.6.1
 ==============================
 
