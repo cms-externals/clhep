@@ -1,6 +1,5 @@
 // -*- C++ -*-
 // CLASSDOC OFF
-// $Id: ThreeVector.h,v 1.4 2010/06/16 17:15:57 garren Exp $
 // ---------------------------------------------------------------------------
 // CLASSDOC ON
 //
@@ -57,13 +56,13 @@ public:
   inline ~Hep3Vector();
   // The destructor.  Not virtual - inheritance from this class is dangerous.
 
-  double operator () (int) const;
+  inline double operator () (int) const;
   // Get components by index -- 0-based (Geant4) 
 
   inline double operator [] (int) const;
   // Get components by index -- 0-based (Geant4) 
 
-  double & operator () (int);
+  inline double & operator () (int);
   // Set components by index.  0-based.
 
   inline double & operator [] (int);
@@ -205,7 +204,6 @@ public:
   Hep3Vector & transform(const HepRotation &);
   // Transformation with a Rotation matrix.
 
-
 // = = = = = = = = = = = = = = = = = = = = = = = =
 //
 // Esoteric properties and operations on 3-vectors:  
@@ -294,7 +292,7 @@ public:
   double howOrthogonal (const Hep3Vector & v) const;
   // | v1.dot(v2) / v1.cross(v2) |, to a maximum of 1.
 
-  enum { ToleranceTicks = 100 };
+  static const int ToleranceTicks = 100;
 
 // 4 - Intrinsic properties 
 
