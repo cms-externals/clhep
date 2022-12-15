@@ -394,9 +394,9 @@ bool Hurd288Engine::getState (const std::vector<unsigned long> & v) {
     	"\nHurd288Engine get:state vector has wrong length - state unchanged\n";
     return false;
   }
-  wordIndex = v[1];
+  wordIndex = (int)v[1];
   for (int i = 0; i < 9; ++i) {
-    words[i] = v[i+2];
+    words[i] = (unsigned int)v[i+2];
   }
   return true;
 }

@@ -1,4 +1,4 @@
-// $Id: RanecuEngine.cc,v 1.7 2010/07/20 18:06:02 garren Exp $
+//
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -119,7 +119,7 @@ void RanecuEngine::setSeed(long index, int dum)
   theSeed = seq;
   HepRandom::getTheTableSeeds(table[seq],seq);
   theSeeds = &table[seq][0];
-  further_randomize (seq, 0, index, shift1);     // mf 6/22/10
+  further_randomize (seq, 0, (int)index, shift1);     // mf 6/22/10
   further_randomize (seq, 1, dum,   shift2);     // mf 6/22/10
 }
 

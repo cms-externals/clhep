@@ -55,7 +55,6 @@ inline int ZMerrnoList::countSinceCleared() const {
   return countSinceCleared_;
 }
 
-
 //********
 //
 // size()
@@ -67,7 +66,7 @@ inline int ZMerrnoList::countSinceCleared() const {
 // return the number of entries currently on the exception stack
 
 inline unsigned int ZMerrnoList::size() const {
-  return errors_.size();
+  return (unsigned int)errors_.size();
 }
 
 //********

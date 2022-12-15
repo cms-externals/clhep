@@ -61,15 +61,6 @@ double RandGauss::operator()( double mean, double stdDev ) {
   return fire( mean, stdDev );
 }
 
-// implement static methods dealing with static data here 
-bool RandGauss::getFlag() {return set_st;}
-
-void RandGauss::setFlag( bool val ) {set_st = val;}
-
-double RandGauss::getVal() {return nextGauss_st;}
-
-void RandGauss::setVal( double nextVal ) {nextGauss_st = nextVal;}
-
 double RandGauss::shoot()
 {
   // Gaussian random numbers are generated two at the time, so every other
@@ -179,6 +170,26 @@ void RandGauss::fireArray( const int size, double* vect,
     *v = fire( mean, stdDev );
 }
 
+bool RandGauss::getFlag()
+{
+  return set_st;
+}
+
+void RandGauss::setFlag( bool val )
+{
+  set_st = val;
+}
+
+double RandGauss::getVal()
+{
+  return nextGauss_st;
+}
+
+void RandGauss::setVal( double nextVal )
+{
+  nextGauss_st = nextVal;
+}
+
 void RandGauss::saveEngineStatus ( const char filename[] ) {
 
   // First save the engine status just like the base class would do:
@@ -248,7 +259,7 @@ void RandGauss::restoreEngineStatus( const char filename[] ) {
   
 std::ostream & RandGauss::put ( std::ostream & os ) const {
   os << name() << "\n";
-  int prec = os.precision(20);
+  long prec = os.precision(20);
   std::vector<unsigned long> t(2);
   os << "Uvec\n";
   t = DoubConv::dto2longs(defaultMean);
@@ -333,7 +344,7 @@ std::istream & RandGauss::get ( std::istream & is ) {
   // Static save and restore to/from streams
   
 std::ostream & RandGauss::saveDistState ( std::ostream & os ) {
-  int prec = os.precision(20);
+  long prec = os.precision(20);
   std::vector<unsigned long> t(2);
   os << distributionName() << "\n";
   os << "Uvec\n";

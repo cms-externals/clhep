@@ -1,5 +1,5 @@
 // -*- C++ -*-
-// $Id: testVectorSave.cc,v 1.3 2010/06/16 17:24:53 garren Exp $
+//
 // ----------------------------------------------------------------------
 #include "CLHEP/Random/Randomize.h"
 #include "CLHEP/Random/NonRandomEngine.h"
@@ -79,7 +79,7 @@ int vectorTest64<NonRandomEngine>(int n) {
 
   std::vector<double> nonRand = aSequence(500);
   NonRandomEngine e; 
-  e.setRandomSequence(&nonRand[0], nonRand.size());
+  e.setRandomSequence(&nonRand[0], (int)nonRand.size());
 
   double x = 0;	
   for (int i=0; i<n; i++) x += e.flat();	    
@@ -88,7 +88,7 @@ int vectorTest64<NonRandomEngine>(int n) {
   output << "x = " << x << std::endl;
 
   NonRandomEngine f;
-  f.setRandomSequence(&nonRand[0], nonRand.size());
+  f.setRandomSequence(&nonRand[0], (int)nonRand.size());
 
   v[0] &= 0xffffffffUL;
   f.get(v);
@@ -122,7 +122,7 @@ vectorRestore1<NonRandomEngine> (int n, std::vector<double> & v) {
 #endif
   std::vector<double> nonRand = aSequence(500);
   NonRandomEngine e; 
-  e.setRandomSequence(&nonRand[0], nonRand.size());
+  e.setRandomSequence(&nonRand[0], (int)nonRand.size());
   double __attribute__ ((unused)) r = 0;
   for (int i=0; i<n; i++) r += e.flat();
   std::vector<unsigned long> state = e.put();	    

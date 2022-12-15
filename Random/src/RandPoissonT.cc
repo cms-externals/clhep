@@ -116,7 +116,7 @@ void RandPoissonT::fireArray(const int size, long* vect) {
 
 
 std::ostream & RandPoissonT::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   RandPoisson::put(os);
   os.precision(pr);

@@ -22,14 +22,14 @@
 //		    can never be properly captured without also saveing the
 //		    state of RandGauss!  RandGaussQ is, on the other hand,
 //		    stateless except for the engine used.
-// M Fisculer	  - Modified use of wrong engine when shoot (anEngine, mean)
+// M Fischler	  - Modified use of wrong engine when shoot (anEngine, mean)
 //		    is called.  This flaw was preventing any hope of proper
 //		    saving and restoring in the instance cases.
 // M Fischler     - fireArray using defaultMean 2/10/05
 // M Fischler	      - put/get to/from streams uses pairs of ulongs when
 //			+ storing doubles avoid problems with precision 
 //			4/14/05
-// M Fisculer	  - Modified use of shoot (mean) instead of 
+// M Fischler	  - Modified use of shoot (mean) instead of 
 //		    shoot(getLocalEngine(), mean) when fire(mean) is called.  
 //		    This flaw was causing bad "cross-talk" between modules
 //		    in CMS, where one used its own engine, and the other 
@@ -77,7 +77,6 @@ static const double poissonTables [ 51 * ( (95-10)/5 + 1 ) ] = {
 #include "poissonTables.cdat"
 };
 
-
 //
 // Constructors and destructors:
 //
@@ -92,7 +91,7 @@ void RandPoissonQ::setupForDefaultMu() {
   double sig2 = defaultMean * (.9998654 - .08346/defaultMean);
   sigma = std::sqrt(sig2);
 	// sigma for the Guassian which approximates the Poisson -- naively
-	// std::sqrt (defaultMean).
+	// sqrt (defaultMean).
 	//
 	// The multiplier corrects for fact that discretization of the form
 	// [gaussian+.5] increases the second moment by a small amount.
@@ -238,7 +237,7 @@ long RandPoissonQ::poissonDeviateQuick ( HepRandomEngine *e,
 // in the mean.  By adjusting these two and the linear term, we can match the
 // first three moments to high accuracy in 1/mu.
 //
-// The sigma used is not precisely std::sqrt(mu) since a rounded-off Gaussian
+// The sigma used is not precisely sqrt(mu) since a rounded-off Gaussian
 // has a second moment which is slightly larger than that of the Gaussian.  
 // To compensate, sig is multiplied by a factor which is slightly less than 1.
 
@@ -433,9 +432,9 @@ long RandPoissonQ::poissonDeviateSmall (HepRandomEngine * e, double mean) {
     // roundoff preventing termination.
 
 	// 
-	//+++ cdfs[ENTRIES-1] is std::exp(-mu) sum (mu**m/m! , m=0 to Nmax) 
+	//+++ cdfs[ENTRIES-1] is exp(-mu) sum (mu**m/m! , m=0 to Nmax) 
 	//+++ (where Nmax = mu - BELOW + ENTRIES - 1)
-	//+++ cdfs[ENTRIES-1]-cdfs[ENTRIES-2] is std::exp(-mu) mu**(Nmax)/(Nmax)!
+	//+++ cdfs[ENTRIES-1]-cdfs[ENTRIES-2] is exp(-mu) mu**(Nmax)/(Nmax)!
 	//+++ If the sum up to k-1 <= r < sum up to k, then N = k-1
 	//+++ Consider k = Nmax in the above statement:
 	//+++ If cdfs[ENTRIES-2] <= r < cdfs[ENTRIES-1], N would be Nmax-1 
@@ -443,8 +442,8 @@ long RandPoissonQ::poissonDeviateSmall (HepRandomEngine * e, double mean) {
 	//
 
 	// Erroneous:
-	//+++ cdfs[ENTRIES-1] is std::exp(-mu) sum (mu**m/m! , m=0 to Nmax-1) 
-	//+++ cdfs[ENTRIES-1]-cdfs[ENTRIES-2] is std::exp(-mu) mu**(Nmax-1)/(Nmax-1)!
+	//+++ cdfs[ENTRIES-1] is exp(-mu) sum (mu**m/m! , m=0 to Nmax-1) 
+	//+++ cdfs[ENTRIES-1]-cdfs[ENTRIES-2] is exp(-mu) mu**(Nmax-1)/(Nmax-1)!
 	//+++ If a sum up to k-1 <= r < sum up to k, then N = k-1
 	//+++ So if cdfs[ENTRIES-1] were > r, N would be Nmax-1 (or less)
 	//+++ But here r >= cdfs[ENTRIES-1] so N >= Nmax
@@ -548,7 +547,7 @@ long RandPoissonQ::poissonDeviateSmall (HepRandomEngine * e, double mean) {
 } // poissonDeviate()
 
 std::ostream & RandPoissonQ::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   std::vector<unsigned long> t(2);
   os << " " << name() << "\n";
   os << "Uvec" << "\n";

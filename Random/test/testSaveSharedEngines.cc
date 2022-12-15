@@ -64,7 +64,7 @@ int checkSharingDistributions(D1 & d1, D2 & d2, int n1, int n2) {
   kv14 = d1();
   kv24 = d2();
 #ifdef VERBOSER2
-  int pr = output.precision(20);
+  long pr = output.precision(20);
   output << "kv11 = " << kv11 <<
              "  kv21 = " << kv21 << "\n";
   output << "kv12 = " << kv12 <<

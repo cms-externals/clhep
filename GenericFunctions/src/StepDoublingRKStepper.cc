@@ -15,7 +15,7 @@ namespace Genfun {
 				      const RKIntegrator::RKData::Data & s, 
 				      RKIntegrator::RKData::Data       & d, 
 				      std::vector<double>              & errors) const {
-    const unsigned int nvar = s.variable.size();
+    const unsigned int nvar = (unsigned int)s.variable.size();
     RKIntegrator::RKData::Data d1(nvar),d2(nvar);
 
     doStep(data,s,d);
@@ -43,7 +43,7 @@ namespace Genfun {
     
     
     if (h<=0) throw std::runtime_error ("SimpleRKStepper:  negative stepsize");
-    const unsigned int nvar = s.variable.size();
+    const unsigned int nvar = (unsigned int)s.variable.size();
     // Compute all of the k's..:
     //
     std::vector<std::vector<double> >k(tableau.nSteps());

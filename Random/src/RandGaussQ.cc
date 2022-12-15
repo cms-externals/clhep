@@ -1,4 +1,4 @@
-// $Id: RandGaussQ.cc,v 1.6 2010/06/16 17:24:53 garren Exp $
+//
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -62,7 +62,6 @@ void RandGaussQ::fireArray( const int size, double* vect,
     *v = fire( mean, stdDev );
 }
 
-
 //
 // Table of errInts, for use with transform(r) and quickTransform(r)
 //
@@ -91,7 +90,6 @@ static const float gaussTables [TableSize] = {
 #include "gaussQTables.cdat"
 };
 
-
 double RandGaussQ::transformQuick (double r) {
   double sign = +1.0;	// We always compute a negative number of 
 				// sigmas.  For r > 0 we will multiply by
@@ -125,15 +123,13 @@ double RandGaussQ::transformQuick (double r) {
 
 } // transformQuick()
 
-
-
 double RandGaussQ::transformSmall (double r) {
 
   // Solve for -v in the asymtotic formula 
   //
-  // errInt (-v) =  std::exp(-v*v/2)         1     1*3    1*3*5
+  // errInt (-v) =  exp(-v*v/2)         1     1*3    1*3*5
   //		   ------------ * (1 - ---- + ---- - ----- + ... )
-  //		   v*std::sqrt(2*pi)        v**2   v**4   v**6
+  //		   v*sqrt(2*pi)        v**2   v**4   v**6
 
   // The value of r (=errInt(-v)) supplied is going to less than 2.0E-13,
   // which is such that v < -7.25.  Since the value of r is meaningful only
@@ -169,7 +165,7 @@ double RandGaussQ::transformSmall (double r) {
 } // transformSmall()
 
 std::ostream & RandGaussQ::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   RandGauss::put(os);
   os.precision(pr);

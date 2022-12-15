@@ -157,7 +157,7 @@ void RandFlat::restoreEngineStatus( const char filename[] ) {
 } // restoreEngineStatus
 
 std::ostream & RandFlat::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   std::vector<unsigned long> t(2);
   os << " " << name() << "\n";
   os << "Uvec" << "\n";
@@ -178,7 +178,7 @@ std::ostream & RandFlat::put ( std::ostream & os ) const {
   os.precision(pr);
   return os;
 #ifdef REMOVED
-   int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   os << randomInt << " " << firstUnusedBit << "\n";
   os << defaultWidth << " " << defaultA << " " << defaultB << "\n";
@@ -227,7 +227,7 @@ std::istream & RandFlat::get ( std::istream & is ) {
 
 std::ostream & RandFlat::saveDistState ( std::ostream & os ) {
   os << distributionName() << "\n";
-  int prec = os.precision(20);
+  long prec = os.precision(20);
   os << "RANDFLAT staticRandomInt: " << staticRandomInt 
      << "    staticFirstUnusedBit: " << staticFirstUnusedBit << "\n";
   os.precision(prec);

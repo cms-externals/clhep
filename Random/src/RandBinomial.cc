@@ -79,7 +79,7 @@ void RandBinomial::fireArray( const int size, double* vect,
  *                                                                       *
  *  StirlingCorrection()                                                 *
  *                                                                       *
- *  Correction term of the Stirling approximation for std::log(k!)            *
+ *  Correction term of the Stirling approximation for log(k!)            *
  *  (series in 1/k, or table values for small k)                         *
  *  with long int parameter k                                            *
  *                                                                       *
@@ -164,7 +164,7 @@ double RandBinomial::genBinomial( HepRandomEngine *anEngine, long n, double p )
  *                Communications of the ACM 31, 216-222.          *
  * SUBPROGRAMS: - StirlingCorrection()                            *
  *                            ... Correction term of the Stirling *
- *                                approximation for std::log(k!)       *
+ *                                approximation for log(k!)       *
  *                                (series in 1/k or table values  *
  *                                for small k) with long int k    *
  *              - anEngine    ... Pointer to a (0,1)-Uniform      * 
@@ -278,7 +278,7 @@ double RandBinomial::genBinomial( HepRandomEngine *anEngine, long n, double p )
 		}
 
  // acceptance test :  two cases, depending on |K - m|
-	 if ((Km = labs(K - m)) <= DMAX_KM || Km + Km + 2L >= ss)
+	 if ((Km = std::labs(K - m)) <= DMAX_KM || Km + Km + 2L >= ss)
 	  {
 
  // computation of p(K) via recurrence relationship from the mode
@@ -332,7 +332,7 @@ double RandBinomial::genBinomial( HepRandomEngine *anEngine, long n, double p )
 }
 
 std::ostream & RandBinomial::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   std::vector<unsigned long> t(2);
   os << " " << name() << "\n";
   os << "Uvec" << "\n";
@@ -341,7 +341,7 @@ std::ostream & RandBinomial::put ( std::ostream & os ) const {
   os.precision(pr);
   return os;
 #ifdef REMOVED
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   os << defaultN << " " << defaultP << "\n";
   os.precision(pr);

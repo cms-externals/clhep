@@ -43,19 +43,19 @@ double RKIntegrator::RKFunction::operator() (double t) const {
   // If the cache is empty, make an entry for t=0;
   size_t nvar = _data->_startingValParameter.size();
   if (_data->_fx.empty()) {
-    RKData::Data d(nvar);
+    RKData::Data d((int)nvar);
     d.time=0;
-    Argument arg(nvar);
+    Argument arg((int)nvar);
     for (size_t f=0;f<nvar;f++) {
       d.variable[f]=_data->_startingValParameterCache[f];
-      arg[f]=d.variable[f];
+      arg[(int)f]=d.variable[f];
     }
     _data->_fx.insert(d);
   }
 
   if (t==0) return (*_data->_fx.begin()).variable[_index];
 
-  RKData::Data dt(nvar);
+  RKData::Data dt((int)nvar);
   dt.time=t;
   std::set<RKData::Data>::iterator l =_data->_fx.lower_bound(dt);
 
@@ -69,7 +69,7 @@ double RKIntegrator::RKFunction::operator() (double t) const {
     
     while (u==_data->_fx.end()) {
       u--;
-      RKData::Data newData(nvar);;
+      RKData::Data newData((int)nvar);;
       _data->_stepper->step(_data,*u, newData, 0);
       _data->_fx.insert(l,newData);
       if (newData.time==t) return newData.variable[_index];
@@ -114,7 +114,7 @@ Parameter * RKIntegrator::addDiffEquation(const AbsFunction * diffEquation,
   _data->_startingValParameter.push_back(par);
   _data->_diffEqn.push_back(diffEquation->clone());
   _data->_startingValParameterCache.push_back(defStartingValue);
-  _fcn.push_back(new RKFunction(_data,_fcn.size()));
+  _fcn.push_back(new RKFunction(_data,(unsigned int)_fcn.size()));
   return par;
 }
 
@@ -144,7 +144,7 @@ const RKIntegrator::RKFunction * RKIntegrator::getFunction(unsigned int i) const
 
 void RKIntegrator::RKData::lock() {
   if (!_locked) {
-    unsigned int size = _diffEqn.size();
+    unsigned int size = (unsigned int)_diffEqn.size();
     for (size_t i=0;i<size;i++) {
       if (!(_diffEqn[i]->dimensionality()==size)) throw std::runtime_error("Runtime error in RKIntegrator");
     }

@@ -324,7 +324,7 @@ std::ostream & HepJamesRandom::put ( std::ostream& os ) const {
 #ifdef REMOVED 
    char endMarker[]   = "JamesRandom-end";
    int pos = j97;
-   int pr = os.precision(20);
+   long pr = os.precision(20);
    os << " " << beginMarker << " ";
    os <<  theSeed << " ";
    for (int i=0; i<97; ++i) {
@@ -447,7 +447,7 @@ bool HepJamesRandom::getState (const std::vector<unsigned long> & v) {
   t[0] = v[195]; t[1] = v[196]; c  = DoubConv::longs2double(t);
   t[0] = v[197]; t[1] = v[198]; cd = DoubConv::longs2double(t);
   t[0] = v[199]; t[1] = v[200]; cm = DoubConv::longs2double(t);
-  j97  = v[201];
+  j97  = (int)v[201];
   i97  = (64+j97)%97; 
   return true;
 }

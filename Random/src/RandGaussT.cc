@@ -1,4 +1,4 @@
-// $Id: RandGaussT.cc,v 1.5 2010/06/16 17:24:53 garren Exp $
+//
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -63,7 +63,7 @@ void RandGaussT::fireArray( const int size, double* vect,
 }
 
 std::ostream & RandGaussT::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   RandGauss::put(os);
   os.precision(pr);

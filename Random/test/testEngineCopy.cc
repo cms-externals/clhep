@@ -1,5 +1,5 @@
 // -*- C++ -*-
-// $Id: testEngineCopy.cc,v 1.2 2010/06/16 17:24:53 garren Exp $
+//
 // ----------------------------------------------------------------------
 #include "CLHEP/Units/GlobalPhysicalConstants.h"  // used to provoke shadowing warnings
 #include "CLHEP/Random/Randomize.h"
@@ -91,7 +91,7 @@ int vectorTest64<NonRandomEngine>(int n) {
 
   std::vector<double> nonRand = aSequence(500);
   NonRandomEngine e; 
-  e.setRandomSequence(&nonRand[0], nonRand.size());
+  e.setRandomSequence(&nonRand[0], (int)nonRand.size());
 
   double x = 0;	
   for (int i=0; i<n; i++) x += e.flat();	    
@@ -137,7 +137,7 @@ vectorRestore1<NonRandomEngine> (int n, std::vector<double> & v) {
 #endif
   std::vector<double> nonRand = aSequence(500);
   NonRandomEngine e; 
-  e.setRandomSequence(&nonRand[0], nonRand.size());
+  e.setRandomSequence(&nonRand[0], (int)nonRand.size());
   double r=0;
   for (int i=0; i<n; i++) r += e.flat();
   NonRandomEngine f(e);

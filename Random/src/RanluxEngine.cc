@@ -504,7 +504,7 @@ std::ostream & RanluxEngine::put ( std::ostream& os ) const
   return os;  
 #ifdef REMOVED 
    char endMarker[]   = "RanluxEngine-end";
-   int pr = os.precision(20);
+   long pr = os.precision(20);
    os << " " << beginMarker << " ";
    os << theSeed << "\n";
    for (int i=0; i<24; ++i) {
@@ -640,12 +640,12 @@ bool RanluxEngine::getState (const std::vector<unsigned long> & v) {
 	"float_seed_table[" << i << "] = " << float_seed_table[i] << "\n";
 	#endif
   }
-  i_lag    = v[25];
-  j_lag    = v[26];
+  i_lag    = (int)v[25];
+  j_lag    = (int)v[26];
   carry    = v[27]*mantissa_bit_24();
-  count24  = v[28];
-  luxury   = v[29];
-  nskip    = v[30];
+  count24  = (int)v[28];
+  luxury   = (int)v[29];
+  nskip    = (int)v[30];
 	#ifdef TRACE_IO
 	std::cout << "i_lag: " << i_lag << "  j_lag: " << j_lag 
 		  << "  carry: " << carry << "\n";

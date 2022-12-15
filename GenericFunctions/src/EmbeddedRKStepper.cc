@@ -21,7 +21,7 @@ namespace Genfun {
     // First step:
     double h = d.time - s.time;
     if (h<=0) throw std::runtime_error ("Runtime error in RKIntegrator (zero or negative stepsize)");
-    unsigned int nvar = s.variable.size();
+    unsigned int nvar = (unsigned int)s.variable.size();
 
     // Compute all of the k's..:
     //

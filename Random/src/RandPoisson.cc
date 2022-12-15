@@ -283,7 +283,7 @@ void RandPoisson::fireArray(const int size, long* vect, double m1)
 }
 
 std::ostream & RandPoisson::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   std::vector<unsigned long> t(2);
   os << " " << name() << "\n";
   os << "Uvec" << "\n";
@@ -302,7 +302,7 @@ std::ostream & RandPoisson::put ( std::ostream & os ) const {
   os.precision(pr);
   return os;
 #ifdef REMOVED
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   os << meanMax << " " << defaultMean << "\n";
   os << status[0] << " " << status[1] << " " << status[2] << "\n"; 
