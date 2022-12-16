@@ -481,7 +481,7 @@ bool RandEngine::getState (const std::vector<unsigned long> & v) {
     return false;
   }
   theSeed   = v[1];
-  unsigned long count = v[2];
+  int count = (int)v[2];
   setSeed(theSeed,0);
   while (seq < count) flat();  
   return true;
