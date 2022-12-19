@@ -25,7 +25,7 @@ namespace Genfun {
     double y=0.0;
     double deltay=0;  // also gives error;
     double dif = fabs(x-xPoints[0].first),dift;
-    const unsigned int _K=xPoints.size(),_KP=_K+1;
+    const unsigned int _K = (unsigned int)xPoints.size(),_KP=_K+1;
     std::vector<double>c(_KP),d(_KP);
     int ns=0;
     for (unsigned int i=0;i<_K;i++) {

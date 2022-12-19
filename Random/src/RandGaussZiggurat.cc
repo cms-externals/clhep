@@ -1,3 +1,14 @@
+//
+// -*- C++ -*-
+//
+// -----------------------------------------------------------------------
+//                             HEP Random
+//                      --- RandGaussZiggurat ---
+//                      class implementation file
+// -----------------------------------------------------------------------
+
+// =======================================================================
+
 #include "CLHEP/Random/defs.h"
 #include "CLHEP/Random/RandGaussZiggurat.h"
 #include "CLHEP/Units/PhysicalConstants.h"
@@ -164,7 +175,7 @@ void RandGaussZiggurat::fireArray( const int size, double* vect, double mean, do
 }
 
 std::ostream & RandGaussZiggurat::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   RandGauss::put(os);
   os.precision(pr);

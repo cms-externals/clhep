@@ -14,7 +14,7 @@
 //
 // =======================================================================
 // Ken Smith      - Initial draft: 14th Jul 1998
-//                - Removed std::pow() from flat method 14th Jul 1998
+//                - Removed pow() from flat method 14th Jul 1998
 //                - Added conversion operators:  6th Aug 1998
 //
 // Mark Fischler  The following were modified mostly to make the routine
@@ -631,7 +631,7 @@ std::ostream & Ranlux64Engine::put( std::ostream& os ) const
   return os;  
 #ifdef REMOVED 
    char endMarker[]   = "Ranlux64Engine-end";
-   int pr = os.precision(20);
+   long pr = os.precision(20);
    os << " " << beginMarker << " ";
    os << theSeed << " ";
    for (int i=0; i<12; ++i) {
@@ -747,9 +747,9 @@ bool Ranlux64Engine::getState (const std::vector<unsigned long> & v) {
   }
   t[0] = v[25]; t[1] = v[26];
   carry    = DoubConv::longs2double(t);
-  index    = v[27];
-  luxury   = v[28];
-  pDiscard = v[29]; 
+  index    = (int)v[27];
+  luxury   = (int)v[28];
+  pDiscard = (int)v[29]; 
   return true;
 }
 

@@ -142,7 +142,7 @@ double RandStudentT::shoot( HepRandomEngine *anEngine, double a ) {
 }
 
 std::ostream & RandStudentT::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   std::vector<unsigned long> t(2);
   os << " " << name() << "\n";
   os << "Uvec" << "\n";
@@ -151,7 +151,7 @@ std::ostream & RandStudentT::put ( std::ostream & os ) const {
   os.precision(pr);
   return os;
 #ifdef REMOVED
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   os << defaultA << "\n";
   os.precision(pr);

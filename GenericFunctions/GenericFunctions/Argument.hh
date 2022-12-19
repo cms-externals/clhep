@@ -1,5 +1,5 @@
 // -*- C++ -*-
-// $Id: Argument.hh,v 1.2 2003/09/06 14:04:13 boudreau Exp $
+//
 #ifndef __ARGUMENT_H_
 #define __ARGUMENT_H_
 #include <iostream>
@@ -59,7 +59,7 @@ namespace Genfun {
   }
 
   inline unsigned int Argument::dimension() const {
-    return _data->size();
+    return (unsigned int)_data->size();
   }
 
   inline double & Argument::operator[] (int i) {

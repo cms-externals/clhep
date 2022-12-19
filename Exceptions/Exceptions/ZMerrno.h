@@ -77,7 +77,7 @@ public:
 
   int countSinceCleared() const;
     // Returns the number of exceptions since last cleared
-
+
   std::string name( unsigned int k = 0 ) const;
     // Obtain the mnemonic name of the latest-but-k exception on ZMerrno.
     // Thus name()gets the name of the latest exception.
@@ -110,7 +110,7 @@ private:
   std::deque< const ZMexception * > errors_;
 
   unsigned int max_;
-  enum { ZMERRNO_LENGTH = 100 };
+  static const int ZMERRNO_LENGTH = 100;
     // Default maximum number of entries on the stack
 
   int count_;

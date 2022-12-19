@@ -225,7 +225,7 @@ double v1{0.},v2{0.},v12{0.};
 }
 
 std::ostream & RandGamma::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   std::vector<unsigned long> t(2);
   os << " " << name() << "\n";
   os << "Uvec" << "\n";
@@ -236,7 +236,7 @@ std::ostream & RandGamma::put ( std::ostream & os ) const {
   os.precision(pr);
   return os;
 #ifdef REMOVED
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   os << defaultK << " " << defaultLambda << "\n";
   os.precision(pr);

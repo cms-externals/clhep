@@ -1,4 +1,4 @@
-// $Id: RandLandau.cc,v 1.5 2010/06/16 17:24:53 garren Exp $
+//
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -51,7 +51,6 @@ void RandLandau::fireArray( const int size, double* vect)
     *v = fire();
 }
 
-
 //
 // Table of values of inverse Landau, from r = .060 to .982
 //
@@ -285,7 +284,6 @@ static const float inverseLandau [TABLE_END+1] = {
 
 };  // End of the inverseLandau table
 
-
 double RandLandau::transform (double r) {
 
   double  u = r * TABLE_MULTIPLIER; 
@@ -365,7 +363,7 @@ double RandLandau::transform (double r) {
 } // transform()
 
 std::ostream & RandLandau::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   os.precision(pr);
   return os;

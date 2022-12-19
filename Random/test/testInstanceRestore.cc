@@ -96,7 +96,7 @@ template <class E>
 int checkEngineInstanceSave(E & e) {
   int stat = 0;
   output << "checkEngineInstanceSave for " << e.name() << "\n";
-  int pr=output.precision(20);
+  long pr=output.precision(20);
   double r=0; 
   for (int i=0; i<100; i++) r += e.flat();
   {std::ofstream os ("instance_engine.save"); os << e;}
@@ -144,7 +144,7 @@ int checkSaveDistribution(D & d, int nth) {
   {std::ofstream os ("instance2_distribution.save"); os << d.engine() << d;}
   keyValue3 = d();
   keyValue4 = d();
-  int pr = output.precision(20);
+  long pr = output.precision(20);
 #ifdef VERBOSER
   output << "keyValue1 = " << keyValue1 <<
              "  keyValue2 = " << keyValue2 << "\n";
@@ -200,7 +200,7 @@ int checkRandGeneralDistribution(RandGeneral & d, int nth) {
   {std::ofstream os ("instance2_distribution.save"); os << d.engine() << d;}
   keyValue3 = d();
   keyValue4 = d();
-  int pr = output.precision(20);
+  long pr = output.precision(20);
 #ifdef VERBOSER
   output << "keyValue1 = " << keyValue1 <<
              "  keyValue2 = " << keyValue2 << "\n";
@@ -383,7 +383,7 @@ int main() {
 
   {std::vector<double> nonRand = aSequence(500);
    NonRandomEngine e; 
-   e.setRandomSequence(&nonRand[0], nonRand.size());
+   e.setRandomSequence(&nonRand[0], (int)nonRand.size());
    stat |= checkEngineInstanceSave(e);}
 
   stat |= checkDistributions<DualRand>();

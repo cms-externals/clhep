@@ -81,7 +81,7 @@ void RandExpZiggurat::fireArray( const int size, double* vect, double mean )
 }
 
 std::ostream & RandExpZiggurat::put ( std::ostream & os ) const {
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   std::vector<unsigned long> t(2);
   os << " " << name() << "\n";
   os << "Uvec" << "\n";
@@ -90,7 +90,7 @@ std::ostream & RandExpZiggurat::put ( std::ostream & os ) const {
   os.precision(pr);
   return os;
 #ifdef REMOVED
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << name() << "\n";
   os << defaultMean << "\n";
   os.precision(pr);

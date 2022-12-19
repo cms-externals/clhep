@@ -1,4 +1,4 @@
-// $Id: TripleRand.cc,v 1.6 2010/06/16 17:24:53 garren Exp $
+//
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -428,7 +428,7 @@ void TripleRand::Tausworthe::put( std::ostream & os ) const {
   char beginMarker[] = "Tausworthe-begin";
   char endMarker[]   = "Tausworthe-end";
 
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << beginMarker << " ";
   os << std::setprecision(20);
   for (int i = 0; i < 4; ++i) {
@@ -477,9 +477,9 @@ void TripleRand::Tausworthe::get( std::istream & is ) {
 bool 
 TripleRand::Tausworthe::get(std::vector<unsigned long>::const_iterator & iv){
   for (int i = 0; i < 4; ++i) {
-    words[i] = *iv++;
+    words[i] = (unsigned int)*iv++;
   }
-  wordIndex = *iv++;
+  wordIndex = (int)*iv++;
   return true;
 }
 
@@ -522,7 +522,7 @@ void TripleRand::IntegerCong::put( std::ostream & os ) const {
   char beginMarker[] = "IntegerCong-begin";
   char endMarker[]   = "IntegerCong-end";
 
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << beginMarker << " ";
   os << state << " " << multiplier << " " << addend;
   os << " " <<  endMarker  << " ";
@@ -562,9 +562,9 @@ void TripleRand::IntegerCong::get( std::istream & is ) {
 
 bool 
 TripleRand::IntegerCong::get(std::vector<unsigned long>::const_iterator & iv) {
-  state      = *iv++;
-  multiplier = *iv++;
-  addend     = *iv++;
+  state      = (unsigned int)*iv++;
+  multiplier = (unsigned int)*iv++;
+  addend     = (unsigned int)*iv++;
   return true;
 }
 

@@ -54,7 +54,7 @@ int staticSave(int n) {
     D::saveFullState(file);
     v2 = D::shoot();
 #ifdef VERBOSER2
-    int pr = output.precision(20);
+    long pr = output.precision(20);
     output << "v1 = " << v1 << "  v2 = " << v2 << "\n";
     output.precision(pr);
 #endif
@@ -68,7 +68,7 @@ int staticSave(int n) {
     D::restoreFullState(file);
     k2 = D::shoot();
 #ifdef VERBOSER2
-    int pr = output.precision(20);
+    long pr = output.precision(20);
     output << "k1 = " << k1 << "  k2 = " << k2 << "\n";
     output.precision(pr);
 #endif
@@ -89,7 +89,7 @@ int staticSave(int n) {
     D::saveDistState(file) << *D::getTheEngine();
     v2 = D::shoot();
 #ifdef VERBOSER2
-    int pr = output.precision(20);
+    long pr = output.precision(20);
     output << "v1 = " << v1 << "  v2 = " << v2 << "\n";
     output.precision(pr);
 #endif
@@ -103,7 +103,7 @@ int staticSave(int n) {
     D::restoreDistState(file) >> *D::getTheEngine();
     k2 = D::shoot();
 #ifdef VERBOSER2
-    int pr = output.precision(20);
+    long pr = output.precision(20);
     output << "k1 = " << k1 << "  k2 = " << k2 << "\n";
     output.precision(pr);
 #endif
@@ -145,7 +145,7 @@ int staticSaveShootBit(int n) {
       v2 += D::shootBit();
     }
 #ifdef VERBOSER2
-    int pr = output.precision(20);
+    long pr = output.precision(20);
     output << std::hex << "v1 = " << v1 << "  v2 = " << v2 << std::dec << "\n";
     output.precision(pr);
 #endif
@@ -167,7 +167,7 @@ int staticSaveShootBit(int n) {
       k2 += D::shootBit();
     }
 #ifdef VERBOSER2
-    int pr = output.precision(20);
+    long pr = output.precision(20);
     output << std::hex << "k1 = " << k1 << "  k2 = " << k2 << std::dec << "\n";
     output.precision(pr);
 #endif
@@ -198,7 +198,7 @@ int staticSaveShootBit(int n) {
       v2 += D::shootBit();
     }
 #ifdef VERBOSER2
-    int pr = output.precision(20);
+    long pr = output.precision(20);
     output << std::hex << "v1 = " << v1 << "  v2 = " << v2 << std::dec << "\n";
     output.precision(pr);
 #endif
@@ -221,7 +221,7 @@ int staticSaveShootBit(int n) {
       k2 += D::shootBit();
     }
 #ifdef VERBOSER2
-    int pr = output.precision(20);
+    long pr = output.precision(20);
     output << std::hex << "k1 = " << k1 << "  k2 = " << k2 << std::dec << "\n";
     output.precision(pr);
 #endif

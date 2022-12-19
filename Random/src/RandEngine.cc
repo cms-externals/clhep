@@ -1,4 +1,4 @@
-// $Id: RandEngine.cc,v 1.8 2010/06/16 17:24:53 garren Exp $
+//
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -481,7 +481,7 @@ bool RandEngine::getState (const std::vector<unsigned long> & v) {
     return false;
   }
   theSeed   = v[1];
-  int count = v[2];
+  int count = (int)v[2];
   setSeed(theSeed,0);
   while (seq < count) flat();  
   return true;

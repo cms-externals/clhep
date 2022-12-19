@@ -16,7 +16,7 @@ namespace Genfun {
 			     double                             timeLimit ) const {
     const double h = timeLimit==0 ? stepsize : timeLimit - s.time;
     if (h<=0) throw std::runtime_error ("SimpleRKStepper:  negative stepsize");
-    const unsigned int nvar = s.variable.size();
+    const unsigned int nvar = (unsigned int)s.variable.size();
     // Compute all of the k's..:
     //
     std::vector<std::vector<double> >k(tableau.nSteps());

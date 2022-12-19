@@ -86,7 +86,6 @@ class HepBoostX;
 class HepBoostY;
 class HepBoostZ;
 
-
 //-******************************
 //
 // Hep4RotationInterface 
@@ -194,7 +193,7 @@ public:
   static double getTolerance();
   static double setTolerance( double tol );
 
-  enum { ToleranceTicks = 100 };
+  static const int ToleranceTicks = 100;
 
 protected:
 
@@ -202,7 +201,6 @@ protected:
 
 };  // Hep4RotationInterface
 
-
 
 //-******************************
 //
@@ -301,7 +299,6 @@ private:
 
 };  // Hep3RotationInterface
 
-
 //-***************************
 // 3x3 and 4x4 representations
 //-***************************

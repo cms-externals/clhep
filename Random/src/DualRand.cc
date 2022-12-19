@@ -1,4 +1,3 @@
-// $Id: DualRand.cc,v 1.5 2010/06/16 17:24:53 garren Exp $
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -29,7 +28,7 @@
 //	Tausworthe
 //	Golomb
 //=========================================================================
-// Ken Smith      - Removed std::pow() from flat() method:           21 Jul 1998
+// Ken Smith      - Removed pow() from flat() method:           21 Jul 1998
 //                - Added conversion operators:                  6 Aug 1998
 // J. Marraffino  - Added some explicit casts to deal with
 //                  machines where sizeof(int) != sizeof(long)  22 Aug 1998
@@ -161,7 +160,7 @@ void DualRand::saveStatus(const char filename[]) const {
 		     #endif
   }
 #ifdef REMOVED
-    int pr=outFile.precision(20);
+    long pr=outFile.precision(20);
     outFile << theSeed << std::endl;
     tausworthe.put(outFile);
     integerCong.put(outFile);
@@ -206,7 +205,7 @@ void DualRand::restoreStatus(const char filename[]) {
 }
 
 void DualRand::showStatus() const {
-  int pr=std::cout.precision(20);
+  long pr=std::cout.precision(20);
   std::cout << std::endl;
   std::cout <<         "-------- DualRand engine status ---------"
 	    << std::endl;
@@ -244,7 +243,7 @@ std::ostream & DualRand::put(std::ostream & os) const {
   return os;  
 #ifdef REMOVED 
   char endMarker[]   = "DualRand-end";
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << beginMarker << " ";
   os << theSeed << " ";
   tausworthe.put(os);
@@ -422,7 +421,7 @@ void DualRand::Tausworthe::put(std::ostream & os) const {
   char beginMarker[] = "Tausworthe-begin";
   char endMarker[]   = "Tausworthe-end";
 
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << beginMarker << " ";
   for (int i = 0; i < 4; ++i) {
     os << words[i] << " ";
@@ -472,9 +471,9 @@ void DualRand::Tausworthe::get(std::istream & is) {
 bool 
 DualRand::Tausworthe::get(std::vector<unsigned long>::const_iterator & iv){
   for (int i = 0; i < 4; ++i) {
-    words[i] = *iv++;
+    words[i] = (unsigned int)*iv++;
   }
-  wordIndex = *iv++;
+  wordIndex = (int)*iv++;
   return true;
 }
 
@@ -513,7 +512,7 @@ void DualRand::IntegerCong::put(std::ostream & os) const {
   char beginMarker[] = "IntegerCong-begin";
   char endMarker[]   = "IntegerCong-end";
 
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << beginMarker << " ";
   os << state << " " << multiplier << " " << addend;
   os << " " <<  endMarker  << " ";
@@ -555,9 +554,9 @@ void DualRand::IntegerCong::get(std::istream & is) {
 
 bool 
 DualRand::IntegerCong::get(std::vector<unsigned long>::const_iterator & iv) {
-  state      = *iv++;
-  multiplier = *iv++;
-  addend     = *iv++;
+  state      = (unsigned int)*iv++;
+  multiplier = (unsigned int)*iv++;
+  addend     = (unsigned int)*iv++;
   return true;
 }
 

@@ -1,4 +1,4 @@
-// $Id: RanshiEngine.cc,v 1.6 2010/06/16 17:24:53 garren Exp $
+//
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -282,7 +282,7 @@ std::ostream& RanshiEngine::put (std::ostream& os ) const {
   return os;  
 #ifdef REMOVED 
   char endMarker[]   = "RanshiEngine-end";
-  int pr=os.precision(20);
+  long pr=os.precision(20);
   os << " " << beginMarker << " ";
   
   os << theSeed  << "\n";
@@ -384,11 +384,11 @@ bool RanshiEngine::getState (const std::vector<unsigned long> & v) {
     return false;
   }
   for (int i = 0; i < numBuff; ++i) {
-    buffer[i] = v[i+1];
+    buffer[i] = (unsigned int)v[i+1];
   }
-  redSpin  = v[numBuff+1];
-  numFlats = v[numBuff+2]; 
-  halfBuff = v[numBuff+3];
+  redSpin  = (unsigned int)v[numBuff+1];
+  numFlats = (unsigned int)v[numBuff+2]; 
+  halfBuff = (unsigned int)v[numBuff+3];
   return true;
 }
 

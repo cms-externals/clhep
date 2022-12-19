@@ -140,7 +140,7 @@ void anonymousRestore1<NonRandomEngine> (int n, std::vector<double> & v) {
 #endif
   std::vector<double> nonRand = aSequence(500);
   NonRandomEngine e; 
-  e.setRandomSequence(&nonRand[0], nonRand.size());
+  e.setRandomSequence(&nonRand[0], (int)nonRand.size());
   double __attribute__ ((unused)) r = 0;
   for (int i=0; i<n; i++) r += e.flat();
   std::ofstream os("anonymous.save");

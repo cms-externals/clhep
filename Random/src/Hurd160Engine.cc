@@ -1,4 +1,4 @@
-// $Id: Hurd160Engine.cc,v 1.7 2010/07/20 18:07:17 garren Exp $
+//
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -234,7 +234,7 @@ void Hurd160Engine::restoreStatus( const char filename[] ) {
 }
 
 void Hurd160Engine::showStatus() const {
-  int pr = std::cout.precision(20);
+  long pr = std::cout.precision(20);
   std::cout << std::endl;
   std::cout << "----------- Hurd engine status ----------" << std::endl;
   std::cout << "Initial seed  = " << theSeed   << std::endl;
@@ -275,7 +275,7 @@ std::ostream& Hurd160Engine::put(std::ostream& os) const {
   return os;  
 #ifdef REMOVED 
   char endMarker[]   = "Hurd160Engine-end";
-  int pr = os.precision(20);
+  long pr = os.precision(20);
   os << " " << beginMarker << " ";
   os << theSeed  << " ";
   os << wordIndex << " ";
@@ -374,9 +374,9 @@ bool Hurd160Engine::getState (const std::vector<unsigned long> & v) {
     	"\nHurd160Engine get:state vector has wrong length - state unchanged\n";
     return false;
   }
-  wordIndex = v[1];
+  wordIndex = (int)v[1];
   for (int i = 0; i < 5; ++i) {
-    words[i] = v[i+2];
+    words[i] = (unsigned int)v[i+2];
   }
   return true;
 }

@@ -1,7 +1,5 @@
 // -*- C++ -*-
-// $Id: testRandDists.cc,v 1.11 2011/07/11 15:55:45 garren Exp $
-// ----------------------------------------------------------------------
-
+//
 // ----------------------------------------------------------------------
 //
 // testRandDists -- tests of the correctness of random distributions 
@@ -206,7 +204,7 @@ bool gaussianTest ( HepRandom & dist, double mu,
     ncounts[ciu] = 0;
   }
 
-  int oldprecision = cout.precision();
+  long oldprecision = cout.precision();
   cout.precision(5);
   // hack so that gcc 4.3 puts x and u into memory instead of a register
   volatile double x;
@@ -365,7 +363,7 @@ bool skewNormalTest ( HepRandom & dist, double k, int nNumbers ) {
   double sumx5 = 0;
   double sumx6 = 0;
 
-  int oldprecision = cout.precision();
+  long oldprecision = cout.precision();
   cout.precision(5);
   // hack so that gcc 4.3 puts x into memory instead of a register
   volatile double x;
@@ -573,7 +571,7 @@ bool poissonTest ( RandPoisson & dist, double mu, int N2 ) {
   int r1;
   int r2;
   for (int i = 0; i < N2; i++) {
-    r = dist.fire();
+    r = (int)dist.fire();
     sum += r;
     moment += (r - mu)*(r - mu);
     r1 = r;

@@ -166,7 +166,7 @@ std::string ZMexception::logMessage( const std::string optText ) const {
   if ( lgr.control()->isFilePathDesired() ) {
     fname = fullName;
   } else {
-    unsigned int lastSlash = fullName.find_last_of("/\\");
+    unsigned long lastSlash = fullName.find_last_of("/\\");
     if ( lastSlash == fullName.length() ) {
       fname = fullName;
     } else {

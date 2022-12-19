@@ -1,4 +1,3 @@
-// $Id: MTwistEngine.cc,v 1.6 2010/06/16 17:24:53 garren Exp $
 // -*- C++ -*-
 //
 // -----------------------------------------------------------------------
@@ -25,7 +24,7 @@
 //                - Modified use of the various exponents of 2
 //                  to avoid per-instance space overhead and
 //                  correct the rounding procedure              16 Sep 1998
-// J. Marfaffino  - Remove dependence on hepString class        13 May 1999
+// J. Marraffino  - Remove dependence on hepString class        13 May 1999
 // M. Fischler    - In restore, checkFile for file not found    03 Dec 2004
 // M. Fischler    - Methods for distrib. instacne save/restore  12/8/04    
 // M. Fischler    - split get() into tag validation and 
@@ -305,7 +304,7 @@ std::ostream & MTwistEngine::put ( std::ostream& os ) const
    char beginMarker[] = "MTwistEngine-begin";
    char endMarker[]   = "MTwistEngine-end";
 
-   int pr = os.precision(20);
+   long pr = os.precision(20);
    os << " " << beginMarker << " ";
    os << theSeed << " ";
    for (int i=0; i<624; ++i) {
@@ -383,9 +382,9 @@ bool MTwistEngine::getState (const std::vector<unsigned long> & v) {
     return false;
   }
   for (int i=0; i<624; ++i) {
-     mt[i]=v[i+1];
+     mt[i]=(unsigned int)v[i+1];
   }
-  count624 = v[625];
+  count624 = (int)v[625];
   return true;
 }
 
