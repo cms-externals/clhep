@@ -1,4 +1,12 @@
 ==============================
+19.12.22 Release CLHEP-2.4.6.3
+==============================
+
+2022-12-16 G. Cosmo
+
+* Fix compilation warnings on XCode 14.1 for implicit type conversions
+
+==============================
 02.12.22 Release CLHEP-2.4.6.2
 ==============================
 

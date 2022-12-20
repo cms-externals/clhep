@@ -1,3 +1,6 @@
+==============================
+19.12.22 Release CLHEP-2.4.6.3
+==============================
 2022-12-15 Gabriele Cosmo
 
 * Fixed compilation warnings for implicit type conversions on macOS/XCode 14.1.
