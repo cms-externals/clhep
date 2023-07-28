@@ -27,7 +27,8 @@
 //   http://dx.doi.org/10.1016/j.chaos.2016.05.003
 //
 // =======================================================================
-// Implementation by Konstantin Savvidy - Copyright 2004-2017
+// Implementation by Konstantin Savvidy - Copyright 2004-2023
+// July 2023 - Update class structure upon useful suggestions from Marco Barbone, Alex Howard and Gabriele Cosmo
 // =======================================================================
 
 #ifndef MixMaxRng_h
@@ -46,9 +47,9 @@ namespace CLHEP {
   */
 
 using myID_t = std::uint32_t;
-using myuint_t = unsigned long long int;
+using myuint_t = std::uint64_t;
 
-class MixMaxRng: public HepRandomEngine {
+class alignas(128) MixMaxRng: public HepRandomEngine {
 
   static const int N = 17;
 
@@ -64,16 +65,28 @@ public:
   MixMaxRng& operator=(const MixMaxRng& rng);
   // Copy constructor and assignment operator.
 
-  double flat() { return (S.counter<=(N-1)) ? generate(S.counter):iterate(); }
+inline  double flat() {
+ if (counter >= N) iterate();  
+#if defined(__x86_64__)
+    return convert1double(V[counter++]);
+#else
+   return INV_M61*static_cast<double>(V[counter++]);
+#endif
+}
   // Returns a pseudo random number between 0 and 1
-  // (excluding the zero: in (0,1] )
+  // excluding the zero: in (0,1] 
   // smallest number which it will give is approximately 10^-19
 
   void flatArray (const int size, double* vect);
   // Fills the array "vect" of specified size with flat random values.
 
-  void setSeed(long seed, int dum=0);
-  // Sets the state of the algorithm according to seed.
+ inline void setSeed(long longSeed, int dum=0 /* extraSeed */)
+{
+   //seed_uniquestream(0,0,0,longSeed);
+   //std::cout << "seeding genuine mixmax inline with" << longSeed <<"\n";
+   seed_spbox(theSeed = longSeed);
+}
+ // Sets the state of the algorithm according to seed.
 
   void setSeeds(const long * seeds, int seedNum=0);
   // Sets the initial state of the engine according to the array of between one and four 32-bit seeds.
@@ -91,7 +104,7 @@ public:
   void showStatus() const;
   // Dumps the engine status on the screen.
 
-  operator double();
+  operator double(){return flat();};
   // Returns same as flat()
   operator float();
   // less precise flat, faster if possible
@@ -120,18 +133,16 @@ private:
   static constexpr double INV_M61=0.43368086899420177360298E-18;
   static constexpr unsigned int VECTOR_STATE_SIZE = 2*N+4; // 2N+4 for MIXMAX
 
-  #define MIXMAX_MOD_MERSENNE(k) ((((k)) & M61) + (((k)) >> BITS) )
+  inline myuint_t MIXMAX_MOD_MERSENNE(myuint_t k) {return ((((k)) & M61) + (((k)) >> BITS) );}
 
   static constexpr int rng_get_N();
   static constexpr long long int rng_get_SPECIAL();
   static constexpr int rng_get_SPECIALMUL();
   void seed_uniquestream( myID_t clusterID, myID_t machineID, myID_t runID, myID_t  streamID );
-  void seed_spbox(myuint_t);
+  void seed_spbox(myuint_t seed);
   void print_state() const;
   myuint_t precalc();
   myuint_t get_next() ;
-  inline double get_next_float() { return get_next_float_packbits(); }
-  // Returns a random double with all 52 bits random, in the range (0,1]
   
   MixMaxRng Branch();
   void BranchInplace(int id);
@@ -139,10 +150,35 @@ private:
   MixMaxRng(myID_t clusterID, myID_t machineID, myID_t runID, myID_t  streamID );	   // Constructor with four 32-bit seeds
   inline void seed64(myuint_t seedval) { seed_uniquestream( 0, 0, (myID_t)(seedval>>32), (myID_t)seedval ); } // seed with one 64-bit seed
 
-  double generate(int i);
-  double iterate();
+inline void iterate()
+{
+   myuint_t  tempP, tempV;
+   V[0] = ( tempV = sumtot);
+   myuint_t insumtot=V[0], ovflow = 0; // will keep a running sum of all new elements
+   tempP = 0;              // will keep a partial sum of all old elements
+   myuint_t tempPO;
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[1] ); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[1]  = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[2] ); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[2]  = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[3] ); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[3]  = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[4] ); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[4]  = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[5] ); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[5]  = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[6] ); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[6]  = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[7] ); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[7]  = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[8] ); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[8]  = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[9] ); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[9]  = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[10]); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[10] = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[11]); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[11] = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[12]); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[12] = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[13]); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[13] = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[14]); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[14] = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[15]); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[15] = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   tempPO = MULWU(tempP); tempP = modadd(tempP, V[16]); tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); V[16] = tempV; insumtot += tempV; if (insumtot < tempV) {ovflow++;};
+   sumtot = MIXMAX_MOD_MERSENNE(MIXMAX_MOD_MERSENNE(insumtot) + (ovflow <<3 ));
 
-  double get_next_float_packbits();
+   counter=1;
+  // return INV_M61*static_cast<double>(V[1]);
+};
+
 #if defined __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
@@ -160,11 +196,27 @@ private:
 #pragma GCC diagnostic pop
 #endif
   myuint_t MOD_MULSPEC(myuint_t k);
-  myuint_t MULWU(myuint_t k);
-  void seed_vielbein( unsigned int i); // seeds with the i-th unit vector, i = 0..N-1,  for testing only
+inline  myuint_t MULWU(myuint_t k){return (( (k)<<(SPECIALMUL) & M61) ^ ( (k) >> (BITS-SPECIALMUL))  );};
+//   void seed_vielbein( unsigned int i); // seeds with the i-th unit vector, i = 0..N-1,  for testing only
   myuint_t iterate_raw_vec(myuint_t* Y, myuint_t sumtotOld);
   myuint_t apply_bigskip(myuint_t* Vout, myuint_t* Vin, myID_t clusterID, myID_t machineID, myID_t runID, myID_t  streamID );
-  myuint_t modadd(myuint_t foo, myuint_t bar);
+inline myuint_t modadd(myuint_t foo, myuint_t bar)
+{
+#if defined(__x86_64__) && defined(__GNUC__) && (!defined(__ICC))
+   #warning Using assembler routine in modadd
+   myuint_t out;
+   /* Assembler trick suggested by Andrzej Görlich     */
+   __asm__ ("addq %2, %0; "
+            "btrq $61, %0; "
+            "adcq $0, %0; "
+            :"=r"(out)
+            :"0"(foo), "r"(bar)
+           );
+   return out;
+#else
+   return MIXMAX_MOD_MERSENNE(foo+bar);
+#endif
+}
 #if defined(__x86_64__)
   myuint_t mod128(__uint128_t s);
   myuint_t fmodmulM61(myuint_t cum, myuint_t a, myuint_t b);
@@ -173,16 +225,10 @@ private:
 #endif
 
 private:
+ myuint_t V[N];
+ myuint_t sumtot;
+ int counter;
 
-  struct rng_state_st
-  {
-      std::array<myuint_t, N> V;
-      myuint_t sumtot;
-      int counter;
-  };
-
-  typedef struct rng_state_st rng_state_t;     // struct alias
-  rng_state_t S;
 };
 
 }  // namespace CLHEP
