@@ -28,7 +28,7 @@
 //
 // =======================================================================
 // Implementation by Konstantin Savvidy - Copyright 2004-2023
-// July 2023 - Update class structure upon useful suggestions from Marco Barbone, Alex Howard and Gabriele Cosmo
+// July 2023 - Updated class structure upon suggestions from Marco Barbone
 // =======================================================================
 
 #include "CLHEP/Random/defs.h"
@@ -81,7 +81,7 @@ MixMaxRng::~MixMaxRng()
 MixMaxRng::MixMaxRng(const MixMaxRng& rng)
   : HepRandomEngine(rng)
 {
-   for (int i=0; i< N; i++){V[i] = rng.V[i];}
+   for (int i=0; i< N; ++i){V[i] = rng.V[i];}
    sumtot= rng.sumtot;
    counter= rng.counter;
 }
@@ -96,7 +96,7 @@ MixMaxRng& MixMaxRng::operator=(const MixMaxRng& rng)
    //
    HepRandomEngine::operator=(rng);
 
-for (int i=0; i< N; i++){V[i] = rng.V[i];}
+   for (int i=0; i< N; ++i){V[i] = rng.V[i];}
    sumtot= rng.sumtot;
    counter= rng.counter;
    return *this;
@@ -111,7 +111,7 @@ void MixMaxRng::saveStatus( const char filename[] ) const
      int j;
      fprintf(fh, "mixmax state, file version 1.0\n" );
      fprintf(fh, "N=%u; V[N]={", rng_get_N() );
-     for (j=0; (j< (rng_get_N()-1) ); j++) {
+     for (j=0; (j< (rng_get_N()-1) ); ++j) {
          fprintf(fh, "%llu, ", (unsigned long long)V[j] );
      }
      fprintf(fh, "%llu", (unsigned long long)V[rng_get_N()-1] );
@@ -403,13 +403,13 @@ inline myuint_t MixMaxRng::iterate_raw_vec(myuint_t* Y, myuint_t sumtotOld)
    Y[0] = ( tempV = sumtotOld);
    myuint_t insumtot = Y[0], ovflow = 0; // will keep a running sum of all new elements
    tempP = 0;              // will keep a partial sum of all old elements
-   for (i=1; (i<N); i++)
+   for (i=1; (i<N); ++i)
    {
      myuint_t tempPO = MULWU(tempP);
      tempP = modadd(tempP, Y[i]);
      tempV = MIXMAX_MOD_MERSENNE(tempV+tempP+tempPO); // new Y[i] = old Y[i] + old partial * m
      Y[i] = tempV;
-     insumtot += tempV; if (insumtot < tempV) {ovflow++;}
+     insumtot += tempV; if (insumtot < tempV) {++ovflow;}
    }
    return MIXMAX_MOD_MERSENNE(MIXMAX_MOD_MERSENNE(insumtot) + (ovflow <<3 ));
 }
@@ -421,7 +421,7 @@ inline myuint_t MixMaxRng::get_next()
             
    if ((i<=(N-1)) )
    {
-     counter++;
+     ++counter;
      return V[i];
    }
    else
@@ -437,7 +437,7 @@ myuint_t MixMaxRng::precalc()
    int i;
    myuint_t temp;
    temp = 0;
-   for (i=0; i < N; i++){
+   for (i=0; i < N; ++i){
      temp = MIXMAX_MOD_MERSENNE(temp + V[i]);
    }
    sumtot = temp;
@@ -455,7 +455,7 @@ void MixMaxRng::seed_spbox(myuint_t seed)
              
    myuint_t l = seed;
             
-   for (int i=0; i < N; i++){
+   for (int i=0; i < N; ++i){
      l*=MULT64; l = (l << 32) ^ (l>>32);
      V[i] = l & M61;
      sumtot = MIXMAX_MOD_MERSENNE(sumtot + V[(i)]); 
@@ -497,7 +497,7 @@ myuint_t MixMaxRng::apply_bigskip( myuint_t* Vout, myuint_t* Vin, myID_t cluster
    ;
             
    const myuint_t* skipMat[128];
-   for (int i=0; i<128; i++) { skipMat[i] = skipMat17[i];}
+   for (int i=0; i<128; ++i) { skipMat[i] = skipMat17[i];}
             
    myID_t IDvec[4] = {streamID, runID, machineID, clusterID};
    int r,i,j,  IDindex;
@@ -507,8 +507,8 @@ myuint_t MixMaxRng::apply_bigskip( myuint_t* Vout, myuint_t* Vin, myID_t cluster
    myuint_t* rowPtr;
    myuint_t insumtot=0;
             
-   for (i=0; i<N; i++) { Y[i] = Vin[i]; insumtot = modadd( insumtot, Vin[i]); } ;
-   for (IDindex=0; IDindex<4; IDindex++)
+   for (i=0; i<N; ++i) { Y[i] = Vin[i]; insumtot = modadd( insumtot, Vin[i]); }
+   for (IDindex=0; IDindex<4; ++IDindex)
    { // go from lower order to higher order ID
      id=IDvec[IDindex];
      r = 0;
@@ -517,26 +517,26 @@ myuint_t MixMaxRng::apply_bigskip( myuint_t* Vout, myuint_t* Vin, myID_t cluster
        if (id & 1)
        {
          rowPtr = (myuint_t*)skipMat[r + IDindex*8*sizeof(myID_t)];
-         for (i=0; i<N; i++){ cum[i] = 0; }
-         for (j=0; j<N; j++)
+         for (i=0; i<N; ++i){ cum[i] = 0; }
+         for (j=0; j<N; ++j)
          { // j is lag, enumerates terms of the poly
            // for zero lag Y is already given
            coeff = rowPtr[j]; // same coeff for all i
-           for (i =0; i<N; i++){
-             cum[i] =  fmodmulM61( cum[i], coeff ,  Y[i] ) ;
+           for (i =0; i<N; ++i){
+             cum[i] =  fmodmulM61( cum[i], coeff ,  Y[i] );
            }
            insumtot = iterate_raw_vec(Y, insumtot);
          }
          insumtot=0;
-         for (i=0; i<N; i++){ Y[i] = cum[i]; insumtot = modadd( insumtot, cum[i]); } ;
+         for (i=0; i<N; ++i){ Y[i] = cum[i]; insumtot = modadd( insumtot, cum[i]); }
        }
-       id = (id >> 1); r++; // bring up the r-th bit in the ID
+       id = (id >> 1); ++r; // bring up the r-th bit in the ID
      }
    }
    insumtot=0;
    for (i=0; i<N; i++){ Vout[i] = Y[i]; insumtot = modadd( insumtot, Y[i]); }
    // returns sumtot, and copy the vector over to Vout
-   return (insumtot) ;
+   return insumtot;
 }
         
 #if defined(__x86_64__)
@@ -574,7 +574,7 @@ void MixMaxRng::print_state() const
    int j;
    std::cout << "mixmax state, file version 1.0\n";
    std::cout << "N=" << rng_get_N() << "; V[N]={";
-   for (j=0; (j< (rng_get_N()-1) ); j++) {
+   for (j=0; (j< (rng_get_N()-1) ); ++j) {
      std::cout << V[j] << ", ";
    }
    std::cout << V[rng_get_N()-1];
