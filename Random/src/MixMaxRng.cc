@@ -29,6 +29,7 @@
 // =======================================================================
 // Implementation by Konstantin Savvidy - Copyright 2004-2023
 // July 2023 - Updated class structure upon suggestions from Marco Barbone
+// September 2023 - fix (re-)initialization from Gabriele Cosmo
 // =======================================================================
 
 #include "CLHEP/Random/defs.h"
@@ -53,7 +54,7 @@ namespace {
   CLHEP_ATOMIC_INT_TYPE numberOfEngines(0);
 }
 
-static const int MarkerLen = 64; // Enough room to hold a begin or end marker. 
+static const int MarkerLen = 64; // Enough room to hold a begin or end marker.
 
 MixMaxRng::MixMaxRng()
 : HepRandomEngine()
@@ -75,7 +76,7 @@ MixMaxRng::MixMaxRng(std::istream& is)
    get(is);
 }
 
-MixMaxRng::~MixMaxRng() 
+MixMaxRng::~MixMaxRng()
 {
 }
 
@@ -214,7 +215,7 @@ void MixMaxRng::showStatus() const
 }
 
 //  Preferred Seeding method
-//  the values of 'Seeds' must be valid 32-bit integers 
+//  the values of 'Seeds' must be valid 32-bit integers
 //  Higher order bits will be ignored!!
 
 void MixMaxRng::setSeeds(const long* Seeds, int seedNum)
@@ -224,7 +225,7 @@ void MixMaxRng::setSeeds(const long* Seeds, int seedNum)
    if( seedNum < 1 ) {  // Assuming at least 2 seeds in vector...
        seed0= static_cast<myID_t>(Seeds[0]) & MASK32;
        seed1= static_cast<myID_t>(Seeds[1]) & MASK32;
-   } 
+   }
    else
    {
      if( seedNum < 4 ) {
@@ -274,7 +275,7 @@ std::ostream & MixMaxRng::put ( std::ostream& os ) const
    os << sumtot << "\n";
    os << endMarker << "\n";
    os.precision(pr);
-   return os;  
+   return os;
 }
 
 std::vector<unsigned long> MixMaxRng::put () const
@@ -299,7 +300,7 @@ std::istream & MixMaxRng::get  ( std::istream& is)
    char beginMarker [MarkerLen];
    is >> std::ws;
    is.width(MarkerLen);  // causes the next read to the char* to be <=
-                         // that many bytes, INCLUDING A TERMINATION \0 
+                         // that many bytes, INCLUDING A TERMINATION \0
                          // (Stroustrup, section 21.3.2)
    is >> beginMarker;
    if (strcmp(beginMarker,"MixMaxRng-begin")) {
@@ -313,8 +314,8 @@ std::istream & MixMaxRng::get  ( std::istream& is)
 }
 
 std::string MixMaxRng::beginTag ()
-{ 
-   return "MixMaxRng-begin"; 
+{
+   return "MixMaxRng-begin";
 }
 
 std::istream &  MixMaxRng::getState ( std::istream& is )
@@ -354,7 +355,7 @@ bool MixMaxRng::get (const std::vector<unsigned long> & vec)
 {
    if ((vec[0] & 0xffffffffUL) != engineIDulong<MixMaxRng>())
    {
-     std::cerr << 
+     std::cerr <<
         "\nMixMaxRng::get(): vector has wrong ID word - state unchanged\n";
      return false;
    }
@@ -451,7 +452,7 @@ void MixMaxRng::seed_spbox(myuint_t seed)
    {
      l*=MULT64; l = (l << 32) ^ (l>>32);
      V[i] = l & M61;
-     sumtot = MIXMAX_MOD_MERSENNE(sumtot + V[(i)]); 
+     sumtot = MIXMAX_MOD_MERSENNE(sumtot + V[(i)]);
    }
    counter = N;  // set the counter to N if iteration should happen right away
 }

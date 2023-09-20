@@ -7,7 +7,7 @@
 //                       class header file
 // -----------------------------------------------------------------------
 //
-// This file interfaces the MixMax PseudoRandom Number Generator 
+// This file interfaces the MixMax PseudoRandom Number Generator
 // proposed by:
 //
 // G.K.Savvidy and N.G.Ter-Arutyunian,
@@ -29,6 +29,7 @@
 // =======================================================================
 // Implementation by Konstantin Savvidy - Copyright 2004-2023
 // July 2023 - Updated class structure upon suggestions from Marco Barbone
+// September 2023 - fix (re-)initialization from Gabriele Cosmo
 // =======================================================================
 
 #ifndef MixMaxRng_h
