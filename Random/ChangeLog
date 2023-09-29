@@ -1,4 +1,14 @@
 ==============================
+29.09.23 Release CLHEP-2.4.7.0
+==============================
+
+2023-09.29  Konstantinos Savvidis
+
+* MIXMAX update for performance 
+  Optimize performance based on experience learned since 2017
+  Update class structure upon useful suggestions from Marco Barbone, Alex Howard and Gabriele Cosmo
+
+==============================
 08.02.23 Release CLHEP-2.4.6.4
 ==============================
 ==============================
