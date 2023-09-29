@@ -50,7 +50,11 @@ namespace CLHEP {
 using myID_t = std::uint32_t;
 using myuint_t = std::uint64_t;
 
-class alignas(128) MixMaxRng : public HepRandomEngine
+class
+#if (__cplusplus >= 201703L && __cpp_aligned_new >= 201606L)
+  alignas(128)
+#endif
+MixMaxRng : public HepRandomEngine
 {
 
   static const int N = 17;
