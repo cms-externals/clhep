@@ -62,9 +62,8 @@ set( pkginclude_HEADERS DoubConv.h
 			Stat.h
 			StaticRandomStates.h
 			TripleRand.h
-			mixmax_skip_N8.icc
 			mixmax_skip_N17.icc
-                        mixmax_skip_N240.icc )
+                        )
 
 # notice that defs.h is not referenced here
 INSTALL (FILES ${pkginclude_HEADERS}  
