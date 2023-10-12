@@ -181,6 +181,13 @@ void RandPoissonQ::shootArray(const int size, long* vect, double m) {
      // But since those are cached anyway, not much time would be saved.
 }
 
+void RandPoissonQ::shootArray(HepRandomEngine* anEngine, const int size,
+                             long* vect, double m1)
+{
+  for( long* v = vect; v != vect + size; ++v )
+    *v = shoot(anEngine,m1);
+}
+
 void RandPoissonQ::fireArray(const int size, long* vect, double m) {
   for( long* v = vect; v != vect + size; ++v )
     *v = fire( m );

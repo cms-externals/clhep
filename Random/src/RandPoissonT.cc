@@ -100,6 +100,13 @@ void RandPoissonT::shootArray(const int size, long* vect, double m) {
      vect[i] = shoot(m);
 }
 
+void RandPoissonT::shootArray(HepRandomEngine* anEngine, const int size,
+                             long* vect, double m1)
+{
+  for( long* v = vect; v != vect + size; ++v )
+    *v = shoot(anEngine,m1);
+}
+
 void RandPoissonT::fireArray(const int size, long* vect, double m) {
    int i;
    for (i=0; i<size; ++i) {
