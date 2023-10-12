@@ -1,4 +1,18 @@
 ==============================
+12.10.23 Release CLHEP-2.4.7.1
+==============================
+
+2023-10-12  L. Garren
+
+* add missing shootArray implementations in
+  Random/src/RandPoissonQ.cc and Random/src/RandPoissonT.cc
+
+2023-09-30  L. Garren
+
+* mixmax_skip_N8.icc and mixmax_skip_N240.icc were removed as no longer necessary
+  remove them from the cmake install list
+
+==============================
 29.09.23 Release CLHEP-2.4.7.0
 ==============================
 
