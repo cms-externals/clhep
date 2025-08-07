@@ -26,6 +26,9 @@ option(CLHEP_SINGLE_THREAD "Build without multithreading" OFF)
 # CLHEP_BUILD_DOCS is OFF (false) by default
 option(CLHEP_BUILD_DOCS "Build and install CLHEP documentation" OFF)
 
+# CLHEP_BUILD_STATIC_LIBS is ON (true) by default
+option(CLHEP_BUILD_STATIC_LIBS "Build and install CLHEP static libraries" ON)
+
 macro( clhep_check_variable_names )
   # useful if you need to check a variable
   message( STATUS "clhep_check_variable_names: CMAKE_SYSTEM_NAME is ${CMAKE_SYSTEM_NAME}" )
