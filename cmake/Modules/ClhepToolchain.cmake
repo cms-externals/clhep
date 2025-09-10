@@ -57,10 +57,16 @@ configure_package_config_file(${PROJECT_SOURCE_DIR}/cmake/Templates/CLHEPConfig.
 # First build up list of all modular targets, static and shared
 set(CLHEP_libraries_all ${CLHEP_libraries})
 foreach(_lib ${CLHEP_libraries})
-  list(APPEND CLHEP_libraries_all "${_lib}S")
+  if (CLHEP_BUILD_STATIC_LIBS)
+    list(APPEND CLHEP_libraries_all "${_lib}S")
+  endif()
 endforeach()
 
-export(TARGETS CLHEP CLHEPS ${CLHEP_libraries_all}
+if (CLHEP_BUILD_STATIC_LIBS)
+  list(APPEND CLHEP_libraries_all "CLHEPS")
+endif()
+
+export(TARGETS CLHEP ${CLHEP_libraries_all}
   NAMESPACE "CLHEP::"
   FILE ${PROJECT_BINARY_DIR}/CLHEPLibraryDepends.cmake
   )
