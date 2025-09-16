@@ -5,7 +5,7 @@
 //
 
 #include <cmath>
-#include <stdlib.h>
+#include <cstdlib>
 
 namespace CLHEP {
 
